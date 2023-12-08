@@ -1,0 +1,9 @@
+# vscode
+.vscode
+
+# output
+out
+cache
+
+# environment variables
+.env
