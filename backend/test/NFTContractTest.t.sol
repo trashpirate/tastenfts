@@ -165,19 +165,21 @@ contract NFTContractTest is Test {
 
     function testChargesCorrectAmount() public funded {
         uint256 fee = 3 * tasteNFTs.fee();
-        vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
-
         uint256 initialBalance = token.balanceOf(USER);
         uint256 expectedBalance = initialBalance - fee;
 
         vm.prank(USER);
+        token.approve(address(tasteNFTs), fee);
+
+        vm.prank(USER);
         tasteNFTs.mint(3);
+
         assertEq(token.balanceOf(USER), expectedBalance);
     }
 
     function testMintRevertsIfZero() public funded {
         uint256 fee = tasteNFTs.fee();
+
         vm.prank(USER);
         token.approve(address(tasteNFTs), fee);
 
