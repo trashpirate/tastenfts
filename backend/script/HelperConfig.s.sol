@@ -27,7 +27,7 @@ contract HelperConfig is Script {
     }
 
     constructor() {
-        if (block.chainid == 56) {
+        if ((block.chainid == 56) || (block.chainid == 123)) {
             activeNetworkConfig = getBscMainnetConfig();
         } else if (block.chainid == 97) {
             activeNetworkConfig = getBscTestnetConfig();

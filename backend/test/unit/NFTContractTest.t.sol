@@ -3,12 +3,12 @@
 pragma solidity 0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {TasteNFTs} from "../src/TasteNFTs.sol";
-import {DeployNFTContract} from "../script/DeployNFTContract.s.sol";
+import {Venus} from "../../src/Venus.sol";
+import {DeployNFTContract} from "../../script/DeployNFTContract.s.sol";
 import {IERC20, ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract NFTContractTest is Test {
-    TasteNFTs tasteNFTs;
+    Venus nfts;
     IERC20 token;
 
     address USER = makeAddr("user");
@@ -28,79 +28,79 @@ contract NFTContractTest is Test {
 
     function setUp() external {
         DeployNFTContract deployment = new DeployNFTContract();
-        tasteNFTs = deployment.run();
-        token = tasteNFTs.paymentToken();
+        nfts = deployment.run();
+        token = nfts.paymentToken();
 
-        OWNER = tasteNFTs.owner();
+        OWNER = nfts.owner();
     }
 
     function testPaymentTokenName() public {
-        address tokenAddress = address(tasteNFTs.paymentToken());
+        address tokenAddress = address(nfts.paymentToken());
         string memory symbol = ERC20(tokenAddress).symbol();
         assertEq(symbol, "TASTE");
     }
 
     function testNFTTokenName() public {
-        assertEq(tasteNFTs.name(), "TasteNFTs");
+        assertEq(nfts.name(), "TasteNFTs");
     }
 
     function testNFTTokenSymbol() public {
-        assertEq(tasteNFTs.symbol(), "NFT");
+        assertEq(nfts.symbol(), "NFT");
     }
 
     function testNFTprice() public {
-        uint256 fee = 15_000_000_000 * 10 ** ERC20(address(tasteNFTs.paymentToken())).decimals();
-        assertEq(tasteNFTs.fee(), fee);
+        uint256 fee = 15_000_000_000 * 10 ** ERC20(address(nfts.paymentToken())).decimals();
+        assertEq(nfts.fee(), fee);
     }
 
     function testIfOwnerCanSetFee() public {
         vm.prank(OWNER);
-        tasteNFTs.setFee(NEW_FEE);
-        assertEq(tasteNFTs.fee(), NEW_FEE);
+        nfts.setFee(NEW_FEE);
+        assertEq(nfts.fee(), NEW_FEE);
     }
 
     function testIfOwnerCanSetFeeAddress() public {
         vm.prank(OWNER);
-        tasteNFTs.setFeeAddress(NEW_FEE_ADDRESS);
-        assertEq(tasteNFTs.feeAddress(), NEW_FEE_ADDRESS);
+        nfts.setFeeAddress(NEW_FEE_ADDRESS);
+        assertEq(nfts.feeAddress(), NEW_FEE_ADDRESS);
     }
 
     function testIfOwnerCanSetBatchLimit() public {
         vm.prank(OWNER);
-        tasteNFTs.setBatchLimit(3);
-        assertEq(tasteNFTs.batchLimit(), 3);
+        nfts.setBatchLimit(3);
+        assertEq(nfts.batchLimit(), 3);
     }
 
     function testIfOwnerCanSetMaxPerWallet() public {
         vm.prank(OWNER);
-        tasteNFTs.setMaxPerWallet(11);
-        assertEq(tasteNFTs.maxPerWallet(), 11);
+        nfts.setMaxPerWallet(11);
+        assertEq(nfts.maxPerWallet(), 11);
     }
 
     function testRevertWhenBatchLimitGreaterThankMaxPerWallet() public {
         vm.expectRevert();
         vm.prank(OWNER);
-        tasteNFTs.setBatchLimit(11);
+        nfts.setBatchLimit(11);
     }
 
     function testRevertWhenMaxPerWalletSmallerThanBatchLimit() public {
         vm.expectRevert();
         vm.prank(OWNER);
-        tasteNFTs.setMaxPerWallet(3);
+        nfts.setMaxPerWallet(3);
     }
 
     function testIfOwnerCanWithdrawTokens() public funded {
         vm.prank(USER);
-        token.transfer(address(tasteNFTs), STARTING_BALANCE / 2);
-        uint256 contractBalance = token.balanceOf(address(tasteNFTs));
+        token.transfer(address(nfts), STARTING_BALANCE / 2);
+        uint256 contractBalance = token.balanceOf(address(nfts));
         assertGt(contractBalance, 0);
 
         uint256 initialBalance = token.balanceOf(OWNER);
         vm.prank(OWNER);
-        tasteNFTs.withdrawTokens(address(token), OWNER);
+        nfts.withdrawTokens(address(token), OWNER);
         uint256 newBalance = token.balanceOf(OWNER);
 
-        assertEq(token.balanceOf(address(tasteNFTs)), 0);
+        assertEq(token.balanceOf(address(nfts)), 0);
         assertGt(newBalance, initialBalance);
     }
 
@@ -108,140 +108,140 @@ contract NFTContractTest is Test {
         vm.prank(USER);
 
         vm.expectRevert();
-        tasteNFTs.setFee(NEW_FEE);
+        nfts.setFee(NEW_FEE);
     }
 
     function testSetFeeAddressRevertsIfNotOwner() public {
         vm.prank(USER);
 
         vm.expectRevert();
-        tasteNFTs.setFeeAddress(NEW_FEE_ADDRESS);
+        nfts.setFeeAddress(NEW_FEE_ADDRESS);
     }
 
     function testSetBatchLimitRevertsIfNotOwner() public {
         vm.prank(USER);
 
         vm.expectRevert();
-        tasteNFTs.setBatchLimit(10);
+        nfts.setBatchLimit(10);
     }
 
     function testSetMaxPerWalletRevertsIfNotOwner() public {
         vm.prank(USER);
 
         vm.expectRevert();
-        tasteNFTs.setMaxPerWallet(100);
+        nfts.setMaxPerWallet(100);
     }
 
     function testWithdrawTokensRevertsIfNotOwner() public funded {
         vm.prank(USER);
-        token.transfer(address(tasteNFTs), STARTING_BALANCE / 2);
-        uint256 contractBalance = token.balanceOf(address(tasteNFTs));
+        token.transfer(address(nfts), STARTING_BALANCE / 2);
+        uint256 contractBalance = token.balanceOf(address(nfts));
         assertGt(contractBalance, 0);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.withdrawTokens(address(token), USER);
+        nfts.withdrawTokens(address(token), USER);
     }
 
     function testMintSingleNFT() public funded {
-        uint256 fee = tasteNFTs.fee();
+        uint256 fee = nfts.fee();
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.prank(USER);
-        tasteNFTs.mint(1);
-        assertEq(tasteNFTs.balanceOf(USER), 1);
+        nfts.mint(1);
+        assertEq(nfts.balanceOf(USER), 1);
     }
 
     function testMintMultipleNFTs() public funded {
-        uint256 fee = 3 * tasteNFTs.fee();
+        uint256 fee = 3 * nfts.fee();
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.prank(USER);
-        tasteNFTs.mint(3);
-        assertEq(tasteNFTs.balanceOf(USER), 3);
+        nfts.mint(3);
+        assertEq(nfts.balanceOf(USER), 3);
     }
 
     function testChargesCorrectAmount() public funded {
-        uint256 fee = 3 * tasteNFTs.fee();
+        uint256 fee = 3 * nfts.fee();
         uint256 initialBalance = token.balanceOf(USER);
         uint256 expectedBalance = initialBalance - fee;
 
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.prank(USER);
-        tasteNFTs.mint(3);
+        nfts.mint(3);
 
         assertEq(token.balanceOf(USER), expectedBalance);
     }
 
     function testMintRevertsIfZero() public funded {
-        uint256 fee = tasteNFTs.fee();
+        uint256 fee = nfts.fee();
 
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.mint(0);
+        nfts.mint(0);
     }
 
     function testMintRevertsIfExceedsBatchLimit() public funded {
         vm.prank(OWNER);
-        tasteNFTs.setBatchLimit(5);
+        nfts.setBatchLimit(5);
 
-        uint256 fee = 6 * tasteNFTs.fee();
+        uint256 fee = 6 * nfts.fee();
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.mint(6);
+        nfts.mint(6);
     }
 
     function testMintRevertsIfExceedsMaxWalletLimit() public funded {
-        uint256 fee = 6 * tasteNFTs.fee();
+        uint256 fee = 6 * nfts.fee();
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.mint(6);
+        nfts.mint(6);
     }
 
     function testRevertsIfMaxExceeded() public funded {
         vm.prank(OWNER);
-        tasteNFTs.setMaxPerWallet(1000);
+        nfts.setMaxPerWallet(1000);
         vm.prank(OWNER);
-        tasteNFTs.setBatchLimit(100);
+        nfts.setBatchLimit(100);
 
-        uint256 fee = 100 * tasteNFTs.fee();
+        uint256 fee = 100 * nfts.fee();
         for (uint256 index = 0; index < 10; index++) {
             vm.prank(OWNER);
-            token.approve(address(tasteNFTs), fee);
+            token.approve(address(nfts), fee);
 
             vm.prank(OWNER);
-            tasteNFTs.mint(100);
+            nfts.mint(100);
         }
 
-        fee = tasteNFTs.fee();
+        fee = nfts.fee();
         vm.prank(USER);
-        token.approve(address(tasteNFTs), fee);
+        token.approve(address(nfts), fee);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.mint(1);
+        nfts.mint(1);
     }
 
     function testRevertIfInsufficientBalance() public funded {
         uint256 userBalance = token.balanceOf(USER);
         vm.prank(USER);
-        token.approve(address(tasteNFTs), userBalance);
+        token.approve(address(nfts), userBalance);
 
         vm.expectRevert();
         vm.prank(USER);
-        tasteNFTs.mint(7);
+        nfts.mint(7);
     }
 }

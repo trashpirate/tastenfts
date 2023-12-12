@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.20;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@erc721a/contracts/ERC721A.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {ERC721A} from "@erc721a/contracts/ERC721A.sol";
 
-contract TasteNFTs is ERC721A, Ownable {
+contract Venus is ERC721A, Ownable {
     uint256 public constant MAX_SUPPLY = 1000;
 
     IERC20 public immutable paymentToken;
@@ -17,7 +17,7 @@ contract TasteNFTs is ERC721A, Ownable {
     string private _baseTokenURI;
 
     constructor(address initialOwner, address initialFeeAddress, address tokenAddress, string memory baseURI)
-        ERC721A("TasteNFTs", "NFT")
+        ERC721A("Venus", "VENUS")
         Ownable(initialOwner)
     {
         feeAddress = initialFeeAddress;

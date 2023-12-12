@@ -6,13 +6,13 @@ import {TasteNFTs} from "../src/TasteNFTs.sol";
 import {HelperConfig} from "./HelperConfig.s.sol";
 
 contract DeployNFTContract is Script {
-    string baseUri = "";
+    string baseUri = "ipfs://bafybeighyfpbm5wvkp6twl5jpyft3k7ai2xy4sseoxja4qcrz4eql3gq4a/";
 
     function run() external returns (TasteNFTs) {
         HelperConfig helperConfig = new HelperConfig();
         (address initialOwner, address feeAddress, address tokenAddress) = helperConfig.activeNetworkConfig();
 
-        // after broadcast is reall transaction, before just simulation
+        // after broadcast is real transaction, before just simulation
         vm.startBroadcast();
         TasteNFTs tasteNFTs = new TasteNFTs(initialOwner, feeAddress, tokenAddress, baseUri);
         vm.stopBroadcast();
