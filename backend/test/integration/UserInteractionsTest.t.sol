@@ -6,19 +6,15 @@ import {Test, console} from "forge-std/Test.sol";
 import {Venus} from "../../src/Venus.sol";
 import {DeployNFTContract} from "../../script/DeployNFTContract.s.sol";
 import {IERC20, ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {MintNfts} from "../../script/UserInteractions.s.sol";
+import {MintNfts, TransferNft, ApproveNft} from "../../script/UserInteractions.s.sol";
 
-contract NFTContractTest is Test {
+contract UserInteractionsTest is Test {
     Venus nftContract;
     IERC20 token;
 
     address USER = makeAddr("user");
-    address NEW_FEE_ADDRESS = makeAddr("fee");
     address OWNER;
     uint256 constant STARTING_BALANCE = 100_000_000_000 * 10 ** 9;
-
-    uint256 constant INITIAL_FEE = 15_000_000_000 * 10 ** 9;
-    uint256 constant NEW_FEE = 10_000_000_000 * 10 ** 9;
 
     modifier fundedAndApproved() {
         // fund user
@@ -39,10 +35,33 @@ contract NFTContractTest is Test {
     function testUserCanMintSingleNft() public fundedAndApproved {
         MintNfts mintNfts = new MintNfts();
         mintNfts.mintSingleNft(address(nftContract));
+
+        assert(nftContract.balanceOf(msg.sender) == 1);
     }
 
     function testUserCanMintMultipleNfts() public fundedAndApproved {
         MintNfts mintNfts = new MintNfts();
         mintNfts.mintMultipleNfts(address(nftContract));
+
+        assert(nftContract.balanceOf(msg.sender) == 3);
+    }
+
+    function testUserCanTransferNft() public fundedAndApproved {
+        vm.prank(msg.sender);
+        nftContract.mint(1);
+        assert(nftContract.balanceOf(msg.sender) == 1);
+
+        TransferNft transferNft = new TransferNft();
+        transferNft.transferNft(address(nftContract));
+        assert(nftContract.balanceOf(msg.sender) == 0);
+    }
+
+    function testUserCanApproveNft() public fundedAndApproved {
+        vm.prank(msg.sender);
+        nftContract.mint(1);
+        ApproveNft approveNft = new ApproveNft();
+        approveNft.approveNft(address(nftContract));
+
+        assert(nftContract.getApproved(0) == makeAddr("sender"));
     }
 }

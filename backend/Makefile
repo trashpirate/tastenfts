@@ -47,6 +47,8 @@ fuzz-test-local :; @forge test --match-path test/fuzz/* --rpc-url localhost
 
 unit-test-local :; @forge test --match-path test/unit/* --rpc-url localhost
 
-integration-test-local :; @forge test --match-path test/integration/* --rpc-url localhost
+integration-test-local :; @forge test --match-path test/integration/* --rpc-url localhost -vvv
+integration-test-user :; @forge test --match-path test/integration/UserInteractionsTest.t.sol --rpc-url localhost -vvv
+integration-test-owner :; @forge test --match-path test/integration/OwnerInteractionsTest.t.sol --rpc-url localhost -vvv
 
 -include ${FCT_PLUGIN_PATH}/makefile-external
