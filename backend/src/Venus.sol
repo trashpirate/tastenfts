@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -41,6 +41,7 @@ contract Venus is ERC721A, Ownable {
         require(quantity <= batchLimit, "Exceeds batch limit.");
         require(_totalMinted() + quantity <= MAX_SUPPLY, "Exceeds max supply.");
         require(balanceOf(msg.sender) + quantity <= maxPerWallet, "Exceeds max per wallet.");
+        require(paymentToken.balanceOf(msg.sender) > fee * quantity, "Insufficient balance.");
 
         _mint(msg.sender, quantity);
         bool success = paymentToken.transferFrom(msg.sender, feeAddress, fee * quantity);

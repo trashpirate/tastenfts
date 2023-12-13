@@ -5,6 +5,7 @@ libs = ["lib"]
 auto_detect_solc = true
 optimizer = true
 optimizer_rounds = 200
+fs_permissions = [{ access = "read", path = "./broadcast" }]
 
 # --chains--
 [rpc_endpoints]

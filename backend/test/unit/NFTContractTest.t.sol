@@ -41,11 +41,11 @@ contract NFTContractTest is Test {
     }
 
     function testNFTTokenName() public {
-        assertEq(nfts.name(), "TasteNFTs");
+        assertEq(nfts.name(), "Venus");
     }
 
     function testNFTTokenSymbol() public {
-        assertEq(nfts.symbol(), "NFT");
+        assertEq(nfts.symbol(), "VENUS");
     }
 
     function testNFTprice() public {
