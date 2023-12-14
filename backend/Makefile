@@ -35,6 +35,7 @@ deploy-testnet :; @forge script script/Deploy${contract}.s.sol:Deploy${contract}
 deploy-testnet-simulate :; @forge script script/Deploy${contract}.s.sol:Deploy${contract} --rpc-url ${network}  --account Testing --sender 0x7Bb8be3D9015682d7AC0Ea377dC0c92B0ba152eF -vvvv
 
 deploy-mainnet :; @forge script script/Deploy${contract}.s.sol:Deploy${contract} --rpc-url ${network}  --account ${account} --sender ${sender} --broadcast --verify --etherscan-api-key ${network}  -vvvv
+deploy-mainnet-simulate :; @forge script script/Deploy${contract}.s.sol:Deploy${contract} --rpc-url ${network}  --account ${account} --sender ${sender}  -vvvv
 
 # This is the private key of account from the mnemonic from the "make anvil" command
 deploy-anvil :; @forge script script/${contract}.s.sol:Deploy${contract} --rpc-url http://localhost:8545  --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast 

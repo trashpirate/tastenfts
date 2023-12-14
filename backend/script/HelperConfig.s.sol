@@ -46,7 +46,7 @@ contract HelperConfig is Script {
 
     function getBscMainnetConfig() public pure returns (NetworkConfig memory) {
         return NetworkConfig({
-            initialOwner: 0x9987605c8741d945098D7D6ba30bC41ACc1B821e,
+            initialOwner: 0x7526553689E14F2D7E172713e1F232d8048cf613,
             feeAddress: 0x9987605c8741d945098D7D6ba30bC41ACc1B821e,
             tokenAddress: 0xdB238123939637D65a03E4b2b485650B4f9D91CB
         });
