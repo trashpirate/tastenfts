@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.18;
 
 import {Script, console} from "forge-std/Script.sol";
 import {CoinToken} from "../src/TasteNFT.sol";
@@ -40,14 +40,14 @@ contract HelperConfig is Script {
         return NetworkConfig({
             initialOwner: 0xCbA52038BF0814bC586deE7C061D6cb8B203f8e1,
             feeAddress: 0xCbA52038BF0814bC586deE7C061D6cb8B203f8e1,
-            tokenAddress: 0x855DA24d2Fc7Ef7AaCF29B3d027eC70Ab11947DF
+            tokenAddress: 0x855dA24D2Fc7eF7aAcf29b3d027Ec70ab11847df
         });
     }
 
     function getBscMainnetConfig() public pure returns (NetworkConfig memory) {
         return NetworkConfig({
-            initialOwner: 0xCbA52038BF0814bC586deE7C061D6cb8B203f8e1,
-            feeAddress: 0xCbA52038BF0814bC586deE7C061D6cb8B203f8e1,
+            initialOwner: 0x9987605c8741d945098D7D6ba30bC41ACc1B821e,
+            feeAddress: 0x9987605c8741d945098D7D6ba30bC41ACc1B821e,
             tokenAddress: 0xdB238123939637D65a03E4b2b485650B4f9D91CB
         });
     }

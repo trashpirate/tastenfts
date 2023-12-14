@@ -2,7 +2,7 @@
  * Submitted for verification at BscScan.com on 2021-05-06
  */
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.18;
 // SPDX-License-Identifier: Unlicensed
 
 interface IERC20 {
@@ -284,7 +284,7 @@ library Address {
      * imposed by `transfer`, making them unable to receive funds via
      * `transfer`. {sendValue} removes this limitation.
      *
-     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].
+     * https://diligence.consensys.net/posts/2018/09/stop-using-soliditys-transfer-now/[Learn more].
      *
      * IMPORTANT: because control is transferred to `recipient`, care must be
      * taken to not create reentrancy vulnerabilities. Consider using

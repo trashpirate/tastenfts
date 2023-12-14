@@ -1,120 +1,85 @@
-const { ethers } = require('hardhat');
-const { expect } = require('chai');
-const { loadFixture } = require('@nomicfoundation/hardhat-network-helpers');
+const { expectEvent, expectRevert } = require('@openzeppelin/test-helpers');
+const { web3 } = require('@openzeppelin/test-helpers/src/setup');
+const { getSlot, ImplementationSlot } = require('../../helpers/erc1967');
 
-const { getAddressInSlot, ImplementationSlot } = require('../../helpers/erc1967');
+const ERC1967Proxy = artifacts.require('ERC1967Proxy');
+const UUPSUpgradeableMock = artifacts.require('UUPSUpgradeableMock');
+const UUPSUpgradeableUnsafeMock = artifacts.require('UUPSUpgradeableUnsafeMock');
+const UUPSUpgradeableLegacyMock = artifacts.require('UUPSUpgradeableLegacyMock');
+const NonUpgradeableMock = artifacts.require('NonUpgradeableMock');
 
-async function fixture() {
-  const implInitial = await ethers.deployContract('UUPSUpgradeableMock');
-  const implUpgradeOk = await ethers.deployContract('UUPSUpgradeableMock');
-  const implUpgradeUnsafe = await ethers.deployContract('UUPSUpgradeableUnsafeMock');
-  const implUpgradeNonUUPS = await ethers.deployContract('NonUpgradeableMock');
-  const implUnsupportedUUID = await ethers.deployContract('UUPSUnsupportedProxiableUUID');
-  // Used for testing non ERC1967 compliant proxies (clones are proxies that don't use the ERC1967 implementation slot)
-  const cloneFactory = await ethers.deployContract('$Clones');
-
-  const instance = await ethers
-    .deployContract('ERC1967Proxy', [implInitial, '0x'])
-    .then(proxy => implInitial.attach(proxy.target));
-
-  return {
-    implInitial,
-    implUpgradeOk,
-    implUpgradeUnsafe,
-    implUpgradeNonUUPS,
-    implUnsupportedUUID,
-    cloneFactory,
-    instance,
-  };
-}
-
-describe('UUPSUpgradeable', function () {
-  beforeEach(async function () {
-    Object.assign(this, await loadFixture(fixture));
+contract('UUPSUpgradeable', function () {
+  before(async function () {
+    this.implInitial = await UUPSUpgradeableMock.new();
+    this.implUpgradeOk = await UUPSUpgradeableMock.new();
+    this.implUpgradeUnsafe = await UUPSUpgradeableUnsafeMock.new();
+    this.implUpgradeNonUUPS = await NonUpgradeableMock.new();
   });
 
-  it('has an interface version', async function () {
-    expect(await this.instance.UPGRADE_INTERFACE_VERSION()).to.equal('5.0.0');
+  beforeEach(async function () {
+    const { address } = await ERC1967Proxy.new(this.implInitial.address, '0x');
+    this.instance = await UUPSUpgradeableMock.at(address);
   });
 
   it('upgrade to upgradeable implementation', async function () {
-    await expect(this.instance.upgradeToAndCall(this.implUpgradeOk, '0x'))
-      .to.emit(this.instance, 'Upgraded')
-      .withArgs(this.implUpgradeOk.target);
-
-    expect(await getAddressInSlot(this.instance, ImplementationSlot)).to.equal(this.implUpgradeOk.target);
+    const { receipt } = await this.instance.upgradeTo(this.implUpgradeOk.address);
+    expect(receipt.logs.filter(({ event }) => event === 'Upgraded').length).to.be.equal(1);
+    expectEvent(receipt, 'Upgraded', { implementation: this.implUpgradeOk.address });
   });
 
   it('upgrade to upgradeable implementation with call', async function () {
-    expect(await this.instance.current()).to.equal(0n);
+    expect(await this.instance.current()).to.be.bignumber.equal('0');
 
-    await expect(
-      this.instance.upgradeToAndCall(this.implUpgradeOk, this.implUpgradeOk.interface.encodeFunctionData('increment')),
-    )
-      .to.emit(this.instance, 'Upgraded')
-      .withArgs(this.implUpgradeOk.target);
-
-    expect(await getAddressInSlot(this.instance, ImplementationSlot)).to.equal(this.implUpgradeOk.target);
-
-    expect(await this.instance.current()).to.equal(1n);
-  });
-
-  it('calling upgradeTo on the implementation reverts', async function () {
-    await expect(this.implInitial.upgradeToAndCall(this.implUpgradeOk, '0x')).to.be.revertedWithCustomError(
-      this.implInitial,
-      'UUPSUnauthorizedCallContext',
+    const { receipt } = await this.instance.upgradeToAndCall(
+      this.implUpgradeOk.address,
+      this.implUpgradeOk.contract.methods.increment().encodeABI(),
     );
-  });
+    expect(receipt.logs.filter(({ event }) => event === 'Upgraded').length).to.be.equal(1);
+    expectEvent(receipt, 'Upgraded', { implementation: this.implUpgradeOk.address });
 
-  it('calling upgradeToAndCall on the implementation reverts', async function () {
-    await expect(
-      this.implInitial.upgradeToAndCall(
-        this.implUpgradeOk,
-        this.implUpgradeOk.interface.encodeFunctionData('increment'),
-      ),
-    ).to.be.revertedWithCustomError(this.implUpgradeOk, 'UUPSUnauthorizedCallContext');
-  });
-
-  it('calling upgradeToAndCall from a contract that is not an ERC1967 proxy (with the right implementation) reverts', async function () {
-    const instance = await this.cloneFactory.$clone
-      .staticCall(this.implUpgradeOk)
-      .then(address => this.implInitial.attach(address));
-    await this.cloneFactory.$clone(this.implUpgradeOk);
-
-    await expect(instance.upgradeToAndCall(this.implUpgradeUnsafe, '0x')).to.be.revertedWithCustomError(
-      instance,
-      'UUPSUnauthorizedCallContext',
-    );
-  });
-
-  it('rejects upgrading to an unsupported UUID', async function () {
-    await expect(this.instance.upgradeToAndCall(this.implUnsupportedUUID, '0x'))
-      .to.be.revertedWithCustomError(this.instance, 'UUPSUnsupportedProxiableUUID')
-      .withArgs(ethers.id('invalid UUID'));
+    expect(await this.instance.current()).to.be.bignumber.equal('1');
   });
 
   it('upgrade to and unsafe upgradeable implementation', async function () {
-    await expect(this.instance.upgradeToAndCall(this.implUpgradeUnsafe, '0x'))
-      .to.emit(this.instance, 'Upgraded')
-      .withArgs(this.implUpgradeUnsafe.target);
-
-    expect(await getAddressInSlot(this.instance, ImplementationSlot)).to.equal(this.implUpgradeUnsafe.target);
+    const { receipt } = await this.instance.upgradeTo(this.implUpgradeUnsafe.address);
+    expectEvent(receipt, 'Upgraded', { implementation: this.implUpgradeUnsafe.address });
   });
 
   // delegate to a non existing upgradeTo function causes a low level revert
   it('reject upgrade to non uups implementation', async function () {
-    await expect(this.instance.upgradeToAndCall(this.implUpgradeNonUUPS, '0x'))
-      .to.be.revertedWithCustomError(this.instance, 'ERC1967InvalidImplementation')
-      .withArgs(this.implUpgradeNonUUPS.target);
+    await expectRevert(
+      this.instance.upgradeTo(this.implUpgradeNonUUPS.address),
+      'ERC1967Upgrade: new implementation is not UUPS',
+    );
   });
 
   it('reject proxy address as implementation', async function () {
-    const otherInstance = await ethers
-      .deployContract('ERC1967Proxy', [this.implInitial, '0x'])
-      .then(proxy => this.implInitial.attach(proxy.target));
+    const { address } = await ERC1967Proxy.new(this.implInitial.address, '0x');
+    const otherInstance = await UUPSUpgradeableMock.at(address);
 
-    await expect(this.instance.upgradeToAndCall(otherInstance, '0x'))
-      .to.be.revertedWithCustomError(this.instance, 'ERC1967InvalidImplementation')
-      .withArgs(otherInstance.target);
+    await expectRevert(
+      this.instance.upgradeTo(otherInstance.address),
+      'ERC1967Upgrade: new implementation is not UUPS',
+    );
+  });
+
+  it('can upgrade from legacy implementations', async function () {
+    const legacyImpl = await UUPSUpgradeableLegacyMock.new();
+    const legacyInstance = await ERC1967Proxy.new(legacyImpl.address, '0x').then(({ address }) =>
+      UUPSUpgradeableLegacyMock.at(address),
+    );
+
+    const receipt = await legacyInstance.upgradeTo(this.implInitial.address);
+
+    const UpgradedEvents = receipt.logs.filter(
+      ({ address, event }) => address === legacyInstance.address && event === 'Upgraded',
+    );
+    expect(UpgradedEvents.length).to.be.equal(1);
+
+    expectEvent(receipt, 'Upgraded', { implementation: this.implInitial.address });
+
+    const implementationSlot = await getSlot(legacyInstance, ImplementationSlot);
+    const implementationAddress = web3.utils.toChecksumAddress(implementationSlot.substr(-40));
+    expect(implementationAddress).to.be.equal(this.implInitial.address);
   });
 });

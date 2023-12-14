@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity ^0.8.18;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -10,19 +10,19 @@ contract Venus is ERC721A, Ownable {
 
     IERC20 public immutable paymentToken;
     address public feeAddress;
-    uint256 public fee = 15_000_000_000 * 10 ** 9;
-    uint256 public batchLimit = 5;
-    uint256 public maxPerWallet = 5;
+    uint256 public fee = 20_000_000_000 * 10 ** 9;
+    uint256 public batchLimit = 10;
+    uint256 public maxPerWallet = 10;
 
     string private _baseTokenURI;
 
     constructor(address initialOwner, address initialFeeAddress, address tokenAddress, string memory baseURI)
         ERC721A("Venus", "VENUS")
-        Ownable(initialOwner)
     {
         feeAddress = initialFeeAddress;
         paymentToken = IERC20(tokenAddress);
         _setBaseURI(baseURI);
+        _transferOwnership(initialOwner);
     }
 
     // set base uri

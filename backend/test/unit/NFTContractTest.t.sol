@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.18;
 
 import {Test, console} from "forge-std/Test.sol";
 import {Venus} from "../../src/Venus.sol";
@@ -16,7 +16,7 @@ contract NFTContractTest is Test {
     address OWNER;
     uint256 constant STARTING_BALANCE = 100_000_000_000 * 10 ** 9;
 
-    uint256 constant INITIAL_FEE = 15_000_000_000 * 10 ** 9;
+    uint256 constant INITIAL_FEE = 20_000_000_000 * 10 ** 9;
     uint256 constant NEW_FEE = 10_000_000_000 * 10 ** 9;
 
     modifier funded() {
@@ -49,8 +49,7 @@ contract NFTContractTest is Test {
     }
 
     function testNFTprice() public {
-        uint256 fee = 15_000_000_000 * 10 ** ERC20(address(nfts.paymentToken())).decimals();
-        assertEq(nfts.fee(), fee);
+        assertEq(nfts.fee(), INITIAL_FEE);
     }
 
     function testIfOwnerCanSetFee() public {
@@ -161,6 +160,18 @@ contract NFTContractTest is Test {
         vm.prank(USER);
         nfts.mint(3);
         assertEq(nfts.balanceOf(USER), 3);
+    }
+
+    function testRetrieveTokenUri() public funded {
+        uint256 fee = nfts.fee();
+        vm.prank(USER);
+        token.approve(address(nfts), fee);
+
+        vm.prank(USER);
+        nfts.mint(1);
+        assertEq(nfts.balanceOf(USER), 1);
+
+        console.log(nfts.tokenURI(0));
     }
 
     function testChargesCorrectAmount() public funded {

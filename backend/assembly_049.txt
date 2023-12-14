@@ -1,0 +1,5881 @@
+    /* "src/Venus.sol":254:3166  contract Venus is ERC721A, Ownable {... */
+  mstore(0x40, 0xa0)
+    /* "src/Venus.sol":437:461  15_000_000_000 * 10 ** 9 */
+  0xd02ab486cedc0000
+    /* "src/Venus.sol":416:461  uint256 public fee = 15_000_000_000 * 10 ** 9 */
+  0x0a
+  sstore
+    /* "src/Venus.sol":495:496  5 */
+  0x05
+    /* "src/Venus.sol":467:496  uint256 public batchLimit = 5 */
+  0x0b
+  sstore
+    /* "src/Venus.sol":532:533  5 */
+  0x05
+    /* "src/Venus.sol":502:533  uint256 public maxPerWallet = 5 */
+  0x0c
+  sstore
+    /* "src/Venus.sol":575:883  constructor(address initialOwner, address initialFeeAddress, address tokenAddress, string memory baseURI)... */
+  callvalue
+  dup1
+  iszero
+  tag_1
+  jumpi
+  0x00
+  dup1
+  revert
+tag_1:
+  pop
+  mload(0x40)
+  sub(codesize, bytecodeSize)
+  dup1
+  bytecodeSize
+  dup4
+  codecopy
+  dup2
+  add
+  0x40
+  dup2
+  swap1
+  mstore
+  tag_2
+  swap2
+  tag_3
+  jump	// in
+tag_2:
+    /* "lib/ERC721A/contracts/ERC721A.sol":4946:5100  constructor(string memory name_, string memory symbol_) {... */
+  mload(0x40)
+  dup1
+  0x40
+  add
+  0x40
+  mstore
+  dup1
+  0x05
+  dup2
+  mstore
+  0x20
+  add
+  shl(0xd8, 0x56656e7573)
+  dup2
+  mstore
+  pop
+  mload(0x40)
+  dup1
+  0x40
+  add
+  0x40
+  mstore
+  dup1
+  0x05
+  dup2
+  mstore
+  0x20
+  add
+  shl(0xd8, 0x56454e5553)
+  dup2
+  mstore
+  pop
+    /* "lib/ERC721A/contracts/ERC721A.sol":5020:5025  name_ */
+  dup2
+    /* "lib/ERC721A/contracts/ERC721A.sol":5012:5017  _name */
+  0x02
+    /* "lib/ERC721A/contracts/ERC721A.sol":5012:5025  _name = name_ */
+  swap1
+  dup2
+  tag_8
+  swap2
+  swap1
+  tag_9
+  jump	// in
+tag_8:
+  pop
+    /* "lib/ERC721A/contracts/ERC721A.sol":5035:5042  _symbol */
+  0x03
+    /* "lib/ERC721A/contracts/ERC721A.sol":5035:5052  _symbol = symbol_ */
+  tag_10
+    /* "lib/ERC721A/contracts/ERC721A.sol":5045:5052  symbol_ */
+  dup3
+    /* "lib/ERC721A/contracts/ERC721A.sol":5035:5042  _symbol */
+  dup3
+    /* "lib/ERC721A/contracts/ERC721A.sol":5035:5052  _symbol = symbol_ */
+  tag_9
+  jump	// in
+tag_10:
+  pop
+  pop
+    /* "lib/ERC721A/contracts/ERC721A.sol":5482:5489  uint256 */
+  0x00
+    /* "lib/ERC721A/contracts/ERC721A.sol":5062:5093  _currentIndex = _startTokenId() */
+  dup1
+  sstore
+  pop
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":936:968  _transferOwnership(_msgSender()) */
+  tag_14
+    /* "lib/openzeppelin-contracts/contracts/utils/Context.sol":734:744  msg.sender */
+  caller
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":936:954  _transferOwnership */
+  tag_17
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":936:968  _transferOwnership(_msgSender()) */
+  jump	// in
+tag_14:
+    /* "src/Venus.sol":729:739  feeAddress */
+  0x09
+    /* "src/Venus.sol":729:759  feeAddress = initialFeeAddress */
+  dup1
+  sload
+  not(sub(shl(0xa0, 0x01), 0x01))
+  and
+  sub(shl(0xa0, 0x01), 0x01)
+  dup6
+  dup2
+  and
+  swap2
+  swap1
+  swap2
+  or
+  swap1
+  swap2
+  sstore
+    /* "src/Venus.sol":769:804  paymentToken = IERC20(tokenAddress) */
+  dup3
+  and
+  0x80
+  mstore
+    /* "src/Venus.sol":814:834  _setBaseURI(baseURI) */
+  tag_19
+    /* "src/Venus.sol":826:833  baseURI */
+  dup2
+    /* "src/Venus.sol":814:825  _setBaseURI */
+  tag_20
+    /* "src/Venus.sol":814:834  _setBaseURI(baseURI) */
+  jump	// in
+tag_19:
+    /* "src/Venus.sol":844:876  _transferOwnership(initialOwner) */
+  tag_21
+    /* "src/Venus.sol":863:875  initialOwner */
+  dup5
+    /* "src/Venus.sol":844:862  _transferOwnership */
+  tag_17
+    /* "src/Venus.sol":844:876  _transferOwnership(initialOwner) */
+  jump	// in
+tag_21:
+    /* "src/Venus.sol":575:883  constructor(address initialOwner, address initialFeeAddress, address tokenAddress, string memory baseURI)... */
+  pop
+  pop
+  pop
+  pop
+    /* "src/Venus.sol":254:3166  contract Venus is ERC721A, Ownable {... */
+  jump(tag_34)
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2426:2613  function _transferOwnership(address newOwner) internal virtual {... */
+tag_17:
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+  0x08
+  dup1
+  sload
+  sub(shl(0xa0, 0x01), 0x01)
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2534:2551  _owner = newOwner */
+  dup4
+  dup2
+  and
+  not(sub(shl(0xa0, 0x01), 0x01))
+  dup4
+  and
+  dup2
+  or
+  swap1
+  swap4
+  sstore
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+  mload(0x40)
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+  swap2
+  and
+  swap2
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2534:2551  _owner = newOwner */
+  swap1
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+  dup3
+  swap1
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+  0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0
+  swap1
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2499:2515  address oldOwner */
+  0x00
+  swap1
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+  log3
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2489:2613  {... */
+  pop
+    /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2426:2613  function _transferOwnership(address newOwner) internal virtual {... */
+  pop
+  jump	// out
+    /* "src/Venus.sol":909:1001  function _setBaseURI(string memory baseURI) private {... */
+tag_20:
+    /* "src/Venus.sol":971:984  _baseTokenURI */
+  0x0d
+    /* "src/Venus.sol":971:994  _baseTokenURI = baseURI */
+  tag_27
+    /* "src/Venus.sol":987:994  baseURI */
+  dup3
+    /* "src/Venus.sol":971:984  _baseTokenURI */
+  dup3
+    /* "src/Venus.sol":971:994  _baseTokenURI = baseURI */
+  tag_9
+  jump	// in
+tag_27:
+  pop
+    /* "src/Venus.sol":909:1001  function _setBaseURI(string memory baseURI) private {... */
+  pop
+  jump	// out
+    /* "#utility.yul":14:191   */
+tag_28:
+    /* "#utility.yul":93:106   */
+  dup1
+  mload
+  sub(shl(0xa0, 0x01), 0x01)
+    /* "#utility.yul":135:166   */
+  dup2
+  and
+    /* "#utility.yul":125:167   */
+  dup2
+  eq
+    /* "#utility.yul":115:185   */
+  tag_36
+  jumpi
+    /* "#utility.yul":181:182   */
+  0x00
+    /* "#utility.yul":178:179   */
+  dup1
+    /* "#utility.yul":171:183   */
+  revert
+    /* "#utility.yul":115:185   */
+tag_36:
+    /* "#utility.yul":14:191   */
+  swap2
+  swap1
+  pop
+  jump	// out
+    /* "#utility.yul":196:323   */
+tag_29:
+    /* "#utility.yul":257:267   */
+  0x4e487b71
+    /* "#utility.yul":252:255   */
+  0xe0
+    /* "#utility.yul":248:268   */
+  shl
+    /* "#utility.yul":245:246   */
+  0x00
+    /* "#utility.yul":238:269   */
+  mstore
+    /* "#utility.yul":288:292   */
+  0x41
+    /* "#utility.yul":285:286   */
+  0x04
+    /* "#utility.yul":278:293   */
+  mstore
+    /* "#utility.yul":312:316   */
+  0x24
+    /* "#utility.yul":309:310   */
+  0x00
+    /* "#utility.yul":302:317   */
+  revert
+    /* "#utility.yul":328:1626   */
+tag_3:
+    /* "#utility.yul":435:441   */
+  0x00
+    /* "#utility.yul":443:449   */
+  dup1
+    /* "#utility.yul":451:457   */
+  0x00
+    /* "#utility.yul":459:465   */
+  dup1
+    /* "#utility.yul":512:515   */
+  0x80
+    /* "#utility.yul":500:509   */
+  dup6
+    /* "#utility.yul":491:498   */
+  dup8
+    /* "#utility.yul":487:510   */
+  sub
+    /* "#utility.yul":483:516   */
+  slt
+    /* "#utility.yul":480:533   */
+  iszero
+  tag_39
+  jumpi
+    /* "#utility.yul":529:530   */
+  0x00
+    /* "#utility.yul":526:527   */
+  dup1
+    /* "#utility.yul":519:531   */
+  revert
+    /* "#utility.yul":480:533   */
+tag_39:
+    /* "#utility.yul":552:592   */
+  tag_40
+    /* "#utility.yul":582:591   */
+  dup6
+    /* "#utility.yul":552:592   */
+  tag_28
+  jump	// in
+tag_40:
+    /* "#utility.yul":542:592   */
+  swap4
+  pop
+    /* "#utility.yul":611:613   */
+  0x20
+    /* "#utility.yul":632:681   */
+  tag_41
+    /* "#utility.yul":677:679   */
+  dup2
+    /* "#utility.yul":666:675   */
+  dup8
+    /* "#utility.yul":662:680   */
+  add
+    /* "#utility.yul":632:681   */
+  tag_28
+  jump	// in
+tag_41:
+    /* "#utility.yul":622:681   */
+  swap4
+  pop
+    /* "#utility.yul":700:749   */
+  tag_42
+    /* "#utility.yul":745:747   */
+  0x40
+    /* "#utility.yul":734:743   */
+  dup8
+    /* "#utility.yul":730:748   */
+  add
+    /* "#utility.yul":700:749   */
+  tag_28
+  jump	// in
+tag_42:
+    /* "#utility.yul":793:795   */
+  0x60
+    /* "#utility.yul":778:796   */
+  dup8
+  add
+    /* "#utility.yul":772:797   */
+  mload
+    /* "#utility.yul":690:749   */
+  swap1
+  swap4
+  pop
+  sub(shl(0x40, 0x01), 0x01)
+    /* "#utility.yul":846:860   */
+  dup1
+  dup3
+  gt
+    /* "#utility.yul":843:877   */
+  iszero
+  tag_43
+  jumpi
+    /* "#utility.yul":873:874   */
+  0x00
+    /* "#utility.yul":870:871   */
+  dup1
+    /* "#utility.yul":863:875   */
+  revert
+    /* "#utility.yul":843:877   */
+tag_43:
+    /* "#utility.yul":911:917   */
+  dup2
+    /* "#utility.yul":900:909   */
+  dup9
+    /* "#utility.yul":896:918   */
+  add
+    /* "#utility.yul":886:918   */
+  swap2
+  pop
+    /* "#utility.yul":956:963   */
+  dup9
+    /* "#utility.yul":949:953   */
+  0x1f
+    /* "#utility.yul":945:947   */
+  dup4
+    /* "#utility.yul":941:954   */
+  add
+    /* "#utility.yul":937:964   */
+  slt
+    /* "#utility.yul":927:982   */
+  tag_44
+  jumpi
+    /* "#utility.yul":978:979   */
+  0x00
+    /* "#utility.yul":975:976   */
+  dup1
+    /* "#utility.yul":968:980   */
+  revert
+    /* "#utility.yul":927:982   */
+tag_44:
+    /* "#utility.yul":1007:1009   */
+  dup2
+    /* "#utility.yul":1001:1010   */
+  mload
+    /* "#utility.yul":1029:1031   */
+  dup2
+    /* "#utility.yul":1025:1027   */
+  dup2
+    /* "#utility.yul":1022:1032   */
+  gt
+    /* "#utility.yul":1019:1055   */
+  iszero
+  tag_46
+  jumpi
+    /* "#utility.yul":1035:1053   */
+  tag_46
+  tag_29
+  jump	// in
+tag_46:
+    /* "#utility.yul":1110:1112   */
+  0x40
+    /* "#utility.yul":1104:1113   */
+  mload
+    /* "#utility.yul":1078:1080   */
+  0x1f
+    /* "#utility.yul":1164:1177   */
+  dup3
+  add
+  not(0x1f)
+    /* "#utility.yul":1160:1182   */
+  swap1
+  dup2
+  and
+    /* "#utility.yul":1184:1186   */
+  0x3f
+    /* "#utility.yul":1156:1187   */
+  add
+    /* "#utility.yul":1152:1192   */
+  and
+    /* "#utility.yul":1140:1193   */
+  dup2
+  add
+  swap1
+    /* "#utility.yul":1208:1226   */
+  dup4
+  dup3
+  gt
+    /* "#utility.yul":1228:1250   */
+  dup2
+  dup4
+  lt
+    /* "#utility.yul":1205:1251   */
+  or
+    /* "#utility.yul":1202:1274   */
+  iszero
+  tag_48
+  jumpi
+    /* "#utility.yul":1254:1272   */
+  tag_48
+  tag_29
+  jump	// in
+tag_48:
+    /* "#utility.yul":1294:1304   */
+  dup2
+    /* "#utility.yul":1290:1292   */
+  0x40
+    /* "#utility.yul":1283:1305   */
+  mstore
+    /* "#utility.yul":1329:1331   */
+  dup3
+    /* "#utility.yul":1321:1327   */
+  dup2
+    /* "#utility.yul":1314:1332   */
+  mstore
+    /* "#utility.yul":1369:1376   */
+  dup12
+    /* "#utility.yul":1364:1366   */
+  dup7
+    /* "#utility.yul":1359:1361   */
+  dup5
+    /* "#utility.yul":1355:1357   */
+  dup8
+    /* "#utility.yul":1351:1362   */
+  add
+    /* "#utility.yul":1347:1367   */
+  add
+    /* "#utility.yul":1344:1377   */
+  gt
+    /* "#utility.yul":1341:1394   */
+  iszero
+  tag_49
+  jumpi
+    /* "#utility.yul":1390:1391   */
+  0x00
+    /* "#utility.yul":1387:1388   */
+  dup1
+    /* "#utility.yul":1380:1392   */
+  revert
+    /* "#utility.yul":1341:1394   */
+tag_49:
+    /* "#utility.yul":1412:1413   */
+  0x00
+    /* "#utility.yul":1403:1413   */
+  swap4
+  pop
+    /* "#utility.yul":1422:1551   */
+tag_50:
+    /* "#utility.yul":1436:1438   */
+  dup3
+    /* "#utility.yul":1433:1434   */
+  dup5
+    /* "#utility.yul":1430:1439   */
+  lt
+    /* "#utility.yul":1422:1551   */
+  iszero
+  tag_52
+  jumpi
+    /* "#utility.yul":1524:1534   */
+  dup5
+  dup5
+  add
+    /* "#utility.yul":1520:1539   */
+  dup7
+  add
+    /* "#utility.yul":1514:1540   */
+  mload
+    /* "#utility.yul":1493:1507   */
+  dup2
+  dup6
+  add
+    /* "#utility.yul":1489:1512   */
+  dup8
+  add
+    /* "#utility.yul":1482:1541   */
+  mstore
+    /* "#utility.yul":1447:1457   */
+  swap3
+  dup6
+  add
+  swap3
+    /* "#utility.yul":1422:1551   */
+  jump(tag_50)
+tag_52:
+    /* "#utility.yul":1593:1594   */
+  0x00
+    /* "#utility.yul":1588:1590   */
+  dup7
+    /* "#utility.yul":1583:1585   */
+  dup5
+    /* "#utility.yul":1575:1581   */
+  dup4
+    /* "#utility.yul":1571:1586   */
+  add
+    /* "#utility.yul":1567:1591   */
+  add
+    /* "#utility.yul":1560:1595   */
+  mstore
+    /* "#utility.yul":1614:1620   */
+  dup1
+    /* "#utility.yul":1604:1620   */
+  swap7
+  pop
+  pop
+  pop
+  pop
+  pop
+  pop
+  pop
+    /* "#utility.yul":328:1626   */
+  swap3
+  swap6
+  swap2
+  swap5
+  pop
+  swap3
+  pop
+  jump	// out
+    /* "#utility.yul":1631:2011   */
+tag_30:
+    /* "#utility.yul":1710:1711   */
+  0x01
+    /* "#utility.yul":1706:1718   */
+  dup2
+  dup2
+  shr
+  swap1
+    /* "#utility.yul":1753:1765   */
+  dup3
+  and
+  dup1
+    /* "#utility.yul":1774:1835   */
+  tag_54
+  jumpi
+    /* "#utility.yul":1828:1832   */
+  0x7f
+    /* "#utility.yul":1820:1826   */
+  dup3
+    /* "#utility.yul":1816:1833   */
+  and
+    /* "#utility.yul":1806:1833   */
+  swap2
+  pop
+    /* "#utility.yul":1774:1835   */
+tag_54:
+    /* "#utility.yul":1881:1883   */
+  0x20
+    /* "#utility.yul":1873:1879   */
+  dup3
+    /* "#utility.yul":1870:1884   */
+  lt
+    /* "#utility.yul":1850:1868   */
+  dup2
+    /* "#utility.yul":1847:1885   */
+  sub
+    /* "#utility.yul":1844:2005   */
+  tag_55
+  jumpi
+    /* "#utility.yul":1927:1937   */
+  0x4e487b71
+    /* "#utility.yul":1922:1925   */
+  0xe0
+    /* "#utility.yul":1918:1938   */
+  shl
+    /* "#utility.yul":1915:1916   */
+  0x00
+    /* "#utility.yul":1908:1939   */
+  mstore
+    /* "#utility.yul":1962:1966   */
+  0x22
+    /* "#utility.yul":1959:1960   */
+  0x04
+    /* "#utility.yul":1952:1967   */
+  mstore
+    /* "#utility.yul":1990:1994   */
+  0x24
+    /* "#utility.yul":1987:1988   */
+  0x00
+    /* "#utility.yul":1980:1995   */
+  revert
+    /* "#utility.yul":1844:2005   */
+tag_55:
+  pop
+    /* "#utility.yul":1631:2011   */
+  swap2
+  swap1
+  pop
+  jump	// out
+    /* "#utility.yul":2142:2687   */
+tag_32:
+    /* "#utility.yul":2244:2246   */
+  0x1f
+    /* "#utility.yul":2239:2242   */
+  dup3
+    /* "#utility.yul":2236:2247   */
+  gt
+    /* "#utility.yul":2233:2681   */
+  iszero
+  tag_58
+  jumpi
+    /* "#utility.yul":2280:2281   */
+  0x00
+    /* "#utility.yul":2305:2310   */
+  dup2
+    /* "#utility.yul":2301:2303   */
+  dup2
+    /* "#utility.yul":2294:2311   */
+  mstore
+    /* "#utility.yul":2350:2354   */
+  0x20
+    /* "#utility.yul":2346:2348   */
+  dup2
+    /* "#utility.yul":2336:2355   */
+  keccak256
+    /* "#utility.yul":2420:2422   */
+  0x1f
+    /* "#utility.yul":2408:2418   */
+  dup6
+    /* "#utility.yul":2404:2423   */
+  add
+    /* "#utility.yul":2401:2402   */
+  0x05
+    /* "#utility.yul":2397:2424   */
+  shr
+    /* "#utility.yul":2391:2395   */
+  dup2
+    /* "#utility.yul":2387:2425   */
+  add
+    /* "#utility.yul":2456:2460   */
+  0x20
+    /* "#utility.yul":2444:2454   */
+  dup7
+    /* "#utility.yul":2441:2461   */
+  lt
+    /* "#utility.yul":2438:2485   */
+  iszero
+  tag_59
+  jumpi
+  pop
+    /* "#utility.yul":2479:2483   */
+  dup1
+    /* "#utility.yul":2438:2485   */
+tag_59:
+    /* "#utility.yul":2534:2536   */
+  0x1f
+    /* "#utility.yul":2529:2532   */
+  dup6
+    /* "#utility.yul":2525:2537   */
+  add
+    /* "#utility.yul":2522:2523   */
+  0x05
+    /* "#utility.yul":2518:2538   */
+  shr
+    /* "#utility.yul":2512:2516   */
+  dup3
+    /* "#utility.yul":2508:2539   */
+  add
+    /* "#utility.yul":2498:2539   */
+  swap2
+  pop
+    /* "#utility.yul":2589:2671   */
+tag_60:
+    /* "#utility.yul":2607:2609   */
+  dup2
+    /* "#utility.yul":2600:2605   */
+  dup2
+    /* "#utility.yul":2597:2610   */
+  lt
+    /* "#utility.yul":2589:2671   */
+  iszero
+  tag_62
+  jumpi
+    /* "#utility.yul":2652:2669   */
+  dup3
+  dup2
+  sstore
+    /* "#utility.yul":2633:2634   */
+  0x01
+    /* "#utility.yul":2622:2635   */
+  add
+    /* "#utility.yul":2589:2671   */
+  jump(tag_60)
+tag_62:
+    /* "#utility.yul":2593:2596   */
+  pop
+  pop
+  pop
+    /* "#utility.yul":2233:2681   */
+tag_58:
+    /* "#utility.yul":2142:2687   */
+  pop
+  pop
+  pop
+  jump	// out
+    /* "#utility.yul":2863:4215   */
+tag_9:
+    /* "#utility.yul":2983:2993   */
+  dup2
+  mload
+  sub(shl(0x40, 0x01), 0x01)
+    /* "#utility.yul":3005:3035   */
+  dup2
+  gt
+    /* "#utility.yul":3002:3058   */
+  iszero
+  tag_66
+  jumpi
+    /* "#utility.yul":3038:3056   */
+  tag_66
+  tag_29
+  jump	// in
+tag_66:
+    /* "#utility.yul":3067:3164   */
+  tag_67
+    /* "#utility.yul":3157:3163   */
+  dup2
+    /* "#utility.yul":3117:3155   */
+  tag_68
+    /* "#utility.yul":3149:3153   */
+  dup5
+    /* "#utility.yul":3143:3154   */
+  sload
+    /* "#utility.yul":3117:3155   */
+  tag_30
+  jump	// in
+tag_68:
+    /* "#utility.yul":3111:3115   */
+  dup5
+    /* "#utility.yul":3067:3164   */
+  tag_32
+  jump	// in
+tag_67:
+    /* "#utility.yul":3219:3223   */
+  0x20
+  dup1
+    /* "#utility.yul":3283:3285   */
+  0x1f
+    /* "#utility.yul":3272:3286   */
+  dup4
+  gt
+    /* "#utility.yul":3300:3301   */
+  0x01
+    /* "#utility.yul":3295:3958   */
+  dup2
+  eq
+  tag_70
+  jumpi
+    /* "#utility.yul":4002:4003   */
+  0x00
+    /* "#utility.yul":4019:4025   */
+  dup5
+    /* "#utility.yul":4016:4105   */
+  iszero
+  tag_71
+  jumpi
+  pop
+    /* "#utility.yul":4071:4090   */
+  dup6
+  dup4
+  add
+    /* "#utility.yul":4065:4091   */
+  mload
+    /* "#utility.yul":4016:4105   */
+tag_71:
+  not(0x00)
+    /* "#utility.yul":2820:2821   */
+  0x03
+    /* "#utility.yul":2816:2827   */
+  dup7
+  swap1
+  shl
+    /* "#utility.yul":2812:2836   */
+  shr
+    /* "#utility.yul":2808:2837   */
+  not
+    /* "#utility.yul":2798:2838   */
+  and
+    /* "#utility.yul":2844:2845   */
+  0x01
+    /* "#utility.yul":2840:2851   */
+  dup6
+  swap1
+  shl
+    /* "#utility.yul":2795:2852   */
+  or
+    /* "#utility.yul":4118:4199   */
+  dup6
+  sstore
+    /* "#utility.yul":3265:4209   */
+  jump(tag_62)
+    /* "#utility.yul":3295:3958   */
+tag_70:
+    /* "#utility.yul":2089:2090   */
+  0x00
+    /* "#utility.yul":2082:2096   */
+  dup6
+  dup2
+  mstore
+    /* "#utility.yul":2126:2130   */
+  0x20
+    /* "#utility.yul":2113:2131   */
+  dup2
+  keccak256
+  not(0x1f)
+    /* "#utility.yul":3331:3351   */
+  dup7
+  and
+  swap2
+    /* "#utility.yul":3449:3685   */
+tag_74:
+    /* "#utility.yul":3463:3470   */
+  dup3
+    /* "#utility.yul":3460:3461   */
+  dup2
+    /* "#utility.yul":3457:3471   */
+  lt
+    /* "#utility.yul":3449:3685   */
+  iszero
+  tag_76
+  jumpi
+    /* "#utility.yul":3552:3571   */
+  dup9
+  dup7
+  add
+    /* "#utility.yul":3546:3572   */
+  mload
+    /* "#utility.yul":3531:3573   */
+  dup3
+  sstore
+    /* "#utility.yul":3644:3671   */
+  swap5
+  dup5
+  add
+  swap5
+    /* "#utility.yul":3612:3613   */
+  0x01
+    /* "#utility.yul":3600:3614   */
+  swap1
+  swap2
+  add
+  swap1
+    /* "#utility.yul":3479:3498   */
+  dup5
+  add
+    /* "#utility.yul":3449:3685   */
+  jump(tag_74)
+tag_76:
+    /* "#utility.yul":3453:3456   */
+  pop
+    /* "#utility.yul":3713:3719   */
+  dup6
+    /* "#utility.yul":3704:3711   */
+  dup3
+    /* "#utility.yul":3701:3720   */
+  lt
+    /* "#utility.yul":3698:3899   */
+  iszero
+  tag_77
+  jumpi
+    /* "#utility.yul":3774:3793   */
+  dup8
+  dup6
+  add
+    /* "#utility.yul":3768:3794   */
+  mload
+  not(0x00)
+    /* "#utility.yul":3857:3858   */
+  0x03
+    /* "#utility.yul":3853:3867   */
+  dup9
+  swap1
+  shl
+    /* "#utility.yul":3869:3872   */
+  0xf8
+    /* "#utility.yul":3849:3873   */
+  and
+    /* "#utility.yul":3845:3882   */
+  shr
+    /* "#utility.yul":3841:3883   */
+  not
+    /* "#utility.yul":3826:3884   */
+  and
+    /* "#utility.yul":3811:3885   */
+  dup2
+  sstore
+    /* "#utility.yul":3698:3899   */
+tag_77:
+  pop
+  pop
+  pop
+  pop
+  pop
+    /* "#utility.yul":3945:3946   */
+  0x01
+    /* "#utility.yul":3929:3943   */
+  swap1
+  dup2
+  shl
+    /* "#utility.yul":3925:3947   */
+  add
+    /* "#utility.yul":3912:3948   */
+  swap1
+  sstore
+  pop
+    /* "#utility.yul":2863:4215   */
+  jump	// out
+tag_34:
+    /* "src/Venus.sol":254:3166  contract Venus is ERC721A, Ownable {... */
+  mload(0x80)
+  codecopy(0x00, dataOffset(sub_0), dataSize(sub_0))
+  0x00
+  assignImmutable("0x49396dd8e722d4250c813b0361a3151f7f8b33e9750175f6fd6a44f25daf5603")
+  return(0x00, dataSize(sub_0))
+stop
+
+sub_0: assembly {
+        /* "src/Venus.sol":254:3166  contract Venus is ERC721A, Ownable {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x04))
+      shr(0xe0, calldataload(0x00))
+      dup1
+      0x70a08231
+      gt
+      tag_31
+      jumpi
+      dup1
+      0xa522ad25
+      gt
+      tag_32
+      jumpi
+      dup1
+      0xe268e4d3
+      gt
+      tag_33
+      jumpi
+      dup1
+      0xe268e4d3
+      eq
+      tag_27
+      jumpi
+      dup1
+      0xe985e9c5
+      eq
+      tag_28
+      jumpi
+      dup1
+      0xf2600b56
+      eq
+      tag_29
+      jumpi
+      dup1
+      0xf2fde38b
+      eq
+      tag_30
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_33:
+      dup1
+      0xa522ad25
+      eq
+      tag_23
+      jumpi
+      dup1
+      0xb88d4fde
+      eq
+      tag_24
+      jumpi
+      dup1
+      0xc87b56dd
+      eq
+      tag_25
+      jumpi
+      dup1
+      0xddca3f43
+      eq
+      tag_26
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_32:
+      dup1
+      0x8da5cb5b
+      gt
+      tag_34
+      jumpi
+      dup1
+      0x8da5cb5b
+      eq
+      tag_19
+      jumpi
+      dup1
+      0x95d89b41
+      eq
+      tag_20
+      jumpi
+      dup1
+      0xa0712d68
+      eq
+      tag_21
+      jumpi
+      dup1
+      0xa22cb465
+      eq
+      tag_22
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_34:
+      dup1
+      0x70a08231
+      eq
+      tag_16
+      jumpi
+      dup1
+      0x715018a6
+      eq
+      tag_17
+      jumpi
+      dup1
+      0x8705fcd4
+      eq
+      tag_18
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_31:
+      dup1
+      0x32cb6b0c
+      gt
+      tag_35
+      jumpi
+      dup1
+      0x453c2310
+      gt
+      tag_36
+      jumpi
+      dup1
+      0x453c2310
+      eq
+      tag_12
+      jumpi
+      dup1
+      0x474740b1
+      eq
+      tag_13
+      jumpi
+      dup1
+      0x6352211e
+      eq
+      tag_14
+      jumpi
+      dup1
+      0x69fe0e2d
+      eq
+      tag_15
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_36:
+      dup1
+      0x32cb6b0c
+      eq
+      tag_9
+      jumpi
+      dup1
+      0x41275358
+      eq
+      tag_10
+      jumpi
+      dup1
+      0x42842e0e
+      eq
+      tag_11
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_35:
+      dup1
+      0x095ea7b3
+      gt
+      tag_37
+      jumpi
+      dup1
+      0x095ea7b3
+      eq
+      tag_5
+      jumpi
+      dup1
+      0x18160ddd
+      eq
+      tag_6
+      jumpi
+      dup1
+      0x23b872dd
+      eq
+      tag_7
+      jumpi
+      dup1
+      0x3013ce29
+      eq
+      tag_8
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_37:
+      dup1
+      0x01ffc9a7
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x06fdde03
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x081812fc
+      eq
+      tag_4
+      jumpi
+    tag_1:
+      0x00
+      dup1
+      revert
+        /* "lib/ERC721A/contracts/ERC721A.sol":9164:9794  function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {... */
+    tag_2:
+      callvalue
+      dup1
+      iszero
+      tag_38
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_38:
+      pop
+      tag_39
+      tag_40
+      calldatasize
+      0x04
+      tag_41
+      jump	// in
+    tag_40:
+      tag_42
+      jump	// in
+    tag_39:
+      mload(0x40)
+        /* "#utility.yul":565:579   */
+      swap1
+      iszero
+        /* "#utility.yul":558:580   */
+      iszero
+        /* "#utility.yul":540:581   */
+      dup2
+      mstore
+        /* "#utility.yul":528:530   */
+      0x20
+        /* "#utility.yul":513:531   */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":9164:9794  function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {... */
+    tag_43:
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      return
+        /* "lib/ERC721A/contracts/ERC721A.sol":10048:10146  function name() public view virtual override returns (string memory) {... */
+    tag_3:
+      callvalue
+      dup1
+      iszero
+      tag_45
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_45:
+      pop
+      tag_46
+      tag_47
+      jump	// in
+    tag_46:
+      mload(0x40)
+      tag_43
+      swap2
+      swap1
+      tag_49
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":16911:17134  function getApproved(uint256 tokenId) public view virtual override returns (address) {... */
+    tag_4:
+      callvalue
+      dup1
+      iszero
+      tag_50
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_50:
+      pop
+      tag_51
+      tag_52
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_52:
+      tag_54
+      jump	// in
+    tag_51:
+      mload(0x40)
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "#utility.yul":1697:1729   */
+      swap1
+      swap2
+      and
+        /* "#utility.yul":1679:1730   */
+      dup2
+      mstore
+        /* "#utility.yul":1667:1669   */
+      0x20
+        /* "#utility.yul":1652:1670   */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":16911:17134  function getApproved(uint256 tokenId) public view virtual override returns (address) {... */
+      tag_43
+        /* "#utility.yul":1533:1736   */
+      jump
+        /* "lib/ERC721A/contracts/ERC721A.sol":16639:16761  function approve(address to, uint256 tokenId) public payable virtual override {... */
+    tag_5:
+      tag_57
+      tag_58
+      calldatasize
+      0x04
+      tag_59
+      jump	// in
+    tag_58:
+      tag_60
+      jump	// in
+    tag_57:
+      stop
+        /* "lib/ERC721A/contracts/ERC721A.sol":5894:6211  function totalSupply() public view virtual override returns (uint256) {... */
+    tag_6:
+      callvalue
+      dup1
+      iszero
+      tag_61
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_61:
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":6164:6176  _burnCounter */
+      sload(0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":5955:5962  uint256 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":6148:6161  _currentIndex */
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":6148:6176  _currentIndex - _burnCounter */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":5894:6211  function totalSupply() public view virtual override returns (uint256) {... */
+    tag_62:
+      mload(0x40)
+        /* "#utility.yul":2324:2349   */
+      swap1
+      dup2
+      mstore
+        /* "#utility.yul":2312:2314   */
+      0x20
+        /* "#utility.yul":2297:2315   */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":5894:6211  function totalSupply() public view virtual override returns (uint256) {... */
+      tag_43
+        /* "#utility.yul":2178:2355   */
+      jump
+        /* "lib/ERC721A/contracts/ERC721A.sol":20546:23993  function transferFrom(... */
+    tag_7:
+      tag_57
+      tag_67
+      calldatasize
+      0x04
+      tag_68
+      jump	// in
+    tag_67:
+      tag_69
+      jump	// in
+        /* "src/Venus.sol":343:379  IERC20 public immutable paymentToken */
+    tag_8:
+      callvalue
+      dup1
+      iszero
+      tag_70
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_70:
+      pop
+      tag_51
+      immutable("0x49396dd8e722d4250c813b0361a3151f7f8b33e9750175f6fd6a44f25daf5603")
+      dup2
+      jump
+        /* "src/Venus.sol":295:336  uint256 public constant MAX_SUPPLY = 1000 */
+    tag_9:
+      callvalue
+      dup1
+      iszero
+      tag_75
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_75:
+      pop
+      tag_62
+        /* "src/Venus.sol":332:336  1000 */
+      0x03e8
+        /* "src/Venus.sol":295:336  uint256 public constant MAX_SUPPLY = 1000 */
+      dup2
+      jump
+        /* "src/Venus.sol":385:410  address public feeAddress */
+    tag_10:
+      callvalue
+      dup1
+      iszero
+      tag_79
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_79:
+      pop
+      sload(0x09)
+      tag_51
+      swap1
+      sub(shl(0xa0, 0x01), 0x01)
+      and
+      dup2
+      jump
+        /* "lib/ERC721A/contracts/ERC721A.sol":24084:24271  function safeTransferFrom(... */
+    tag_11:
+      tag_57
+      tag_84
+      calldatasize
+      0x04
+      tag_68
+      jump	// in
+    tag_84:
+      tag_85
+      jump	// in
+        /* "src/Venus.sol":502:533  uint256 public maxPerWallet = 5 */
+    tag_12:
+      callvalue
+      dup1
+      iszero
+      tag_86
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_86:
+      pop
+      tag_62
+      sload(0x0c)
+      dup2
+      jump
+        /* "src/Venus.sol":467:496  uint256 public batchLimit = 5 */
+    tag_13:
+      callvalue
+      dup1
+      iszero
+      tag_90
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_90:
+      pop
+      tag_62
+      sload(0x0b)
+      dup2
+      jump
+        /* "lib/ERC721A/contracts/ERC721A.sol":11409:11559  function ownerOf(uint256 tokenId) public view virtual override returns (address) {... */
+    tag_14:
+      callvalue
+      dup1
+      iszero
+      tag_94
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_94:
+      pop
+      tag_51
+      tag_96
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_96:
+      tag_97
+      jump	// in
+        /* "src/Venus.sol":1838:1918  function setFee(uint256 newFee) external onlyOwner {... */
+    tag_15:
+      callvalue
+      dup1
+      iszero
+      tag_99
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_99:
+      pop
+      tag_57
+      tag_101
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_101:
+      tag_102
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":7045:7284  function balanceOf(address owner) public view virtual override returns (uint256) {... */
+    tag_16:
+      callvalue
+      dup1
+      iszero
+      tag_103
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_103:
+      pop
+      tag_62
+      tag_105
+      calldatasize
+      0x04
+      tag_106
+      jump	// in
+    tag_105:
+      tag_107
+      jump	// in
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1824:1925  function renounceOwnership() public virtual onlyOwner {... */
+    tag_17:
+      callvalue
+      dup1
+      iszero
+      tag_109
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_109:
+      pop
+      tag_57
+      tag_111
+      jump	// in
+        /* "src/Venus.sol":1969:2154  function setFeeAddress(address newFeeAddress) external onlyOwner {... */
+    tag_18:
+      callvalue
+      dup1
+      iszero
+      tag_112
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_112:
+      pop
+      tag_57
+      tag_114
+      calldatasize
+      0x04
+      tag_106
+      jump	// in
+    tag_114:
+      tag_115
+      jump	// in
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1201:1286  function owner() public view virtual returns (address) {... */
+    tag_19:
+      callvalue
+      dup1
+      iszero
+      tag_116
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_116:
+      pop
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1273:1279  _owner */
+      and(sub(shl(0xa0, 0x01), 0x01), sload(0x08))
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1201:1286  function owner() public view virtual returns (address) {... */
+      jump(tag_51)
+        /* "lib/ERC721A/contracts/ERC721A.sol":10217:10319  function symbol() public view virtual override returns (string memory) {... */
+    tag_20:
+      callvalue
+      dup1
+      iszero
+      tag_120
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_120:
+      pop
+      tag_46
+      tag_122
+      jump	// in
+        /* "src/Venus.sol":1172:1804  function mint(uint256 quantity) external {... */
+    tag_21:
+      callvalue
+      dup1
+      iszero
+      tag_124
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_124:
+      pop
+      tag_57
+      tag_126
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_126:
+      tag_127
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":17461:17692  function setApprovalForAll(address operator, bool approved) public virtual override {... */
+    tag_22:
+      callvalue
+      dup1
+      iszero
+      tag_128
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_128:
+      pop
+      tag_57
+      tag_130
+      calldatasize
+      0x04
+      tag_131
+      jump	// in
+    tag_130:
+      tag_132
+      jump	// in
+        /* "src/Venus.sol":2859:3164  function withdrawTokens(address tokenAddress, address receiverAddress) external onlyOwner returns (bool success) {... */
+    tag_23:
+      callvalue
+      dup1
+      iszero
+      tag_133
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_133:
+      pop
+      tag_39
+      tag_135
+      calldatasize
+      0x04
+      tag_136
+      jump	// in
+    tag_135:
+      tag_137
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":24852:25257  function safeTransferFrom(... */
+    tag_24:
+      tag_57
+      tag_140
+      calldatasize
+      0x04
+      tag_141
+      jump	// in
+    tag_140:
+      tag_142
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":10420:10742  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {... */
+    tag_25:
+      callvalue
+      dup1
+      iszero
+      tag_143
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_143:
+      pop
+      tag_46
+      tag_145
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_145:
+      tag_146
+      jump	// in
+        /* "src/Venus.sol":416:461  uint256 public fee = 15_000_000_000 * 10 ** 9 */
+    tag_26:
+      callvalue
+      dup1
+      iszero
+      tag_148
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_148:
+      pop
+      tag_62
+      sload(0x0a)
+      dup2
+      jump
+        /* "src/Venus.sol":2222:2504  function setMaxPerWallet(uint256 newMaxMint) external onlyOwner {... */
+    tag_27:
+      callvalue
+      dup1
+      iszero
+      tag_152
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_152:
+      pop
+      tag_57
+      tag_154
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_154:
+      tag_155
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":17842:18004  function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {... */
+    tag_28:
+      callvalue
+      dup1
+      iszero
+      tag_156
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_156:
+      pop
+      tag_39
+      tag_158
+      calldatasize
+      0x04
+      tag_136
+      jump	// in
+    tag_158:
+      tag_159
+      jump	// in
+        /* "src/Venus.sol":2546:2803  function setBatchLimit(uint256 newLimit) external onlyOwner {... */
+    tag_29:
+      callvalue
+      dup1
+      iszero
+      tag_161
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_161:
+      pop
+      tag_57
+      tag_163
+      calldatasize
+      0x04
+      tag_53
+      jump	// in
+    tag_163:
+      tag_164
+      jump	// in
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2074:2272  function transferOwnership(address newOwner) public virtual onlyOwner {... */
+    tag_30:
+      callvalue
+      dup1
+      iszero
+      tag_165
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_165:
+      pop
+      tag_57
+      tag_167
+      calldatasize
+      0x04
+      tag_106
+      jump	// in
+    tag_167:
+      tag_168
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":9164:9794  function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {... */
+    tag_42:
+        /* "lib/ERC721A/contracts/ERC721A.sol":9249:9253  bool */
+      0x00
+      shl(0xe0, 0x01ffc9a7)
+      not(sub(shl(0xe0, 0x01), 0x01))
+        /* "lib/ERC721A/contracts/ERC721A.sol":9567:9592  interfaceId == 0x01ffc9a7 */
+      dup4
+      and
+      eq
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":9567:9668  interfaceId == 0x01ffc9a7 || // ERC165 interface ID for ERC165.... */
+      tag_170
+      jumpi
+      pop
+      shl(0xe0, 0x80ac58cd)
+      not(sub(shl(0xe0, 0x01), 0x01))
+        /* "lib/ERC721A/contracts/ERC721A.sol":9643:9668  interfaceId == 0x80ac58cd */
+      dup4
+      and
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":9567:9668  interfaceId == 0x01ffc9a7 || // ERC165 interface ID for ERC165.... */
+    tag_170:
+        /* "lib/ERC721A/contracts/ERC721A.sol":9567:9744  interfaceId == 0x01ffc9a7 || // ERC165 interface ID for ERC165.... */
+      dup1
+      tag_171
+      jumpi
+      pop
+      shl(0xe0, 0x5b5e139f)
+      not(sub(shl(0xe0, 0x01), 0x01))
+        /* "lib/ERC721A/contracts/ERC721A.sol":9719:9744  interfaceId == 0x5b5e139f */
+      dup4
+      and
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":9567:9744  interfaceId == 0x01ffc9a7 || // ERC165 interface ID for ERC165.... */
+    tag_171:
+        /* "lib/ERC721A/contracts/ERC721A.sol":9548:9744  return... */
+      swap3
+        /* "lib/ERC721A/contracts/ERC721A.sol":9164:9794  function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {... */
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":10048:10146  function name() public view virtual override returns (string memory) {... */
+    tag_47:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10102:10115  string memory */
+      0x60
+        /* "lib/ERC721A/contracts/ERC721A.sol":10134:10139  _name */
+      0x02
+        /* "lib/ERC721A/contracts/ERC721A.sol":10127:10139  return _name */
+      dup1
+      sload
+      tag_173
+      swap1
+      tag_174
+      jump	// in
+    tag_173:
+      dup1
+      0x1f
+      add
+      0x20
+      dup1
+      swap2
+      div
+      mul
+      0x20
+      add
+      mload(0x40)
+      swap1
+      dup2
+      add
+      0x40
+      mstore
+      dup1
+      swap3
+      swap2
+      swap1
+      dup2
+      dup2
+      mstore
+      0x20
+      add
+      dup3
+      dup1
+      sload
+      tag_175
+      swap1
+      tag_174
+      jump	// in
+    tag_175:
+      dup1
+      iszero
+      tag_176
+      jumpi
+      dup1
+      0x1f
+      lt
+      tag_177
+      jumpi
+      0x0100
+      dup1
+      dup4
+      sload
+      div
+      mul
+      dup4
+      mstore
+      swap2
+      0x20
+      add
+      swap2
+      jump(tag_176)
+    tag_177:
+      dup3
+      add
+      swap2
+      swap1
+      0x00
+      mstore
+      keccak256(0x00, 0x20)
+      swap1
+    tag_178:
+      dup2
+      sload
+      dup2
+      mstore
+      swap1
+      0x01
+      add
+      swap1
+      0x20
+      add
+      dup1
+      dup4
+      gt
+      tag_178
+      jumpi
+      dup3
+      swap1
+      sub
+      0x1f
+      and
+      dup3
+      add
+      swap2
+    tag_176:
+      pop
+      pop
+      pop
+      pop
+      pop
+      swap1
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":10048:10146  function name() public view virtual override returns (string memory) {... */
+      swap1
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":16911:17134  function getApproved(uint256 tokenId) public view virtual override returns (address) {... */
+    tag_54:
+        /* "lib/ERC721A/contracts/ERC721A.sol":16987:16994  address */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":17011:17027  _exists(tokenId) */
+      tag_180
+        /* "lib/ERC721A/contracts/ERC721A.sol":17019:17026  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":17011:17018  _exists */
+      tag_181
+        /* "lib/ERC721A/contracts/ERC721A.sol":17011:17027  _exists(tokenId) */
+      jump	// in
+    tag_180:
+        /* "lib/ERC721A/contracts/ERC721A.sol":17006:17079  if (!_exists(tokenId)) _revert(ApprovalQueryForNonexistentToken.selector) */
+      tag_183
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":17029:17079  _revert(ApprovalQueryForNonexistentToken.selector) */
+      tag_183
+      shl(0xe2, 0x33d1c039)
+        /* "lib/ERC721A/contracts/ERC721A.sol":17029:17036  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":17029:17079  _revert(ApprovalQueryForNonexistentToken.selector) */
+      jump	// in
+    tag_183:
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":17097:17121  _tokenApprovals[tokenId] */
+      0x00
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":17097:17112  _tokenApprovals */
+      0x06
+        /* "lib/ERC721A/contracts/ERC721A.sol":17097:17121  _tokenApprovals[tokenId] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":17097:17127  _tokenApprovals[tokenId].value */
+      sload
+      sub(shl(0xa0, 0x01), 0x01)
+      and
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":16911:17134  function getApproved(uint256 tokenId) public view virtual override returns (address) {... */
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":16639:16761  function approve(address to, uint256 tokenId) public payable virtual override {... */
+    tag_60:
+        /* "lib/ERC721A/contracts/ERC721A.sol":16727:16754  _approve(to, tokenId, true) */
+      tag_186
+        /* "lib/ERC721A/contracts/ERC721A.sol":16736:16738  to */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":16740:16747  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":16749:16753  true */
+      0x01
+        /* "lib/ERC721A/contracts/ERC721A.sol":16727:16735  _approve */
+      tag_187
+        /* "lib/ERC721A/contracts/ERC721A.sol":16727:16754  _approve(to, tokenId, true) */
+      jump	// in
+    tag_186:
+        /* "lib/ERC721A/contracts/ERC721A.sol":16639:16761  function approve(address to, uint256 tokenId) public payable virtual override {... */
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":20546:23993  function transferFrom(... */
+    tag_69:
+        /* "lib/ERC721A/contracts/ERC721A.sol":20683:20710  uint256 prevOwnershipPacked */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":20713:20740  _packedOwnershipOf(tokenId) */
+      tag_192
+        /* "lib/ERC721A/contracts/ERC721A.sol":20732:20739  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":20713:20731  _packedOwnershipOf */
+      tag_193
+        /* "lib/ERC721A/contracts/ERC721A.sol":20713:20740  _packedOwnershipOf(tokenId) */
+      jump	// in
+    tag_192:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":20865:20887  uint256(uint160(from)) */
+      swap5
+      dup6
+      and
+      swap5
+        /* "lib/ERC721A/contracts/ERC721A.sol":20683:20740  uint256 prevOwnershipPacked = _packedOwnershipOf(tokenId) */
+      swap1
+      swap2
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":20923:20968  address(uint160(prevOwnershipPacked)) != from */
+      dup2
+      and
+      dup5
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":20919:21014  if (address(uint160(prevOwnershipPacked)) != from) _revert(TransferFromIncorrectOwner.selector) */
+      tag_195
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":20970:21014  _revert(TransferFromIncorrectOwner.selector) */
+      tag_195
+      shl(0xe8, 0xa11481)
+        /* "lib/ERC721A/contracts/ERC721A.sol":20970:20977  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":20970:21014  _revert(TransferFromIncorrectOwner.selector) */
+      jump	// in
+    tag_195:
+        /* "lib/ERC721A/contracts/ERC721A.sol":21026:21053  uint256 approvedAddressSlot */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":19679:19703  _tokenApprovals[tokenId] */
+      dup3
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":19679:19694  _tokenApprovals */
+      0x06
+        /* "lib/ERC721A/contracts/ERC721A.sol":19679:19703  _tokenApprovals[tokenId] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":19903:19929  sload(approvedAddressSlot) */
+      dup1
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+        /* "lib/ERC721A/contracts/ERC721A.sol":19316:19346  eq(msgSender, approvedAddress) */
+      dup1
+      dup3
+      eq
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":19013:19041  and(owner, _BITMASK_ADDRESS) */
+      dup9
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":19294:19314  eq(msgSender, owner) */
+      swap1
+      swap2
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":19291:19347  or(eq(msgSender, owner), eq(msgSender, approvedAddress)) */
+      or
+        /* "lib/ERC721A/contracts/ERC721A.sol":21209:21397  if (!_isSenderApprovedOrOwner(approvedAddress, from, _msgSenderERC721A()))... */
+      tag_206
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":21301:21344  isApprovedForAll(from, _msgSenderERC721A()) */
+      tag_203
+        /* "lib/ERC721A/contracts/ERC721A.sol":21318:21322  from */
+      dup7
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+        /* "lib/ERC721A/contracts/ERC721A.sol":17842:18004  function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {... */
+      tag_159
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":21301:21344  isApprovedForAll(from, _msgSenderERC721A()) */
+    tag_203:
+        /* "lib/ERC721A/contracts/ERC721A.sol":21296:21397  if (!isApprovedForAll(from, _msgSenderERC721A())) _revert(TransferCallerNotOwnerNorApproved.selector) */
+      tag_206
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":21346:21397  _revert(TransferCallerNotOwnerNorApproved.selector) */
+      tag_206
+      shl(0xe1, 0x2ce44b5f)
+        /* "lib/ERC721A/contracts/ERC721A.sol":21346:21353  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":21346:21397  _revert(TransferCallerNotOwnerNorApproved.selector) */
+      jump	// in
+    tag_206:
+        /* "lib/ERC721A/contracts/ERC721A.sol":21540:21555  approvedAddress */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":21537:21694  if approvedAddress {... */
+      iszero
+      tag_209
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":21678:21679  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":21657:21676  approvedAddressSlot */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":21650:21680  sstore(approvedAddressSlot, 0) */
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":21537:21694  if approvedAddress {... */
+    tag_209:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":22066:22090  _packedAddressData[from] */
+      dup7
+      dup2
+      and
+      0x00
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":22066:22084  _packedAddressData */
+      0x05
+        /* "lib/ERC721A/contracts/ERC721A.sol":22066:22090  _packedAddressData[from] */
+      0x20
+      mstore
+      0x40
+      dup1
+      dup3
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":22064:22090  --_packedAddressData[from] */
+      dup1
+      sload
+      not(0x00)
+      add
+      swap1
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":22134:22156  _packedAddressData[to] */
+      swap2
+      dup8
+      and
+      dup1
+      dup3
+      mstore
+      swap2
+      swap1
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":22132:22156  ++_packedAddressData[to] */
+      dup1
+      sload
+      0x01
+      add
+      swap1
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":15767:15778  timestamp() */
+      timestamp
+        /* "lib/ERC721A/contracts/ERC721A.sol":15742:15765  _BITPOS_START_TIMESTAMP */
+      0xa0
+        /* "lib/ERC721A/contracts/ERC721A.sol":15738:15779  shl(_BITPOS_START_TIMESTAMP, timestamp()) */
+      shl
+        /* "lib/ERC721A/contracts/ERC721A.sol":15725:15788  or(owner, or(shl(_BITPOS_START_TIMESTAMP, timestamp()), flags)) */
+      or
+      shl(0xe1, 0x01)
+      or
+        /* "lib/ERC721A/contracts/ERC721A.sol":22420:22446  _packedOwnerships[tokenId] */
+      0x00
+      dup6
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":22420:22437  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":22420:22446  _packedOwnerships[tokenId] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":22420:22592  _packedOwnerships[tokenId] = _packOwnershipData(... */
+      swap2
+      swap1
+      swap2
+      sstore
+      shl(0xe1, 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":22709:22756  prevOwnershipPacked & _BITMASK_NEXT_INITIALIZED */
+      dup5
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":22709:22761  prevOwnershipPacked & _BITMASK_NEXT_INITIALIZED == 0 */
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":22705:23322  if (prevOwnershipPacked & _BITMASK_NEXT_INITIALIZED == 0) {... */
+      tag_214
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":22813:22814  1 */
+      0x01
+        /* "lib/ERC721A/contracts/ERC721A.sol":22803:22814  tokenId + 1 */
+      dup5
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":22781:22800  uint256 nextTokenId */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":22934:22964  _packedOwnerships[nextTokenId] */
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":22934:22951  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":22934:22964  _packedOwnerships[nextTokenId] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":22934:22969  _packedOwnerships[nextTokenId] == 0 */
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":22930:23308  if (_packedOwnerships[nextTokenId] == 0) {... */
+      tag_216
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":23070:23083  _currentIndex */
+      sload(0x00)
+        /* "lib/ERC721A/contracts/ERC721A.sol":23055:23066  nextTokenId */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":23055:23083  nextTokenId != _currentIndex */
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":23051:23290  if (nextTokenId != _currentIndex) {... */
+      tag_216
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":23215:23245  _packedOwnerships[nextTokenId] */
+      0x00
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":23215:23232  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":23215:23245  _packedOwnerships[nextTokenId] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":23215:23267  _packedOwnerships[nextTokenId] = prevOwnershipPacked */
+      dup5
+      swap1
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":23051:23290  if (nextTokenId != _currentIndex) {... */
+    tag_216:
+        /* "lib/ERC721A/contracts/ERC721A.sol":22763:23322  {... */
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":22705:23322  if (prevOwnershipPacked & _BITMASK_NEXT_INITIALIZED == 0) {... */
+    tag_214:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":23450:23470  uint256(uint160(to)) */
+      dup6
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":23821:23828  tokenId */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":23450:23470  uint256(uint160(to)) */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":23753:23757  from */
+      dup9
+        /* "lib/ERC721A/contracts/ERC721A.sol":23696:23721  _TRANSFER_EVENT_SIGNATURE */
+      0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+        /* "lib/ERC721A/contracts/ERC721A.sol":23431:23447  uint256 toMasked */
+      0x00
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":23564:23856  log4(... */
+      log4
+        /* "lib/ERC721A/contracts/ERC721A.sol":23879:23887  toMasked */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":23891:23892  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":23879:23892  toMasked == 0 */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":23875:23933  if (toMasked == 0) _revert(TransferToZeroAddress.selector) */
+      tag_218
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":23894:23933  _revert(TransferToZeroAddress.selector) */
+      tag_218
+      shl(0xe2, 0x3a954ecd)
+        /* "lib/ERC721A/contracts/ERC721A.sol":23894:23901  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":23894:23933  _revert(TransferToZeroAddress.selector) */
+      jump	// in
+    tag_218:
+        /* "lib/ERC721A/contracts/ERC721A.sol":20673:23993  {... */
+      pop
+      pop
+      pop
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":20546:23993  function transferFrom(... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":24084:24271  function safeTransferFrom(... */
+    tag_85:
+        /* "lib/ERC721A/contracts/ERC721A.sol":24225:24264  safeTransferFrom(from, to, tokenId, '') */
+      tag_222
+        /* "lib/ERC721A/contracts/ERC721A.sol":24242:24246  from */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":24248:24250  to */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":24252:24259  tokenId */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":24225:24264  safeTransferFrom(from, to, tokenId, '') */
+      mload(0x40)
+      dup1
+      0x20
+      add
+      0x40
+      mstore
+      dup1
+      0x00
+      dup2
+      mstore
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":24225:24241  safeTransferFrom */
+      tag_142
+        /* "lib/ERC721A/contracts/ERC721A.sol":24225:24264  safeTransferFrom(from, to, tokenId, '') */
+      jump	// in
+    tag_222:
+        /* "lib/ERC721A/contracts/ERC721A.sol":24084:24271  function safeTransferFrom(... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":11409:11559  function ownerOf(uint256 tokenId) public view virtual override returns (address) {... */
+    tag_97:
+        /* "lib/ERC721A/contracts/ERC721A.sol":11481:11488  address */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":11523:11550  _packedOwnershipOf(tokenId) */
+      tag_171
+        /* "lib/ERC721A/contracts/ERC721A.sol":11542:11549  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":11523:11541  _packedOwnershipOf */
+      tag_193
+        /* "lib/ERC721A/contracts/ERC721A.sol":11523:11550  _packedOwnershipOf(tokenId) */
+      jump	// in
+        /* "src/Venus.sol":1838:1918  function setFee(uint256 newFee) external onlyOwner {... */
+    tag_102:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_226
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_226:
+        /* "src/Venus.sol":1899:1902  fee */
+      0x0a
+        /* "src/Venus.sol":1899:1911  fee = newFee */
+      sstore
+        /* "src/Venus.sol":1838:1918  function setFee(uint256 newFee) external onlyOwner {... */
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":7045:7284  function balanceOf(address owner) public view virtual override returns (uint256) {... */
+    tag_107:
+        /* "lib/ERC721A/contracts/ERC721A.sol":7117:7124  uint256 */
+      0x00
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":7140:7159  owner == address(0) */
+      dup3
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":7136:7205  if (owner == address(0)) _revert(BalanceQueryForZeroAddress.selector) */
+      tag_231
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":7161:7205  _revert(BalanceQueryForZeroAddress.selector) */
+      tag_231
+      shl(0xe2, 0x23d3ad81)
+        /* "lib/ERC721A/contracts/ERC721A.sol":7161:7168  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":7161:7205  _revert(BalanceQueryForZeroAddress.selector) */
+      jump	// in
+    tag_231:
+      pop
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":7222:7247  _packedAddressData[owner] */
+      and
+      0x00
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":7222:7240  _packedAddressData */
+      0x05
+        /* "lib/ERC721A/contracts/ERC721A.sol":7222:7247  _packedAddressData[owner] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":1360:1373  (1 << 64) - 1 */
+      0xffffffffffffffff
+        /* "lib/ERC721A/contracts/ERC721A.sol":7222:7277  _packedAddressData[owner] & _BITMASK_ADDRESS_DATA_ENTRY */
+      and
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":7045:7284  function balanceOf(address owner) public view virtual override returns (uint256) {... */
+      jump	// out
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1824:1925  function renounceOwnership() public virtual onlyOwner {... */
+    tag_111:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_233
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_233:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1888:1918  _transferOwnership(address(0)) */
+      tag_235
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1915:1916  0 */
+      0x00
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1888:1906  _transferOwnership */
+      tag_236
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1888:1918  _transferOwnership(address(0)) */
+      jump	// in
+    tag_235:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1824:1925  function renounceOwnership() public virtual onlyOwner {... */
+      jump	// out
+        /* "src/Venus.sol":1969:2154  function setFeeAddress(address newFeeAddress) external onlyOwner {... */
+    tag_115:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_238
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_238:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "src/Venus.sol":2052:2079  newFeeAddress != address(0) */
+      dup2
+      and
+        /* "src/Venus.sol":2044:2111  require(newFeeAddress != address(0), "Fee address is zero address") */
+      tag_240
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":5677:5679   */
+      0x20
+        /* "src/Venus.sol":2044:2111  require(newFeeAddress != address(0), "Fee address is zero address") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":5659:5680   */
+      mstore
+        /* "#utility.yul":5716:5718   */
+      0x1b
+        /* "#utility.yul":5696:5714   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":5689:5719   */
+      mstore
+        /* "#utility.yul":5755:5784   */
+      0x4665652061646472657373206973207a65726f20616464726573730000000000
+        /* "#utility.yul":5735:5753   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":5728:5785   */
+      mstore
+        /* "#utility.yul":5802:5820   */
+      0x64
+      add
+        /* "src/Venus.sol":2044:2111  require(newFeeAddress != address(0), "Fee address is zero address") */
+    tag_241:
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      revert
+    tag_240:
+        /* "src/Venus.sol":2121:2131  feeAddress */
+      0x09
+        /* "src/Venus.sol":2121:2147  feeAddress = newFeeAddress */
+      dup1
+      sload
+      not(sub(shl(0xa0, 0x01), 0x01))
+      and
+      sub(shl(0xa0, 0x01), 0x01)
+      swap3
+      swap1
+      swap3
+      and
+      swap2
+      swap1
+      swap2
+      or
+      swap1
+      sstore
+        /* "src/Venus.sol":1969:2154  function setFeeAddress(address newFeeAddress) external onlyOwner {... */
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":10217:10319  function symbol() public view virtual override returns (string memory) {... */
+    tag_122:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10273:10286  string memory */
+      0x60
+        /* "lib/ERC721A/contracts/ERC721A.sol":10305:10312  _symbol */
+      0x03
+        /* "lib/ERC721A/contracts/ERC721A.sol":10298:10312  return _symbol */
+      dup1
+      sload
+      tag_173
+      swap1
+      tag_174
+      jump	// in
+        /* "src/Venus.sol":1172:1804  function mint(uint256 quantity) external {... */
+    tag_127:
+        /* "src/Venus.sol":1242:1243  0 */
+      0x00
+        /* "src/Venus.sol":1231:1239  quantity */
+      dup2
+        /* "src/Venus.sol":1231:1243  quantity > 0 */
+      gt
+        /* "src/Venus.sol":1223:1283  require(quantity > 0, "Quantity must be greater than zero.") */
+      tag_251
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":6033:6035   */
+      0x20
+        /* "src/Venus.sol":1223:1283  require(quantity > 0, "Quantity must be greater than zero.") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":6015:6036   */
+      mstore
+        /* "#utility.yul":6072:6074   */
+      0x23
+        /* "#utility.yul":6052:6070   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":6045:6075   */
+      mstore
+        /* "#utility.yul":6111:6145   */
+      0x5175616e74697479206d7573742062652067726561746572207468616e207a65
+        /* "#utility.yul":6091:6109   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":6084:6146   */
+      mstore
+      shl(0xe9, 0x393797)
+        /* "#utility.yul":6162:6180   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":6155:6188   */
+      mstore
+        /* "#utility.yul":6205:6224   */
+      0x84
+      add
+        /* "src/Venus.sol":1223:1283  require(quantity > 0, "Quantity must be greater than zero.") */
+      tag_241
+        /* "#utility.yul":5831:6230   */
+      jump
+        /* "src/Venus.sol":1223:1283  require(quantity > 0, "Quantity must be greater than zero.") */
+    tag_251:
+        /* "src/Venus.sol":1313:1323  batchLimit */
+      sload(0x0b)
+        /* "src/Venus.sol":1301:1309  quantity */
+      dup2
+        /* "src/Venus.sol":1301:1323  quantity <= batchLimit */
+      gt
+      iszero
+        /* "src/Venus.sol":1293:1348  require(quantity <= batchLimit, "Exceeds batch limit.") */
+      tag_254
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":6437:6439   */
+      0x20
+        /* "src/Venus.sol":1293:1348  require(quantity <= batchLimit, "Exceeds batch limit.") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":6419:6440   */
+      mstore
+        /* "#utility.yul":6476:6478   */
+      0x14
+        /* "#utility.yul":6456:6474   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":6449:6479   */
+      mstore
+      shl(0x61, 0x22bc31b2b2b239903130ba31b4103634b6b4ba17)
+        /* "#utility.yul":6495:6513   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":6488:6538   */
+      mstore
+        /* "#utility.yul":6555:6573   */
+      0x64
+      add
+        /* "src/Venus.sol":1293:1348  require(quantity <= batchLimit, "Exceeds batch limit.") */
+      tag_241
+        /* "#utility.yul":6235:6579   */
+      jump
+        /* "src/Venus.sol":1293:1348  require(quantity <= batchLimit, "Exceeds batch limit.") */
+    tag_254:
+        /* "src/Venus.sol":332:336  1000 */
+      0x03e8
+        /* "src/Venus.sol":1383:1391  quantity */
+      dup2
+        /* "src/Venus.sol":1366:1380  _totalMinted() */
+      tag_257
+        /* "lib/ERC721A/contracts/ERC721A.sol":6359:6366  uint256 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":6546:6559  _currentIndex */
+      sload
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":6304:6594  function _totalMinted() internal view virtual returns (uint256) {... */
+      jump
+        /* "src/Venus.sol":1366:1380  _totalMinted() */
+    tag_257:
+        /* "src/Venus.sol":1366:1391  _totalMinted() + quantity */
+      tag_259
+      swap2
+      swap1
+      tag_260
+      jump	// in
+    tag_259:
+        /* "src/Venus.sol":1366:1405  _totalMinted() + quantity <= MAX_SUPPLY */
+      gt
+      iszero
+        /* "src/Venus.sol":1358:1429  require(_totalMinted() + quantity <= MAX_SUPPLY, "Exceeds max supply.") */
+      tag_261
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":7048:7050   */
+      0x20
+        /* "src/Venus.sol":1358:1429  require(_totalMinted() + quantity <= MAX_SUPPLY, "Exceeds max supply.") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":7030:7051   */
+      mstore
+        /* "#utility.yul":7087:7089   */
+      0x13
+        /* "#utility.yul":7067:7085   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":7060:7090   */
+      mstore
+      shl(0x69, 0x22bc31b2b2b2399036b0bc1039bab838363c97)
+        /* "#utility.yul":7106:7124   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":7099:7148   */
+      mstore
+        /* "#utility.yul":7165:7183   */
+      0x64
+      add
+        /* "src/Venus.sol":1358:1429  require(_totalMinted() + quantity <= MAX_SUPPLY, "Exceeds max supply.") */
+      tag_241
+        /* "#utility.yul":6846:7189   */
+      jump
+        /* "src/Venus.sol":1358:1429  require(_totalMinted() + quantity <= MAX_SUPPLY, "Exceeds max supply.") */
+    tag_261:
+        /* "src/Venus.sol":1483:1495  maxPerWallet */
+      sload(0x0c)
+        /* "src/Venus.sol":1471:1479  quantity */
+      dup2
+        /* "src/Venus.sol":1447:1468  balanceOf(msg.sender) */
+      tag_264
+        /* "src/Venus.sol":1457:1467  msg.sender */
+      caller
+        /* "src/Venus.sol":1447:1456  balanceOf */
+      tag_107
+        /* "src/Venus.sol":1447:1468  balanceOf(msg.sender) */
+      jump	// in
+    tag_264:
+        /* "src/Venus.sol":1447:1479  balanceOf(msg.sender) + quantity */
+      tag_265
+      swap2
+      swap1
+      tag_260
+      jump	// in
+    tag_265:
+        /* "src/Venus.sol":1447:1495  balanceOf(msg.sender) + quantity <= maxPerWallet */
+      gt
+      iszero
+        /* "src/Venus.sol":1439:1523  require(balanceOf(msg.sender) + quantity <= maxPerWallet, "Exceeds max per wallet.") */
+      tag_266
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":7396:7398   */
+      0x20
+        /* "src/Venus.sol":1439:1523  require(balanceOf(msg.sender) + quantity <= maxPerWallet, "Exceeds max per wallet.") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":7378:7399   */
+      mstore
+        /* "#utility.yul":7435:7437   */
+      0x17
+        /* "#utility.yul":7415:7433   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":7408:7438   */
+      mstore
+        /* "#utility.yul":7474:7499   */
+      0x45786365656473206d6178207065722077616c6c65742e000000000000000000
+        /* "#utility.yul":7454:7472   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":7447:7500   */
+      mstore
+        /* "#utility.yul":7517:7535   */
+      0x64
+      add
+        /* "src/Venus.sol":1439:1523  require(balanceOf(msg.sender) + quantity <= maxPerWallet, "Exceeds max per wallet.") */
+      tag_241
+        /* "#utility.yul":7194:7541   */
+      jump
+        /* "src/Venus.sol":1439:1523  require(balanceOf(msg.sender) + quantity <= maxPerWallet, "Exceeds max per wallet.") */
+    tag_266:
+        /* "src/Venus.sol":1584:1592  quantity */
+      dup1
+        /* "src/Venus.sol":1578:1581  fee */
+      sload(0x0a)
+        /* "src/Venus.sol":1578:1592  fee * quantity */
+      tag_269
+      swap2
+      swap1
+      tag_270
+      jump	// in
+    tag_269:
+        /* "src/Venus.sol":1541:1575  paymentToken.balanceOf(msg.sender) */
+      mload(0x40)
+      shl(0xe0, 0x70a08231)
+      dup2
+      mstore
+        /* "src/Venus.sol":1564:1574  msg.sender */
+      caller
+        /* "src/Venus.sol":1541:1575  paymentToken.balanceOf(msg.sender) */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":1679:1730   */
+      mstore
+        /* "src/Venus.sol":1541:1553  paymentToken */
+      immutable("0x49396dd8e722d4250c813b0361a3151f7f8b33e9750175f6fd6a44f25daf5603")
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "src/Venus.sol":1541:1563  paymentToken.balanceOf */
+      and
+      swap1
+      0x70a08231
+      swap1
+        /* "#utility.yul":1652:1670   */
+      0x24
+      add
+        /* "src/Venus.sol":1541:1575  paymentToken.balanceOf(msg.sender) */
+      0x20
+      mload(0x40)
+      dup1
+      dup4
+      sub
+      dup2
+      dup7
+      gas
+      staticcall
+      iszero
+      dup1
+      iszero
+      tag_273
+      jumpi
+      returndatasize
+      0x00
+      dup1
+      returndatacopy
+      revert(0x00, returndatasize)
+    tag_273:
+      pop
+      pop
+      pop
+      pop
+      mload(0x40)
+      returndatasize
+      not(0x1f)
+      0x1f
+      dup3
+      add
+      and
+      dup3
+      add
+      dup1
+      0x40
+      mstore
+      pop
+      dup2
+      add
+      swap1
+      tag_274
+      swap2
+      swap1
+      tag_275
+      jump	// in
+    tag_274:
+        /* "src/Venus.sol":1541:1592  paymentToken.balanceOf(msg.sender) > fee * quantity */
+      gt
+        /* "src/Venus.sol":1533:1618  require(paymentToken.balanceOf(msg.sender) > fee * quantity, "Insufficient balance.") */
+      tag_276
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":8110:8112   */
+      0x20
+        /* "src/Venus.sol":1533:1618  require(paymentToken.balanceOf(msg.sender) > fee * quantity, "Insufficient balance.") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":8092:8113   */
+      mstore
+        /* "#utility.yul":8149:8151   */
+      0x15
+        /* "#utility.yul":8129:8147   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":8122:8152   */
+      mstore
+      shl(0x59, 0x24b739bab33334b1b4b2b73a103130b630b731b297)
+        /* "#utility.yul":8168:8186   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":8161:8212   */
+      mstore
+        /* "#utility.yul":8229:8247   */
+      0x64
+      add
+        /* "src/Venus.sol":1533:1618  require(paymentToken.balanceOf(msg.sender) > fee * quantity, "Insufficient balance.") */
+      tag_241
+        /* "#utility.yul":7908:8253   */
+      jump
+        /* "src/Venus.sol":1533:1618  require(paymentToken.balanceOf(msg.sender) > fee * quantity, "Insufficient balance.") */
+    tag_276:
+        /* "src/Venus.sol":1629:1656  _mint(msg.sender, quantity) */
+      tag_279
+        /* "src/Venus.sol":1635:1645  msg.sender */
+      caller
+        /* "src/Venus.sol":1647:1655  quantity */
+      dup3
+        /* "src/Venus.sol":1629:1634  _mint */
+      tag_280
+        /* "src/Venus.sol":1629:1656  _mint(msg.sender, quantity) */
+      jump	// in
+    tag_279:
+        /* "src/Venus.sol":1719:1729  feeAddress */
+      sload(0x09)
+        /* "src/Venus.sol":1731:1734  fee */
+      sload(0x0a)
+        /* "src/Venus.sol":1666:1678  bool success */
+      0x00
+      swap2
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "src/Venus.sol":1681:1693  paymentToken */
+      immutable("0x49396dd8e722d4250c813b0361a3151f7f8b33e9750175f6fd6a44f25daf5603")
+        /* "src/Venus.sol":1681:1706  paymentToken.transferFrom */
+      dup2
+      and
+      swap3
+      0x23b872dd
+      swap3
+        /* "src/Venus.sol":1707:1717  msg.sender */
+      caller
+      swap3
+        /* "src/Venus.sol":1719:1729  feeAddress */
+      and
+      swap1
+        /* "src/Venus.sol":1731:1745  fee * quantity */
+      tag_281
+      swap1
+        /* "src/Venus.sol":1737:1745  quantity */
+      dup8
+      swap1
+        /* "src/Venus.sol":1731:1745  fee * quantity */
+      tag_270
+      jump	// in
+    tag_281:
+        /* "src/Venus.sol":1681:1746  paymentToken.transferFrom(msg.sender, feeAddress, fee * quantity) */
+      mload(0x40)
+      not(sub(shl(0xe0, 0x01), 0x01))
+      0xe0
+      dup7
+      swap1
+      shl
+      and
+      dup2
+      mstore
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "#utility.yul":8516:8531   */
+      swap4
+      dup5
+      and
+        /* "src/Venus.sol":1681:1746  paymentToken.transferFrom(msg.sender, feeAddress, fee * quantity) */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":8498:8532   */
+      mstore
+        /* "#utility.yul":8568:8583   */
+      swap3
+      swap1
+      swap2
+      and
+        /* "#utility.yul":8548:8566   */
+      0x24
+      dup4
+      add
+        /* "#utility.yul":8541:8584   */
+      mstore
+        /* "#utility.yul":8600:8618   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":8593:8627   */
+      mstore
+        /* "#utility.yul":8433:8451   */
+      0x64
+      add
+        /* "src/Venus.sol":1681:1746  paymentToken.transferFrom(msg.sender, feeAddress, fee * quantity) */
+      0x20
+      mload(0x40)
+      dup1
+      dup4
+      sub
+      dup2
+      0x00
+      dup8
+      gas
+      call
+      iszero
+      dup1
+      iszero
+      tag_285
+      jumpi
+      returndatasize
+      0x00
+      dup1
+      returndatacopy
+      revert(0x00, returndatasize)
+    tag_285:
+      pop
+      pop
+      pop
+      pop
+      mload(0x40)
+      returndatasize
+      not(0x1f)
+      0x1f
+      dup3
+      add
+      and
+      dup3
+      add
+      dup1
+      0x40
+      mstore
+      pop
+      dup2
+      add
+      swap1
+      tag_286
+      swap2
+      swap1
+      tag_287
+      jump	// in
+    tag_286:
+        /* "src/Venus.sol":1666:1746  bool success = paymentToken.transferFrom(msg.sender, feeAddress, fee * quantity) */
+      swap1
+      pop
+        /* "src/Venus.sol":1764:1771  success */
+      dup1
+        /* "src/Venus.sol":1756:1797  require(success, "Token transfer failed") */
+      tag_186
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":9090:9092   */
+      0x20
+        /* "src/Venus.sol":1756:1797  require(success, "Token transfer failed") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":9072:9093   */
+      mstore
+        /* "#utility.yul":9129:9131   */
+      0x15
+        /* "#utility.yul":9109:9127   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":9102:9132   */
+      mstore
+      shl(0x5a, 0x151bdad95b881d1c985b9cd9995c8819985a5b1959)
+        /* "#utility.yul":9148:9166   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":9141:9192   */
+      mstore
+        /* "#utility.yul":9209:9227   */
+      0x64
+      add
+        /* "src/Venus.sol":1756:1797  require(success, "Token transfer failed") */
+      tag_241
+        /* "#utility.yul":8888:9233   */
+      jump
+        /* "lib/ERC721A/contracts/ERC721A.sol":17461:17692  function setApprovalForAll(address operator, bool approved) public virtual override {... */
+    tag_132:
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17594  _operatorApprovals[_msgSenderERC721A()] */
+      0x00
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17573  _operatorApprovals */
+      0x07
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17594  _operatorApprovals[_msgSenderERC721A()] */
+      0x20
+      swap1
+      dup2
+      mstore
+      0x40
+      dup1
+      dup4
+      keccak256
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17604  _operatorApprovals[_msgSenderERC721A()][operator] */
+      dup8
+      and
+      dup1
+      dup6
+      mstore
+      swap1
+      dup4
+      mstore
+      swap3
+      dup2
+      swap1
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17615  _operatorApprovals[_msgSenderERC721A()][operator] = approved */
+      dup1
+      sload
+      not(0xff)
+      and
+      dup7
+      iszero
+      iszero
+      swap1
+      dup2
+      or
+      swap1
+      swap2
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":17630:17685  ApprovalForAll(_msgSenderERC721A(), operator, approved) */
+      swap1
+      mload
+        /* "#utility.yul":540:581   */
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":17555:17604  _operatorApprovals[_msgSenderERC721A()][operator] */
+      swap2
+      swap3
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      swap2
+        /* "lib/ERC721A/contracts/ERC721A.sol":17630:17685  ApprovalForAll(_msgSenderERC721A(), operator, approved) */
+      0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31
+      swap2
+        /* "#utility.yul":513:531   */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":17630:17685  ApprovalForAll(_msgSenderERC721A(), operator, approved) */
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      log3
+        /* "lib/ERC721A/contracts/ERC721A.sol":17461:17692  function setApprovalForAll(address operator, bool approved) public virtual override {... */
+      pop
+      pop
+      jump	// out
+        /* "src/Venus.sol":2859:3164  function withdrawTokens(address tokenAddress, address receiverAddress) external onlyOwner returns (bool success) {... */
+    tag_137:
+        /* "src/Venus.sol":2958:2970  bool success */
+      0x00
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_296
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_296:
+        /* "src/Venus.sol":3052:3090  tokenContract.balanceOf(address(this)) */
+      mload(0x40)
+      shl(0xe0, 0x70a08231)
+      dup2
+      mstore
+        /* "src/Venus.sol":3084:3088  this */
+      address
+        /* "src/Venus.sol":3052:3090  tokenContract.balanceOf(address(this)) */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":1679:1730   */
+      mstore
+        /* "src/Venus.sol":3012:3024  tokenAddress */
+      dup4
+      swap1
+        /* "src/Venus.sol":2982:3002  IERC20 tokenContract */
+      0x00
+      swap1
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "src/Venus.sol":3052:3075  tokenContract.balanceOf */
+      dup4
+      and
+      swap1
+      0x70a08231
+      swap1
+        /* "#utility.yul":1652:1670   */
+      0x24
+      add
+        /* "src/Venus.sol":3052:3090  tokenContract.balanceOf(address(this)) */
+      0x20
+      mload(0x40)
+      dup1
+      dup4
+      sub
+      dup2
+      dup7
+      gas
+      staticcall
+      iszero
+      dup1
+      iszero
+      tag_300
+      jumpi
+      returndatasize
+      0x00
+      dup1
+      returndatacopy
+      revert(0x00, returndatasize)
+    tag_300:
+      pop
+      pop
+      pop
+      pop
+      mload(0x40)
+      returndatasize
+      not(0x1f)
+      0x1f
+      dup3
+      add
+      and
+      dup3
+      add
+      dup1
+      0x40
+      mstore
+      pop
+      dup2
+      add
+      swap1
+      tag_301
+      swap2
+      swap1
+      tag_275
+      jump	// in
+    tag_301:
+        /* "src/Venus.sol":3110:3157  tokenContract.transfer(receiverAddress, amount) */
+      mload(0x40)
+      shl(0xe0, 0xa9059cbb)
+      dup2
+      mstore
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "#utility.yul":9430:9462   */
+      dup7
+      dup2
+      and
+        /* "src/Venus.sol":3110:3157  tokenContract.transfer(receiverAddress, amount) */
+      0x04
+      dup4
+      add
+        /* "#utility.yul":9412:9463   */
+      mstore
+        /* "#utility.yul":9479:9497   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":9472:9506   */
+      dup4
+      swap1
+      mstore
+        /* "src/Venus.sol":3035:3090  uint256 amount = tokenContract.balanceOf(address(this)) */
+      swap2
+      swap3
+      pop
+        /* "src/Venus.sol":3110:3132  tokenContract.transfer */
+      swap1
+      dup4
+      and
+      swap1
+      0xa9059cbb
+      swap1
+        /* "#utility.yul":9385:9403   */
+      0x44
+      add
+        /* "src/Venus.sol":3110:3157  tokenContract.transfer(receiverAddress, amount) */
+      0x20
+      mload(0x40)
+      dup1
+      dup4
+      sub
+      dup2
+      0x00
+      dup8
+      gas
+      call
+      iszero
+      dup1
+      iszero
+      tag_305
+      jumpi
+      returndatasize
+      0x00
+      dup1
+      returndatacopy
+      revert(0x00, returndatasize)
+    tag_305:
+      pop
+      pop
+      pop
+      pop
+      mload(0x40)
+      returndatasize
+      not(0x1f)
+      0x1f
+      dup3
+      add
+      and
+      dup3
+      add
+      dup1
+      0x40
+      mstore
+      pop
+      dup2
+      add
+      swap1
+      tag_306
+      swap2
+      swap1
+      tag_287
+      jump	// in
+    tag_306:
+        /* "src/Venus.sol":3100:3157  success = tokenContract.transfer(receiverAddress, amount) */
+      swap6
+        /* "src/Venus.sol":2859:3164  function withdrawTokens(address tokenAddress, address receiverAddress) external onlyOwner returns (bool success) {... */
+      swap5
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":24852:25257  function safeTransferFrom(... */
+    tag_142:
+        /* "lib/ERC721A/contracts/ERC721A.sol":25021:25052  transferFrom(from, to, tokenId) */
+      tag_308
+        /* "lib/ERC721A/contracts/ERC721A.sol":25034:25038  from */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25040:25042  to */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25044:25051  tokenId */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25021:25033  transferFrom */
+      tag_69
+        /* "lib/ERC721A/contracts/ERC721A.sol":25021:25052  transferFrom(from, to, tokenId) */
+      jump	// in
+    tag_308:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":25066:25080  to.code.length */
+      dup4
+      and
+      extcodesize
+        /* "lib/ERC721A/contracts/ERC721A.sol":25066:25085  to.code.length != 0 */
+      iszero
+        /* "lib/ERC721A/contracts/ERC721A.sol":25062:25251  if (to.code.length != 0)... */
+      tag_313
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":25104:25160  _checkContractOnERC721Received(from, to, tokenId, _data) */
+      tag_310
+        /* "lib/ERC721A/contracts/ERC721A.sol":25135:25139  from */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25141:25143  to */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25145:25152  tokenId */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25154:25159  _data */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":25104:25134  _checkContractOnERC721Received */
+      tag_311
+        /* "lib/ERC721A/contracts/ERC721A.sol":25104:25160  _checkContractOnERC721Received(from, to, tokenId, _data) */
+      jump	// in
+    tag_310:
+        /* "lib/ERC721A/contracts/ERC721A.sol":25099:25251  if (!_checkContractOnERC721Received(from, to, tokenId, _data)) {... */
+      tag_313
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":25180:25236  _revert(TransferToNonERC721ReceiverImplementer.selector) */
+      tag_313
+      shl(0xe1, 0x68d2bf6b)
+        /* "lib/ERC721A/contracts/ERC721A.sol":25180:25187  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":25180:25236  _revert(TransferToNonERC721ReceiverImplementer.selector) */
+      jump	// in
+    tag_313:
+        /* "lib/ERC721A/contracts/ERC721A.sol":24852:25257  function safeTransferFrom(... */
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":10420:10742  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {... */
+    tag_146:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10493:10506  string memory */
+      0x60
+        /* "lib/ERC721A/contracts/ERC721A.sol":10523:10539  _exists(tokenId) */
+      tag_315
+        /* "lib/ERC721A/contracts/ERC721A.sol":10531:10538  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":10523:10530  _exists */
+      tag_181
+        /* "lib/ERC721A/contracts/ERC721A.sol":10523:10539  _exists(tokenId) */
+      jump	// in
+    tag_315:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10518:10586  if (!_exists(tokenId)) _revert(URIQueryForNonexistentToken.selector) */
+      tag_317
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":10541:10586  _revert(URIQueryForNonexistentToken.selector) */
+      tag_317
+      shl(0xe4, 0x0a14c4b5)
+        /* "lib/ERC721A/contracts/ERC721A.sol":10541:10548  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":10541:10586  _revert(URIQueryForNonexistentToken.selector) */
+      jump	// in
+    tag_317:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10597:10618  string memory baseURI */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":10621:10631  _baseURI() */
+      tag_318
+        /* "lib/ERC721A/contracts/ERC721A.sol":10621:10629  _baseURI */
+      tag_319
+        /* "lib/ERC721A/contracts/ERC721A.sol":10621:10631  _baseURI() */
+      jump	// in
+    tag_318:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10597:10631  string memory baseURI = _baseURI() */
+      swap1
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":10654:10661  baseURI */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":10648:10669  bytes(baseURI).length */
+      mload
+        /* "lib/ERC721A/contracts/ERC721A.sol":10673:10674  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":10648:10674  bytes(baseURI).length != 0 */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":10648:10735  bytes(baseURI).length != 0 ? string(abi.encodePacked(baseURI, _toString(tokenId))) : '' */
+      tag_320
+      jumpi
+      mload(0x40)
+      dup1
+      0x20
+      add
+      0x40
+      mstore
+      dup1
+      0x00
+      dup2
+      mstore
+      pop
+      jump(tag_321)
+    tag_320:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10701:10708  baseURI */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":10710:10728  _toString(tokenId) */
+      tag_322
+        /* "lib/ERC721A/contracts/ERC721A.sol":10720:10727  tokenId */
+      dup5
+        /* "lib/ERC721A/contracts/ERC721A.sol":10710:10719  _toString */
+      tag_323
+        /* "lib/ERC721A/contracts/ERC721A.sol":10710:10728  _toString(tokenId) */
+      jump	// in
+    tag_322:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10684:10729  abi.encodePacked(baseURI, _toString(tokenId)) */
+      add(0x20, mload(0x40))
+      tag_324
+      swap3
+      swap2
+      swap1
+      tag_325
+      jump	// in
+    tag_324:
+      mload(0x40)
+      0x20
+      dup2
+      dup4
+      sub
+      sub
+      dup2
+      mstore
+      swap1
+      0x40
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":10648:10735  bytes(baseURI).length != 0 ? string(abi.encodePacked(baseURI, _toString(tokenId))) : '' */
+    tag_321:
+        /* "lib/ERC721A/contracts/ERC721A.sol":10641:10735  return bytes(baseURI).length != 0 ? string(abi.encodePacked(baseURI, _toString(tokenId))) : '' */
+      swap4
+        /* "lib/ERC721A/contracts/ERC721A.sol":10420:10742  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {... */
+      swap3
+      pop
+      pop
+      pop
+      jump	// out
+        /* "src/Venus.sol":2222:2504  function setMaxPerWallet(uint256 newMaxMint) external onlyOwner {... */
+    tag_155:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_327
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_327:
+        /* "src/Venus.sol":332:336  1000 */
+      0x03e8
+        /* "src/Venus.sol":2304:2314  newMaxMint */
+      dup2
+        /* "src/Venus.sol":2304:2328  newMaxMint <= MAX_SUPPLY */
+      gt
+      iszero
+        /* "src/Venus.sol":2296:2371  require(newMaxMint <= MAX_SUPPLY, "Max mint per wallet exceeds max supply") */
+      tag_329
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":10220:10222   */
+      0x20
+        /* "src/Venus.sol":2296:2371  require(newMaxMint <= MAX_SUPPLY, "Max mint per wallet exceeds max supply") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":10202:10223   */
+      mstore
+        /* "#utility.yul":10259:10261   */
+      0x26
+        /* "#utility.yul":10239:10257   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":10232:10262   */
+      mstore
+        /* "#utility.yul":10298:10332   */
+      0x4d6178206d696e74207065722077616c6c65742065786365656473206d617820
+        /* "#utility.yul":10278:10296   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":10271:10333   */
+      mstore
+      shl(0xd0, 0x737570706c79)
+        /* "#utility.yul":10349:10367   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":10342:10378   */
+      mstore
+        /* "#utility.yul":10395:10414   */
+      0x84
+      add
+        /* "src/Venus.sol":2296:2371  require(newMaxMint <= MAX_SUPPLY, "Max mint per wallet exceeds max supply") */
+      tag_241
+        /* "#utility.yul":10018:10420   */
+      jump
+        /* "src/Venus.sol":2296:2371  require(newMaxMint <= MAX_SUPPLY, "Max mint per wallet exceeds max supply") */
+    tag_329:
+        /* "src/Venus.sol":2403:2413  batchLimit */
+      sload(0x0b)
+        /* "src/Venus.sol":2389:2399  newMaxMint */
+      dup2
+        /* "src/Venus.sol":2389:2413  newMaxMint >= batchLimit */
+      lt
+      iszero
+        /* "src/Venus.sol":2381:2462  require(newMaxMint >= batchLimit, "Max mint per wallet smaller than batch limit") */
+      tag_332
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":10627:10629   */
+      0x20
+        /* "src/Venus.sol":2381:2462  require(newMaxMint >= batchLimit, "Max mint per wallet smaller than batch limit") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":10609:10630   */
+      mstore
+        /* "#utility.yul":10666:10668   */
+      0x2c
+        /* "#utility.yul":10646:10664   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":10639:10669   */
+      mstore
+        /* "#utility.yul":10705:10739   */
+      0x4d6178206d696e74207065722077616c6c657420736d616c6c6572207468616e
+        /* "#utility.yul":10685:10703   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":10678:10740   */
+      mstore
+      shl(0xa2, 0x0818985d18da081b1a5b5a5d)
+        /* "#utility.yul":10756:10774   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":10749:10791   */
+      mstore
+        /* "#utility.yul":10808:10827   */
+      0x84
+      add
+        /* "src/Venus.sol":2381:2462  require(newMaxMint >= batchLimit, "Max mint per wallet smaller than batch limit") */
+      tag_241
+        /* "#utility.yul":10425:10833   */
+      jump
+        /* "src/Venus.sol":2381:2462  require(newMaxMint >= batchLimit, "Max mint per wallet smaller than batch limit") */
+    tag_332:
+        /* "src/Venus.sol":2472:2484  maxPerWallet */
+      0x0c
+        /* "src/Venus.sol":2472:2497  maxPerWallet = newMaxMint */
+      sstore
+        /* "src/Venus.sol":2222:2504  function setMaxPerWallet(uint256 newMaxMint) external onlyOwner {... */
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":17842:18004  function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {... */
+    tag_159:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":17962:17987  _operatorApprovals[owner] */
+      swap2
+      dup3
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":17939:17943  bool */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":17962:17987  _operatorApprovals[owner] */
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":17962:17980  _operatorApprovals */
+      0x07
+        /* "lib/ERC721A/contracts/ERC721A.sol":17962:17987  _operatorApprovals[owner] */
+      0x20
+      swap1
+      dup2
+      mstore
+      0x40
+      dup1
+      dup4
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":17962:17997  _operatorApprovals[owner][operator] */
+      swap4
+      swap1
+      swap5
+      and
+      dup3
+      mstore
+      swap2
+      swap1
+      swap2
+      mstore
+      keccak256
+      sload
+      0xff
+      and
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":17842:18004  function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {... */
+      jump	// out
+        /* "src/Venus.sol":2546:2803  function setBatchLimit(uint256 newLimit) external onlyOwner {... */
+    tag_164:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_337
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_337:
+        /* "src/Venus.sol":2636:2639  100 */
+      0x64
+        /* "src/Venus.sol":2624:2632  newLimit */
+      dup2
+        /* "src/Venus.sol":2624:2639  newLimit <= 100 */
+      gt
+      iszero
+        /* "src/Venus.sol":2616:2679  require(newLimit <= 100, "Batch limit exceeds maximum allowed") */
+      tag_339
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":11040:11042   */
+      0x20
+        /* "src/Venus.sol":2616:2679  require(newLimit <= 100, "Batch limit exceeds maximum allowed") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":11022:11043   */
+      mstore
+        /* "#utility.yul":11079:11081   */
+      0x23
+        /* "#utility.yul":11059:11077   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":11052:11082   */
+      mstore
+        /* "#utility.yul":11118:11152   */
+      0x4261746368206c696d69742065786365656473206d6178696d756d20616c6c6f
+        /* "#utility.yul":11098:11116   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":11091:11153   */
+      mstore
+      shl(0xea, 0x1dd959)
+        /* "#utility.yul":11169:11187   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":11162:11195   */
+      mstore
+        /* "#utility.yul":11212:11231   */
+      0x84
+      add
+        /* "src/Venus.sol":2616:2679  require(newLimit <= 100, "Batch limit exceeds maximum allowed") */
+      tag_241
+        /* "#utility.yul":10838:11237   */
+      jump
+        /* "src/Venus.sol":2616:2679  require(newLimit <= 100, "Batch limit exceeds maximum allowed") */
+    tag_339:
+        /* "src/Venus.sol":2709:2721  maxPerWallet */
+      sload(0x0c)
+        /* "src/Venus.sol":2697:2705  newLimit */
+      dup2
+        /* "src/Venus.sol":2697:2721  newLimit <= maxPerWallet */
+      gt
+      iszero
+        /* "src/Venus.sol":2689:2765  require(newLimit <= maxPerWallet, "Batch limit exceeds max mint per wallet") */
+      tag_342
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":11444:11446   */
+      0x20
+        /* "src/Venus.sol":2689:2765  require(newLimit <= maxPerWallet, "Batch limit exceeds max mint per wallet") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":11426:11447   */
+      mstore
+        /* "#utility.yul":11483:11485   */
+      0x27
+        /* "#utility.yul":11463:11481   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":11456:11486   */
+      mstore
+        /* "#utility.yul":11522:11556   */
+      0x4261746368206c696d69742065786365656473206d6178206d696e7420706572
+        /* "#utility.yul":11502:11520   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":11495:11557   */
+      mstore
+      shl(0xca, 0x081dd85b1b195d)
+        /* "#utility.yul":11573:11591   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":11566:11603   */
+      mstore
+        /* "#utility.yul":11620:11639   */
+      0x84
+      add
+        /* "src/Venus.sol":2689:2765  require(newLimit <= maxPerWallet, "Batch limit exceeds max mint per wallet") */
+      tag_241
+        /* "#utility.yul":11242:11645   */
+      jump
+        /* "src/Venus.sol":2689:2765  require(newLimit <= maxPerWallet, "Batch limit exceeds max mint per wallet") */
+    tag_342:
+        /* "src/Venus.sol":2775:2785  batchLimit */
+      0x0b
+        /* "src/Venus.sol":2775:2796  batchLimit = newLimit */
+      sstore
+        /* "src/Venus.sol":2546:2803  function setBatchLimit(uint256 newLimit) external onlyOwner {... */
+      jump	// out
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2074:2272  function transferOwnership(address newOwner) public virtual onlyOwner {... */
+    tag_168:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      tag_346
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1105  _checkOwner */
+      tag_227
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1094:1107  _checkOwner() */
+      jump	// in
+    tag_346:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2162:2184  newOwner != address(0) */
+      dup2
+      and
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2154:2227  require(newOwner != address(0), "Ownable: new owner is the zero address") */
+      tag_348
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":11852:11854   */
+      0x20
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2154:2227  require(newOwner != address(0), "Ownable: new owner is the zero address") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":11834:11855   */
+      mstore
+        /* "#utility.yul":11891:11893   */
+      0x26
+        /* "#utility.yul":11871:11889   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":11864:11894   */
+      mstore
+        /* "#utility.yul":11930:11964   */
+      0x4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061
+        /* "#utility.yul":11910:11928   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":11903:11965   */
+      mstore
+      shl(0xd0, 0x646472657373)
+        /* "#utility.yul":11981:11999   */
+      0x64
+      dup3
+      add
+        /* "#utility.yul":11974:12010   */
+      mstore
+        /* "#utility.yul":12027:12046   */
+      0x84
+      add
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2154:2227  require(newOwner != address(0), "Ownable: new owner is the zero address") */
+      tag_241
+        /* "#utility.yul":11650:12052   */
+      jump
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2154:2227  require(newOwner != address(0), "Ownable: new owner is the zero address") */
+    tag_348:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2237:2265  _transferOwnership(newOwner) */
+      tag_351
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2256:2264  newOwner */
+      dup2
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2237:2255  _transferOwnership */
+      tag_236
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2237:2265  _transferOwnership(newOwner) */
+      jump	// in
+    tag_351:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2074:2272  function transferOwnership(address newOwner) public virtual onlyOwner {... */
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":18253:18613  function _exists(uint256 tokenId) internal view virtual returns (bool result) {... */
+    tag_181:
+        /* "lib/ERC721A/contracts/ERC721A.sol":18318:18329  bool result */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":18401:18414  _currentIndex */
+      dup1
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":18391:18398  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":18391:18414  tokenId < _currentIndex */
+      lt
+        /* "lib/ERC721A/contracts/ERC721A.sol":18387:18597  if (tokenId < _currentIndex) {... */
+      iszero
+      tag_355
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":18434:18448  uint256 packed */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":18466:18526  while ((packed = _packedOwnerships[tokenId]) == 0) --tokenId */
+    tag_356:
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":18483:18509  _packedOwnerships[tokenId] */
+      0x00
+      dup3
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":18483:18500  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":18483:18509  _packedOwnerships[tokenId] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":18473:18515  (packed = _packedOwnerships[tokenId]) == 0 */
+      dup2
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":18466:18526  while ((packed = _packedOwnerships[tokenId]) == 0) --tokenId */
+      tag_357
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":18517:18526  --tokenId */
+      tag_358
+      dup4
+      tag_359
+      jump	// in
+    tag_358:
+      swap3
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":18466:18526  while ((packed = _packedOwnerships[tokenId]) == 0) --tokenId */
+      jump(tag_356)
+    tag_357:
+      shl(0xe0, 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":18553:18577  packed & _BITMASK_BURNED */
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":18553:18582  packed & _BITMASK_BURNED == 0 */
+      iszero
+      swap1
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":18387:18597  if (tokenId < _currentIndex) {... */
+    tag_355:
+        /* "lib/ERC721A/contracts/ERC721A.sol":18253:18613  function _exists(uint256 tokenId) internal view virtual returns (bool result) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":43371:43531  function _revert(bytes4 errorSelector) internal pure {... */
+    tag_184:
+        /* "lib/ERC721A/contracts/ERC721A.sol":43470:43483  errorSelector */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":43464:43468  0x00 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":43457:43484  mstore(0x00, errorSelector) */
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":43510:43514  0x04 */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":43504:43508  0x00 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":43497:43515  revert(0x00, 0x04) */
+      revert
+        /* "lib/ERC721A/contracts/ERC721A.sol":35019:35479  function _approve(... */
+    tag_187:
+        /* "lib/ERC721A/contracts/ERC721A.sol":35143:35156  address owner */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":35159:35175  ownerOf(tokenId) */
+      tag_362
+        /* "lib/ERC721A/contracts/ERC721A.sol":35167:35174  tokenId */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":35159:35166  ownerOf */
+      tag_97
+        /* "lib/ERC721A/contracts/ERC721A.sol":35159:35175  ownerOf(tokenId) */
+      jump	// in
+    tag_362:
+        /* "lib/ERC721A/contracts/ERC721A.sol":35143:35175  address owner = ownerOf(tokenId) */
+      swap1
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":35190:35203  approvalCheck */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":35190:35235  approvalCheck && _msgSenderERC721A() != owner */
+      dup1
+      iszero
+      tag_363
+      jumpi
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":35207:35235  _msgSenderERC721A() != owner */
+      dup3
+      and
+      eq
+      iszero
+        /* "lib/ERC721A/contracts/ERC721A.sol":35190:35235  approvalCheck && _msgSenderERC721A() != owner */
+    tag_363:
+        /* "lib/ERC721A/contracts/ERC721A.sol":35186:35384  if (approvalCheck && _msgSenderERC721A() != owner)... */
+      iszero
+      tag_369
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":35254:35298  isApprovedForAll(owner, _msgSenderERC721A()) */
+      tag_366
+        /* "lib/ERC721A/contracts/ERC721A.sol":35271:35276  owner */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+        /* "lib/ERC721A/contracts/ERC721A.sol":17842:18004  function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {... */
+      tag_159
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":35254:35298  isApprovedForAll(owner, _msgSenderERC721A()) */
+    tag_366:
+        /* "lib/ERC721A/contracts/ERC721A.sol":35249:35384  if (!isApprovedForAll(owner, _msgSenderERC721A())) {... */
+      tag_369
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":35318:35369  _revert(ApprovalCallerNotOwnerNorApproved.selector) */
+      tag_369
+      shl(0xe1, 0x67d9dca1)
+        /* "lib/ERC721A/contracts/ERC721A.sol":35318:35325  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":35318:35369  _revert(ApprovalCallerNotOwnerNorApproved.selector) */
+      jump	// in
+    tag_369:
+        /* "lib/ERC721A/contracts/ERC721A.sol":35394:35418  _tokenApprovals[tokenId] */
+      0x00
+      dup4
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":35394:35409  _tokenApprovals */
+      0x06
+        /* "lib/ERC721A/contracts/ERC721A.sol":35394:35418  _tokenApprovals[tokenId] */
+      0x20
+      mstore
+      0x40
+      dup1
+      dup3
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":35394:35429  _tokenApprovals[tokenId].value = to */
+      dup1
+      sload
+      not(sub(shl(0xa0, 0x01), 0x01))
+      and
+      sub(shl(0xa0, 0x01), 0x01)
+      dup9
+      dup2
+      and
+      swap2
+      dup3
+      or
+      swap1
+      swap3
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":35444:35472  Approval(owner, to, tokenId) */
+      swap2
+      mload
+        /* "lib/ERC721A/contracts/ERC721A.sol":35394:35418  _tokenApprovals[tokenId] */
+      dup7
+      swap4
+        /* "lib/ERC721A/contracts/ERC721A.sol":35444:35472  Approval(owner, to, tokenId) */
+      swap2
+      dup6
+      and
+      swap2
+      0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
+      swap2
+      log4
+        /* "lib/ERC721A/contracts/ERC721A.sol":35133:35479  {... */
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":35019:35479  function _approve(... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":12850:14828  function _packedOwnershipOf(uint256 tokenId) private view returns (uint256 packed) {... */
+    tag_193:
+        /* "lib/ERC721A/contracts/ERC721A.sol":12998:13024  _packedOwnerships[tokenId] */
+      0x00
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":12998:13015  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":12998:13024  _packedOwnerships[tokenId] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":13122:13133  packed == 0 */
+      dup2
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":13118:14388  if (packed == 0) {... */
+      tag_374
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":13168:13181  _currentIndex */
+      sload(0x00)
+        /* "lib/ERC721A/contracts/ERC721A.sol":13157:13164  tokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":13157:13181  tokenId >= _currentIndex */
+      lt
+        /* "lib/ERC721A/contracts/ERC721A.sol":13153:13230  if (tokenId >= _currentIndex) _revert(OwnerQueryForNonexistentToken.selector) */
+      tag_376
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":13183:13230  _revert(OwnerQueryForNonexistentToken.selector) */
+      tag_376
+      shl(0xe1, 0x6f96cda1)
+        /* "lib/ERC721A/contracts/ERC721A.sol":13183:13190  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":13183:13230  _revert(OwnerQueryForNonexistentToken.selector) */
+      jump	// in
+    tag_376:
+        /* "lib/ERC721A/contracts/ERC721A.sol":13777:14374  for (;;) {... */
+    tag_377:
+      pop
+      not(0x00)
+        /* "lib/ERC721A/contracts/ERC721A.sol":13871:13880  --tokenId */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":13853:13881  _packedOwnerships[--tokenId] */
+      0x00
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":13853:13870  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":13853:13881  _packedOwnerships[--tokenId] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":13925:13950  if (packed == 0) continue */
+      dup1
+      iszero
+        /* "lib/ERC721A/contracts/ERC721A.sol":13777:14374  for (;;) {... */
+      tag_377
+        /* "lib/ERC721A/contracts/ERC721A.sol":13925:13950  if (packed == 0) continue */
+      jumpi
+      shl(0xe0, 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":13976:13982  packed */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":13976:14000  packed & _BITMASK_BURNED */
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":14004:14005  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":13976:14005  packed & _BITMASK_BURNED == 0 */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":13972:14020  if (packed & _BITMASK_BURNED == 0) return packed */
+      tag_381
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":12850:14828  function _packedOwnershipOf(uint256 tokenId) private view returns (uint256 packed) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":13972:14020  if (packed & _BITMASK_BURNED == 0) return packed */
+    tag_381:
+        /* "lib/ERC721A/contracts/ERC721A.sol":14308:14355  _revert(OwnerQueryForNonexistentToken.selector) */
+      tag_382
+      shl(0xe1, 0x6f96cda1)
+        /* "lib/ERC721A/contracts/ERC721A.sol":14308:14315  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":14308:14355  _revert(OwnerQueryForNonexistentToken.selector) */
+      jump	// in
+    tag_382:
+        /* "lib/ERC721A/contracts/ERC721A.sol":13777:14374  for (;;) {... */
+      jump(tag_377)
+        /* "lib/ERC721A/contracts/ERC721A.sol":13118:14388  if (packed == 0) {... */
+    tag_374:
+      shl(0xe0, 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":14710:14716  packed */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":14710:14734  packed & _BITMASK_BURNED */
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":14738:14739  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":14710:14739  packed & _BITMASK_BURNED == 0 */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":14706:14754  if (packed & _BITMASK_BURNED == 0) return packed */
+      tag_383
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":12850:14828  function _packedOwnershipOf(uint256 tokenId) private view returns (uint256 packed) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":14706:14754  if (packed & _BITMASK_BURNED == 0) return packed */
+    tag_383:
+        /* "lib/ERC721A/contracts/ERC721A.sol":14774:14821  _revert(OwnerQueryForNonexistentToken.selector) */
+      tag_355
+      shl(0xe1, 0x6f96cda1)
+        /* "lib/ERC721A/contracts/ERC721A.sol":14774:14781  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":14774:14821  _revert(OwnerQueryForNonexistentToken.selector) */
+      jump	// in
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1359:1489  function _checkOwner() internal view virtual {... */
+    tag_227:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1273:1279  _owner */
+      and(sub(shl(0xa0, 0x01), 0x01), sload(0x08))
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1422:1445  owner() == _msgSender() */
+      eq
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1414:1482  require(owner() == _msgSender(), "Ownable: caller is not the owner") */
+      tag_235
+      jumpi
+      mload(0x40)
+      shl(0xe5, 0x461bcd)
+      dup2
+      mstore
+        /* "#utility.yul":12400:12402   */
+      0x20
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1414:1482  require(owner() == _msgSender(), "Ownable: caller is not the owner") */
+      0x04
+      dup3
+      add
+        /* "#utility.yul":12382:12403   */
+      dup2
+      swap1
+      mstore
+        /* "#utility.yul":12419:12437   */
+      0x24
+      dup3
+      add
+        /* "#utility.yul":12412:12442   */
+      mstore
+        /* "#utility.yul":12478:12512   */
+      0x4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572
+        /* "#utility.yul":12458:12476   */
+      0x44
+      dup3
+      add
+        /* "#utility.yul":12451:12513   */
+      mstore
+        /* "#utility.yul":12530:12548   */
+      0x64
+      add
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":1414:1482  require(owner() == _msgSender(), "Ownable: caller is not the owner") */
+      tag_241
+        /* "#utility.yul":12198:12554   */
+      jump
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2426:2613  function _transferOwnership(address newOwner) internal virtual {... */
+    tag_236:
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+      0x08
+      dup1
+      sload
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2534:2551  _owner = newOwner */
+      dup4
+      dup2
+      and
+      not(sub(shl(0xa0, 0x01), 0x01))
+      dup4
+      and
+      dup2
+      or
+      swap1
+      swap4
+      sstore
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+      mload(0x40)
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+      swap2
+      and
+      swap2
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2534:2551  _owner = newOwner */
+      swap1
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2518:2524  _owner */
+      dup3
+      swap1
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+      0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0
+      swap1
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2499:2515  address oldOwner */
+      0x00
+      swap1
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2566:2606  OwnershipTransferred(oldOwner, newOwner) */
+      log3
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2489:2613  {... */
+      pop
+        /* "lib/openzeppelin-contracts/contracts/access/Ownable.sol":2426:2613  function _transferOwnership(address newOwner) internal virtual {... */
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":28402:30653  function _mint(address to, uint256 quantity) internal virtual {... */
+    tag_280:
+        /* "lib/ERC721A/contracts/ERC721A.sol":28474:28494  uint256 startTokenId */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":28497:28510  _currentIndex */
+      dup1
+      sload
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":28524:28537  quantity == 0 */
+      dup3
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":28520:28573  if (quantity == 0) _revert(MintZeroQuantity.selector) */
+      tag_406
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":28539:28573  _revert(MintZeroQuantity.selector) */
+      tag_406
+      shl(0xe0, 0xb562e8dd)
+        /* "lib/ERC721A/contracts/ERC721A.sol":28539:28546  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":28539:28573  _revert(MintZeroQuantity.selector) */
+      jump	// in
+    tag_406:
+        /* "lib/ERC721A/contracts/ERC721A.sol":29073:29104  _packedOwnerships[startTokenId] */
+      0x00
+      dup2
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":29073:29090  _packedOwnerships */
+      0x04
+        /* "lib/ERC721A/contracts/ERC721A.sol":29073:29104  _packedOwnerships[startTokenId] */
+      0x20
+      swap1
+      dup2
+      mstore
+      0x40
+      dup1
+      dup4
+      keccak256
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":15595:15623  and(owner, _BITMASK_ADDRESS) */
+      dup8
+      and
+        /* "lib/ERC721A/contracts/ERC721A.sol":15767:15778  timestamp() */
+      timestamp
+        /* "lib/ERC721A/contracts/ERC721A.sol":15742:15765  _BITPOS_START_TIMESTAMP */
+      0xa0
+        /* "lib/ERC721A/contracts/ERC721A.sol":15738:15779  shl(_BITPOS_START_TIMESTAMP, timestamp()) */
+      shl
+        /* "lib/ERC721A/contracts/ERC721A.sol":16200:16201  1 */
+      0x01
+        /* "lib/ERC721A/contracts/ERC721A.sol":16187:16202  eq(quantity, 1) */
+      dup9
+      eq
+        /* "lib/ERC721A/contracts/ERC721A.sol":16161:16185  _BITPOS_NEXT_INITIALIZED */
+      0xe1
+        /* "lib/ERC721A/contracts/ERC721A.sol":16157:16203  shl(_BITPOS_NEXT_INITIALIZED, eq(quantity, 1)) */
+      shl
+        /* "lib/ERC721A/contracts/ERC721A.sol":15735:15787  or(shl(_BITPOS_START_TIMESTAMP, timestamp()), flags) */
+      or
+        /* "lib/ERC721A/contracts/ERC721A.sol":15725:15788  or(owner, or(shl(_BITPOS_START_TIMESTAMP, timestamp()), flags)) */
+      dup2
+      or
+        /* "lib/ERC721A/contracts/ERC721A.sol":29073:29243  _packedOwnerships[startTokenId] = _packOwnershipData(... */
+      swap1
+      swap2
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":29454:29476  _packedAddressData[to] */
+      dup1
+      dup5
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":29454:29472  _packedAddressData */
+      0x05
+        /* "lib/ERC721A/contracts/ERC721A.sol":29454:29476  _packedAddressData[to] */
+      swap1
+      swap3
+      mstore
+      dup3
+      keccak256
+        /* "lib/ERC721A/contracts/ERC721A.sol":29454:29525  _packedAddressData[to] += quantity * ((1 << _BITPOS_NUMBER_MINTED) | 1) */
+      dup1
+      sload
+        /* "lib/ERC721A/contracts/ERC721A.sol":29492:29524  (1 << _BITPOS_NUMBER_MINTED) | 1 */
+      0x010000000000000001
+        /* "lib/ERC721A/contracts/ERC721A.sol":29480:29525  quantity * ((1 << _BITPOS_NUMBER_MINTED) | 1) */
+      dup7
+      mul
+        /* "lib/ERC721A/contracts/ERC721A.sol":29454:29525  _packedAddressData[to] += quantity * ((1 << _BITPOS_NUMBER_MINTED) | 1) */
+      add
+      swap1
+      sstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":15595:15623  and(owner, _BITMASK_ADDRESS) */
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":29710:29723  toMasked == 0 */
+      dup2
+      swap1
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":29706:29760  if (toMasked == 0) _revert(MintToZeroAddress.selector) */
+      tag_413
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":29725:29760  _revert(MintToZeroAddress.selector) */
+      tag_413
+      shl(0xe8, 0x2e0763)
+        /* "lib/ERC721A/contracts/ERC721A.sol":29725:29732  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":29725:29760  _revert(MintToZeroAddress.selector) */
+      jump	// in
+    tag_413:
+        /* "lib/ERC721A/contracts/ERC721A.sol":29789:29812  startTokenId + quantity */
+      dup2
+      dup4
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":29789:29801  startTokenId */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":29871:30533  do {... */
+    tag_414:
+        /* "lib/ERC721A/contracts/ERC721A.sol":30281:30288  tokenId */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":30238:30246  toMasked */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":30194:30195  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":30129:30154  _TRANSFER_EVENT_SIGNATURE */
+      0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+        /* "lib/ERC721A/contracts/ERC721A.sol":30067:30068  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":30003:30004  0 */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":29973:30324  log4(... */
+      log4
+        /* "lib/ERC721A/contracts/ERC721A.sol":30528:30531  end */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":30515:30524  ++tokenId */
+      dup2
+      0x01
+      add
+      swap2
+      pop
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":30515:30531  ++tokenId != end */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":29871:30533  do {... */
+      tag_414
+      jumpi
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":30547:30560  _currentIndex */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":30547:30566  _currentIndex = end */
+      sstore
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":24084:24271  function safeTransferFrom(... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "lib/ERC721A/contracts/ERC721A.sol":27283:27956  function _checkContractOnERC721Received(... */
+    tag_311:
+        /* "lib/ERC721A/contracts/ERC721A.sol":27461:27549  ERC721A__IERC721Receiver(to).onERC721Received(_msgSenderERC721A(), from, tokenId, _data) */
+      mload(0x40)
+      shl(0xe1, 0x0a85bd01)
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":27441:27445  bool */
+      0x00
+      swap1
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "lib/ERC721A/contracts/ERC721A.sol":27461:27506  ERC721A__IERC721Receiver(to).onERC721Received */
+      dup6
+      and
+      swap1
+      0x150b7a02
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27461:27549  ERC721A__IERC721Receiver(to).onERC721Received(_msgSenderERC721A(), from, tokenId, _data) */
+      tag_420
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":41487:41497  msg.sender */
+      caller
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27528:27532  from */
+      dup10
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27534:27541  tokenId */
+      dup9
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27543:27548  _data */
+      dup9
+      swap1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27461:27549  ERC721A__IERC721Receiver(to).onERC721Received(_msgSenderERC721A(), from, tokenId, _data) */
+      0x04
+      add
+      tag_421
+      jump	// in
+    tag_420:
+      0x20
+      mload(0x40)
+      dup1
+      dup4
+      sub
+      dup2
+      0x00
+      dup8
+      gas
+      call
+      swap3
+      pop
+      pop
+      pop
+      dup1
+      iszero
+      tag_422
+      jumpi
+      pop
+      0x40
+      dup1
+      mload
+      0x1f
+      returndatasize
+      swap1
+      dup2
+      add
+      not(0x1f)
+      and
+      dup3
+      add
+      swap1
+      swap3
+      mstore
+      tag_423
+      swap2
+      dup2
+      add
+      swap1
+      tag_424
+      jump	// in
+    tag_423:
+      0x01
+    tag_422:
+        /* "lib/ERC721A/contracts/ERC721A.sol":27457:27950  try ERC721A__IERC721Receiver(to).onERC721Received(_msgSenderERC721A(), from, tokenId, _data) returns (... */
+      tag_425
+      jumpi
+      returndatasize
+      dup1
+      dup1
+      iszero
+      tag_430
+      jumpi
+      mload(0x40)
+      swap2
+      pop
+      and(add(returndatasize, 0x3f), not(0x1f))
+      dup3
+      add
+      0x40
+      mstore
+      returndatasize
+      dup3
+      mstore
+      returndatasize
+      0x00
+      0x20
+      dup5
+      add
+      returndatacopy
+      jump(tag_429)
+    tag_430:
+      0x60
+      swap2
+      pop
+    tag_429:
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":27739:27745  reason */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27739:27752  reason.length */
+      mload
+        /* "lib/ERC721A/contracts/ERC721A.sol":27756:27757  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":27739:27757  reason.length == 0 */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":27735:27848  if (reason.length == 0) {... */
+      tag_432
+      jumpi
+        /* "lib/ERC721A/contracts/ERC721A.sol":27777:27833  _revert(TransferToNonERC721ReceiverImplementer.selector) */
+      tag_432
+      shl(0xe1, 0x68d2bf6b)
+        /* "lib/ERC721A/contracts/ERC721A.sol":27777:27784  _revert */
+      tag_184
+        /* "lib/ERC721A/contracts/ERC721A.sol":27777:27833  _revert(TransferToNonERC721ReceiverImplementer.selector) */
+      jump	// in
+    tag_432:
+        /* "lib/ERC721A/contracts/ERC721A.sol":27918:27924  reason */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":27912:27925  mload(reason) */
+      mload
+        /* "lib/ERC721A/contracts/ERC721A.sol":27903:27909  reason */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":27899:27901  32 */
+      0x20
+        /* "lib/ERC721A/contracts/ERC721A.sol":27895:27910  add(32, reason) */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":27888:27926  revert(add(32, reason), mload(reason)) */
+      revert
+        /* "lib/ERC721A/contracts/ERC721A.sol":27457:27950  try ERC721A__IERC721Receiver(to).onERC721Received(_msgSenderERC721A(), from, tokenId, _data) returns (... */
+    tag_425:
+      not(sub(shl(0xe0, 0x01), 0x01))
+        /* "lib/ERC721A/contracts/ERC721A.sol":27617:27681  retval == ERC721A__IERC721Receiver(to).onERC721Received.selector */
+      and
+      shl(0xe1, 0x0a85bd01)
+      eq
+      swap1
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":27283:27956  function _checkContractOnERC721Received(... */
+      swap5
+      swap4
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "src/Venus.sol":1032:1136  function _baseURI() internal view override returns (string memory) {... */
+    tag_319:
+        /* "src/Venus.sol":1084:1097  string memory */
+      0x60
+        /* "src/Venus.sol":1116:1129  _baseTokenURI */
+      0x0d
+        /* "src/Venus.sol":1109:1129  return _baseTokenURI */
+      dup1
+      sload
+      tag_173
+      swap1
+      tag_174
+      jump	// in
+        /* "lib/ERC721A/contracts/ERC721A.sol":41601:43309  function _toString(uint256 value) internal pure virtual returns (string memory str) {... */
+    tag_323:
+        /* "lib/ERC721A/contracts/ERC721A.sol":41666:41683  string memory str */
+      0x60
+        /* "lib/ERC721A/contracts/ERC721A.sol":42094:42098  0xa0 */
+      0xa0
+        /* "lib/ERC721A/contracts/ERC721A.sol":42087:42091  0x40 */
+      0x40
+        /* "lib/ERC721A/contracts/ERC721A.sol":42081:42092  mload(0x40) */
+      mload
+        /* "lib/ERC721A/contracts/ERC721A.sol":42077:42099  add(mload(0x40), 0xa0) */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":42184:42185  m */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":42178:42182  0x40 */
+      0x40
+        /* "lib/ERC721A/contracts/ERC721A.sol":42171:42186  mstore(0x40, m) */
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":42257:42261  0x20 */
+      0x20
+        /* "lib/ERC721A/contracts/ERC721A.sol":42254:42255  m */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":42250:42262  sub(m, 0x20) */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":42243:42262  str := sub(m, 0x20) */
+      swap2
+      pop
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":42337:42338  0 */
+      0x00
+        /* "lib/ERC721A/contracts/ERC721A.sol":42332:42335  str */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":42325:42339  mstore(str, 0) */
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":42438:42441  str */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":42672:42677  value */
+      dup3
+        /* "lib/ERC721A/contracts/ERC721A.sol":42654:43073  for { let temp := value } 1 {} {... */
+    tag_441:
+        /* "lib/ERC721A/contracts/ERC721A.sol":42719:42720  1 */
+      0x01
+        /* "lib/ERC721A/contracts/ERC721A.sol":42714:42717  str */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":42710:42721  sub(str, 1) */
+      sub
+        /* "lib/ERC721A/contracts/ERC721A.sol":42703:42721  str := sub(str, 1) */
+      swap3
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":42887:42889  10 */
+      0x0a
+        /* "lib/ERC721A/contracts/ERC721A.sol":42881:42885  temp */
+      dup2
+        /* "lib/ERC721A/contracts/ERC721A.sol":42877:42890  mod(temp, 10) */
+      mod
+        /* "lib/ERC721A/contracts/ERC721A.sol":42873:42875  48 */
+      0x30
+        /* "lib/ERC721A/contracts/ERC721A.sol":42869:42891  add(48, mod(temp, 10)) */
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":42864:42867  str */
+      dup4
+        /* "lib/ERC721A/contracts/ERC721A.sol":42856:42892  mstore8(str, add(48, mod(temp, 10))) */
+      mstore8
+        /* "lib/ERC721A/contracts/ERC721A.sol":42979:42981  10 */
+      0x0a
+        /* "lib/ERC721A/contracts/ERC721A.sol":42969:42982  div(temp, 10) */
+      swap1
+      div
+        /* "lib/ERC721A/contracts/ERC721A.sol":43034:43059  if iszero(temp) { break } */
+      dup1
+        /* "lib/ERC721A/contracts/ERC721A.sol":42654:43073  for { let temp := value } 1 {} {... */
+      tag_441
+        /* "lib/ERC721A/contracts/ERC721A.sol":43034:43059  if iszero(temp) { break } */
+      jumpi
+      pop
+        /* "lib/ERC721A/contracts/ERC721A.sol":43101:43114  sub(end, str) */
+      dup2
+      swap1
+      sub
+      not(0x1f)
+        /* "lib/ERC721A/contracts/ERC721A.sol":43214:43228  sub(str, 0x20) */
+      swap1
+      swap2
+      add
+        /* "lib/ERC721A/contracts/ERC721A.sol":43274:43293  mstore(str, length) */
+      swap1
+      dup2
+      mstore
+        /* "lib/ERC721A/contracts/ERC721A.sol":43214:43228  sub(str, 0x20) */
+      swap2
+        /* "lib/ERC721A/contracts/ERC721A.sol":41601:43309  function _toString(uint256 value) internal pure virtual returns (string memory str) {... */
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":14:145   */
+    tag_448:
+      not(sub(shl(0xe0, 0x01), 0x01))
+        /* "#utility.yul":88:120   */
+      dup2
+      and
+        /* "#utility.yul":78:121   */
+      dup2
+      eq
+        /* "#utility.yul":68:139   */
+      tag_351
+      jumpi
+        /* "#utility.yul":135:136   */
+      0x00
+        /* "#utility.yul":132:133   */
+      dup1
+        /* "#utility.yul":125:137   */
+      revert
+        /* "#utility.yul":150:395   */
+    tag_41:
+        /* "#utility.yul":208:214   */
+      0x00
+        /* "#utility.yul":261:263   */
+      0x20
+        /* "#utility.yul":249:258   */
+      dup3
+        /* "#utility.yul":240:247   */
+      dup5
+        /* "#utility.yul":236:259   */
+      sub
+        /* "#utility.yul":232:264   */
+      slt
+        /* "#utility.yul":229:281   */
+      iszero
+      tag_459
+      jumpi
+        /* "#utility.yul":277:278   */
+      0x00
+        /* "#utility.yul":274:275   */
+      dup1
+        /* "#utility.yul":267:279   */
+      revert
+        /* "#utility.yul":229:281   */
+    tag_459:
+        /* "#utility.yul":316:325   */
+      dup2
+        /* "#utility.yul":303:326   */
+      calldataload
+        /* "#utility.yul":335:365   */
+      tag_321
+        /* "#utility.yul":359:364   */
+      dup2
+        /* "#utility.yul":335:365   */
+      tag_448
+      jump	// in
+        /* "#utility.yul":592:842   */
+    tag_449:
+        /* "#utility.yul":677:678   */
+      0x00
+        /* "#utility.yul":687:800   */
+    tag_463:
+        /* "#utility.yul":701:707   */
+      dup4
+        /* "#utility.yul":698:699   */
+      dup2
+        /* "#utility.yul":695:708   */
+      lt
+        /* "#utility.yul":687:800   */
+      iszero
+      tag_465
+      jumpi
+        /* "#utility.yul":777:788   */
+      dup2
+      dup2
+      add
+        /* "#utility.yul":771:789   */
+      mload
+        /* "#utility.yul":758:769   */
+      dup4
+      dup3
+      add
+        /* "#utility.yul":751:790   */
+      mstore
+        /* "#utility.yul":723:725   */
+      0x20
+        /* "#utility.yul":716:726   */
+      add
+        /* "#utility.yul":687:800   */
+      jump(tag_463)
+    tag_465:
+      pop
+      pop
+        /* "#utility.yul":834:835   */
+      0x00
+        /* "#utility.yul":816:832   */
+      swap2
+      add
+        /* "#utility.yul":809:836   */
+      mstore
+        /* "#utility.yul":592:842   */
+      jump	// out
+        /* "#utility.yul":847:1118   */
+    tag_450:
+        /* "#utility.yul":889:892   */
+      0x00
+        /* "#utility.yul":927:932   */
+      dup2
+        /* "#utility.yul":921:933   */
+      mload
+        /* "#utility.yul":954:960   */
+      dup1
+        /* "#utility.yul":949:952   */
+      dup5
+        /* "#utility.yul":942:961   */
+      mstore
+        /* "#utility.yul":970:1046   */
+      tag_467
+        /* "#utility.yul":1039:1045   */
+      dup2
+        /* "#utility.yul":1032:1036   */
+      0x20
+        /* "#utility.yul":1027:1030   */
+      dup7
+        /* "#utility.yul":1023:1037   */
+      add
+        /* "#utility.yul":1016:1020   */
+      0x20
+        /* "#utility.yul":1009:1014   */
+      dup7
+        /* "#utility.yul":1005:1021   */
+      add
+        /* "#utility.yul":970:1046   */
+      tag_449
+      jump	// in
+    tag_467:
+        /* "#utility.yul":1100:1102   */
+      0x1f
+        /* "#utility.yul":1079:1094   */
+      add
+      not(0x1f)
+        /* "#utility.yul":1075:1104   */
+      and
+        /* "#utility.yul":1066:1105   */
+      swap3
+      swap1
+      swap3
+      add
+        /* "#utility.yul":1107:1111   */
+      0x20
+        /* "#utility.yul":1062:1112   */
+      add
+      swap3
+        /* "#utility.yul":847:1118   */
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":1123:1343   */
+    tag_49:
+        /* "#utility.yul":1272:1274   */
+      0x20
+        /* "#utility.yul":1261:1270   */
+      dup2
+        /* "#utility.yul":1254:1275   */
+      mstore
+        /* "#utility.yul":1235:1239   */
+      0x00
+        /* "#utility.yul":1292:1337   */
+      tag_321
+        /* "#utility.yul":1333:1335   */
+      0x20
+        /* "#utility.yul":1322:1331   */
+      dup4
+        /* "#utility.yul":1318:1336   */
+      add
+        /* "#utility.yul":1310:1316   */
+      dup5
+        /* "#utility.yul":1292:1337   */
+      tag_450
+      jump	// in
+        /* "#utility.yul":1348:1528   */
+    tag_53:
+        /* "#utility.yul":1407:1413   */
+      0x00
+        /* "#utility.yul":1460:1462   */
+      0x20
+        /* "#utility.yul":1448:1457   */
+      dup3
+        /* "#utility.yul":1439:1446   */
+      dup5
+        /* "#utility.yul":1435:1458   */
+      sub
+        /* "#utility.yul":1431:1463   */
+      slt
+        /* "#utility.yul":1428:1480   */
+      iszero
+      tag_471
+      jumpi
+        /* "#utility.yul":1476:1477   */
+      0x00
+        /* "#utility.yul":1473:1474   */
+      dup1
+        /* "#utility.yul":1466:1478   */
+      revert
+        /* "#utility.yul":1428:1480   */
+    tag_471:
+      pop
+        /* "#utility.yul":1499:1522   */
+      calldataload
+      swap2
+        /* "#utility.yul":1348:1528   */
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":1741:1914   */
+    tag_451:
+        /* "#utility.yul":1809:1829   */
+      dup1
+      calldataload
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "#utility.yul":1858:1889   */
+      dup2
+      and
+        /* "#utility.yul":1848:1890   */
+      dup2
+      eq
+        /* "#utility.yul":1838:1908   */
+      tag_355
+      jumpi
+        /* "#utility.yul":1904:1905   */
+      0x00
+        /* "#utility.yul":1901:1902   */
+      dup1
+        /* "#utility.yul":1894:1906   */
+      revert
+        /* "#utility.yul":1919:2173   */
+    tag_59:
+        /* "#utility.yul":1987:1993   */
+      0x00
+        /* "#utility.yul":1995:2001   */
+      dup1
+        /* "#utility.yul":2048:2050   */
+      0x40
+        /* "#utility.yul":2036:2045   */
+      dup4
+        /* "#utility.yul":2027:2034   */
+      dup6
+        /* "#utility.yul":2023:2046   */
+      sub
+        /* "#utility.yul":2019:2051   */
+      slt
+        /* "#utility.yul":2016:2068   */
+      iszero
+      tag_476
+      jumpi
+        /* "#utility.yul":2064:2065   */
+      0x00
+        /* "#utility.yul":2061:2062   */
+      dup1
+        /* "#utility.yul":2054:2066   */
+      revert
+        /* "#utility.yul":2016:2068   */
+    tag_476:
+        /* "#utility.yul":2087:2116   */
+      tag_477
+        /* "#utility.yul":2106:2115   */
+      dup4
+        /* "#utility.yul":2087:2116   */
+      tag_451
+      jump	// in
+    tag_477:
+        /* "#utility.yul":2077:2116   */
+      swap5
+        /* "#utility.yul":2163:2165   */
+      0x20
+        /* "#utility.yul":2148:2166   */
+      swap4
+      swap1
+      swap4
+      add
+        /* "#utility.yul":2135:2167   */
+      calldataload
+      swap4
+      pop
+      pop
+      pop
+        /* "#utility.yul":1919:2173   */
+      jump	// out
+        /* "#utility.yul":2360:2688   */
+    tag_68:
+        /* "#utility.yul":2437:2443   */
+      0x00
+        /* "#utility.yul":2445:2451   */
+      dup1
+        /* "#utility.yul":2453:2459   */
+      0x00
+        /* "#utility.yul":2506:2508   */
+      0x60
+        /* "#utility.yul":2494:2503   */
+      dup5
+        /* "#utility.yul":2485:2492   */
+      dup7
+        /* "#utility.yul":2481:2504   */
+      sub
+        /* "#utility.yul":2477:2509   */
+      slt
+        /* "#utility.yul":2474:2526   */
+      iszero
+      tag_480
+      jumpi
+        /* "#utility.yul":2522:2523   */
+      0x00
+        /* "#utility.yul":2519:2520   */
+      dup1
+        /* "#utility.yul":2512:2524   */
+      revert
+        /* "#utility.yul":2474:2526   */
+    tag_480:
+        /* "#utility.yul":2545:2574   */
+      tag_481
+        /* "#utility.yul":2564:2573   */
+      dup5
+        /* "#utility.yul":2545:2574   */
+      tag_451
+      jump	// in
+    tag_481:
+        /* "#utility.yul":2535:2574   */
+      swap3
+      pop
+        /* "#utility.yul":2593:2631   */
+      tag_482
+        /* "#utility.yul":2627:2629   */
+      0x20
+        /* "#utility.yul":2616:2625   */
+      dup6
+        /* "#utility.yul":2612:2630   */
+      add
+        /* "#utility.yul":2593:2631   */
+      tag_451
+      jump	// in
+    tag_482:
+        /* "#utility.yul":2583:2631   */
+      swap2
+      pop
+        /* "#utility.yul":2678:2680   */
+      0x40
+        /* "#utility.yul":2667:2676   */
+      dup5
+        /* "#utility.yul":2663:2681   */
+      add
+        /* "#utility.yul":2650:2682   */
+      calldataload
+        /* "#utility.yul":2640:2682   */
+      swap1
+      pop
+        /* "#utility.yul":2360:2688   */
+      swap3
+      pop
+      swap3
+      pop
+      swap3
+      jump	// out
+        /* "#utility.yul":2916:3102   */
+    tag_106:
+        /* "#utility.yul":2975:2981   */
+      0x00
+        /* "#utility.yul":3028:3030   */
+      0x20
+        /* "#utility.yul":3016:3025   */
+      dup3
+        /* "#utility.yul":3007:3014   */
+      dup5
+        /* "#utility.yul":3003:3026   */
+      sub
+        /* "#utility.yul":2999:3031   */
+      slt
+        /* "#utility.yul":2996:3048   */
+      iszero
+      tag_485
+      jumpi
+        /* "#utility.yul":3044:3045   */
+      0x00
+        /* "#utility.yul":3041:3042   */
+      dup1
+        /* "#utility.yul":3034:3046   */
+      revert
+        /* "#utility.yul":2996:3048   */
+    tag_485:
+        /* "#utility.yul":3067:3096   */
+      tag_321
+        /* "#utility.yul":3086:3095   */
+      dup3
+        /* "#utility.yul":3067:3096   */
+      tag_451
+      jump	// in
+        /* "#utility.yul":3107:3225   */
+    tag_452:
+        /* "#utility.yul":3193:3198   */
+      dup1
+        /* "#utility.yul":3186:3199   */
+      iszero
+        /* "#utility.yul":3179:3200   */
+      iszero
+        /* "#utility.yul":3172:3177   */
+      dup2
+        /* "#utility.yul":3169:3201   */
+      eq
+        /* "#utility.yul":3159:3219   */
+      tag_351
+      jumpi
+        /* "#utility.yul":3215:3216   */
+      0x00
+        /* "#utility.yul":3212:3213   */
+      dup1
+        /* "#utility.yul":3205:3217   */
+      revert
+        /* "#utility.yul":3230:3545   */
+    tag_131:
+        /* "#utility.yul":3295:3301   */
+      0x00
+        /* "#utility.yul":3303:3309   */
+      dup1
+        /* "#utility.yul":3356:3358   */
+      0x40
+        /* "#utility.yul":3344:3353   */
+      dup4
+        /* "#utility.yul":3335:3342   */
+      dup6
+        /* "#utility.yul":3331:3354   */
+      sub
+        /* "#utility.yul":3327:3359   */
+      slt
+        /* "#utility.yul":3324:3376   */
+      iszero
+      tag_490
+      jumpi
+        /* "#utility.yul":3372:3373   */
+      0x00
+        /* "#utility.yul":3369:3370   */
+      dup1
+        /* "#utility.yul":3362:3374   */
+      revert
+        /* "#utility.yul":3324:3376   */
+    tag_490:
+        /* "#utility.yul":3395:3424   */
+      tag_491
+        /* "#utility.yul":3414:3423   */
+      dup4
+        /* "#utility.yul":3395:3424   */
+      tag_451
+      jump	// in
+    tag_491:
+        /* "#utility.yul":3385:3424   */
+      swap2
+      pop
+        /* "#utility.yul":3474:3476   */
+      0x20
+        /* "#utility.yul":3463:3472   */
+      dup4
+        /* "#utility.yul":3459:3477   */
+      add
+        /* "#utility.yul":3446:3478   */
+      calldataload
+        /* "#utility.yul":3487:3515   */
+      tag_492
+        /* "#utility.yul":3509:3514   */
+      dup2
+        /* "#utility.yul":3487:3515   */
+      tag_452
+      jump	// in
+    tag_492:
+        /* "#utility.yul":3534:3539   */
+      dup1
+        /* "#utility.yul":3524:3539   */
+      swap2
+      pop
+      pop
+        /* "#utility.yul":3230:3545   */
+      swap3
+      pop
+      swap3
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":3550:3810   */
+    tag_136:
+        /* "#utility.yul":3618:3624   */
+      0x00
+        /* "#utility.yul":3626:3632   */
+      dup1
+        /* "#utility.yul":3679:3681   */
+      0x40
+        /* "#utility.yul":3667:3676   */
+      dup4
+        /* "#utility.yul":3658:3665   */
+      dup6
+        /* "#utility.yul":3654:3677   */
+      sub
+        /* "#utility.yul":3650:3682   */
+      slt
+        /* "#utility.yul":3647:3699   */
+      iszero
+      tag_494
+      jumpi
+        /* "#utility.yul":3695:3696   */
+      0x00
+        /* "#utility.yul":3692:3693   */
+      dup1
+        /* "#utility.yul":3685:3697   */
+      revert
+        /* "#utility.yul":3647:3699   */
+    tag_494:
+        /* "#utility.yul":3718:3747   */
+      tag_495
+        /* "#utility.yul":3737:3746   */
+      dup4
+        /* "#utility.yul":3718:3747   */
+      tag_451
+      jump	// in
+    tag_495:
+        /* "#utility.yul":3708:3747   */
+      swap2
+      pop
+        /* "#utility.yul":3766:3804   */
+      tag_496
+        /* "#utility.yul":3800:3802   */
+      0x20
+        /* "#utility.yul":3789:3798   */
+      dup5
+        /* "#utility.yul":3785:3803   */
+      add
+        /* "#utility.yul":3766:3804   */
+      tag_451
+      jump	// in
+    tag_496:
+        /* "#utility.yul":3756:3804   */
+      swap1
+      pop
+        /* "#utility.yul":3550:3810   */
+      swap3
+      pop
+      swap3
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":3815:3942   */
+    tag_453:
+        /* "#utility.yul":3876:3886   */
+      0x4e487b71
+        /* "#utility.yul":3871:3874   */
+      0xe0
+        /* "#utility.yul":3867:3887   */
+      shl
+        /* "#utility.yul":3864:3865   */
+      0x00
+        /* "#utility.yul":3857:3888   */
+      mstore
+        /* "#utility.yul":3907:3911   */
+      0x41
+        /* "#utility.yul":3904:3905   */
+      0x04
+        /* "#utility.yul":3897:3912   */
+      mstore
+        /* "#utility.yul":3931:3935   */
+      0x24
+        /* "#utility.yul":3928:3929   */
+      0x00
+        /* "#utility.yul":3921:3936   */
+      revert
+        /* "#utility.yul":3947:5085   */
+    tag_141:
+        /* "#utility.yul":4042:4048   */
+      0x00
+        /* "#utility.yul":4050:4056   */
+      dup1
+        /* "#utility.yul":4058:4064   */
+      0x00
+        /* "#utility.yul":4066:4072   */
+      dup1
+        /* "#utility.yul":4119:4122   */
+      0x80
+        /* "#utility.yul":4107:4116   */
+      dup6
+        /* "#utility.yul":4098:4105   */
+      dup8
+        /* "#utility.yul":4094:4117   */
+      sub
+        /* "#utility.yul":4090:4123   */
+      slt
+        /* "#utility.yul":4087:4140   */
+      iszero
+      tag_499
+      jumpi
+        /* "#utility.yul":4136:4137   */
+      0x00
+        /* "#utility.yul":4133:4134   */
+      dup1
+        /* "#utility.yul":4126:4138   */
+      revert
+        /* "#utility.yul":4087:4140   */
+    tag_499:
+        /* "#utility.yul":4159:4188   */
+      tag_500
+        /* "#utility.yul":4178:4187   */
+      dup6
+        /* "#utility.yul":4159:4188   */
+      tag_451
+      jump	// in
+    tag_500:
+        /* "#utility.yul":4149:4188   */
+      swap4
+      pop
+        /* "#utility.yul":4207:4245   */
+      tag_501
+        /* "#utility.yul":4241:4243   */
+      0x20
+        /* "#utility.yul":4230:4239   */
+      dup7
+        /* "#utility.yul":4226:4244   */
+      add
+        /* "#utility.yul":4207:4245   */
+      tag_451
+      jump	// in
+    tag_501:
+        /* "#utility.yul":4197:4245   */
+      swap3
+      pop
+        /* "#utility.yul":4292:4294   */
+      0x40
+        /* "#utility.yul":4281:4290   */
+      dup6
+        /* "#utility.yul":4277:4295   */
+      add
+        /* "#utility.yul":4264:4296   */
+      calldataload
+        /* "#utility.yul":4254:4296   */
+      swap2
+      pop
+        /* "#utility.yul":4347:4349   */
+      0x60
+        /* "#utility.yul":4336:4345   */
+      dup6
+        /* "#utility.yul":4332:4350   */
+      add
+        /* "#utility.yul":4319:4351   */
+      calldataload
+        /* "#utility.yul":4370:4388   */
+      0xffffffffffffffff
+        /* "#utility.yul":4411:4413   */
+      dup1
+        /* "#utility.yul":4403:4409   */
+      dup3
+        /* "#utility.yul":4400:4414   */
+      gt
+        /* "#utility.yul":4397:4431   */
+      iszero
+      tag_502
+      jumpi
+        /* "#utility.yul":4427:4428   */
+      0x00
+        /* "#utility.yul":4424:4425   */
+      dup1
+        /* "#utility.yul":4417:4429   */
+      revert
+        /* "#utility.yul":4397:4431   */
+    tag_502:
+        /* "#utility.yul":4465:4471   */
+      dup2
+        /* "#utility.yul":4454:4463   */
+      dup8
+        /* "#utility.yul":4450:4472   */
+      add
+        /* "#utility.yul":4440:4472   */
+      swap2
+      pop
+        /* "#utility.yul":4510:4517   */
+      dup8
+        /* "#utility.yul":4503:4507   */
+      0x1f
+        /* "#utility.yul":4499:4501   */
+      dup4
+        /* "#utility.yul":4495:4508   */
+      add
+        /* "#utility.yul":4491:4518   */
+      slt
+        /* "#utility.yul":4481:4536   */
+      tag_503
+      jumpi
+        /* "#utility.yul":4532:4533   */
+      0x00
+        /* "#utility.yul":4529:4530   */
+      dup1
+        /* "#utility.yul":4522:4534   */
+      revert
+        /* "#utility.yul":4481:4536   */
+    tag_503:
+        /* "#utility.yul":4568:4570   */
+      dup2
+        /* "#utility.yul":4555:4571   */
+      calldataload
+        /* "#utility.yul":4590:4592   */
+      dup2
+        /* "#utility.yul":4586:4588   */
+      dup2
+        /* "#utility.yul":4583:4593   */
+      gt
+        /* "#utility.yul":4580:4616   */
+      iszero
+      tag_505
+      jumpi
+        /* "#utility.yul":4596:4614   */
+      tag_505
+      tag_453
+      jump	// in
+    tag_505:
+        /* "#utility.yul":4671:4673   */
+      0x40
+        /* "#utility.yul":4665:4674   */
+      mload
+        /* "#utility.yul":4639:4641   */
+      0x1f
+        /* "#utility.yul":4725:4738   */
+      dup3
+      add
+      not(0x1f)
+        /* "#utility.yul":4721:4743   */
+      swap1
+      dup2
+      and
+        /* "#utility.yul":4745:4747   */
+      0x3f
+        /* "#utility.yul":4717:4748   */
+      add
+        /* "#utility.yul":4713:4753   */
+      and
+        /* "#utility.yul":4701:4754   */
+      dup2
+      add
+      swap1
+        /* "#utility.yul":4769:4787   */
+      dup4
+      dup3
+      gt
+        /* "#utility.yul":4789:4811   */
+      dup2
+      dup4
+      lt
+        /* "#utility.yul":4766:4812   */
+      or
+        /* "#utility.yul":4763:4835   */
+      iszero
+      tag_507
+      jumpi
+        /* "#utility.yul":4815:4833   */
+      tag_507
+      tag_453
+      jump	// in
+    tag_507:
+        /* "#utility.yul":4855:4865   */
+      dup2
+        /* "#utility.yul":4851:4853   */
+      0x40
+        /* "#utility.yul":4844:4866   */
+      mstore
+        /* "#utility.yul":4890:4892   */
+      dup3
+        /* "#utility.yul":4882:4888   */
+      dup2
+        /* "#utility.yul":4875:4893   */
+      mstore
+        /* "#utility.yul":4930:4937   */
+      dup11
+        /* "#utility.yul":4925:4927   */
+      0x20
+        /* "#utility.yul":4920:4922   */
+      dup5
+        /* "#utility.yul":4916:4918   */
+      dup8
+        /* "#utility.yul":4912:4923   */
+      add
+        /* "#utility.yul":4908:4928   */
+      add
+        /* "#utility.yul":4905:4938   */
+      gt
+        /* "#utility.yul":4902:4955   */
+      iszero
+      tag_508
+      jumpi
+        /* "#utility.yul":4951:4952   */
+      0x00
+        /* "#utility.yul":4948:4949   */
+      dup1
+        /* "#utility.yul":4941:4953   */
+      revert
+        /* "#utility.yul":4902:4955   */
+    tag_508:
+        /* "#utility.yul":5007:5009   */
+      dup3
+        /* "#utility.yul":5002:5004   */
+      0x20
+        /* "#utility.yul":4998:5000   */
+      dup7
+        /* "#utility.yul":4994:5005   */
+      add
+        /* "#utility.yul":4989:4991   */
+      0x20
+        /* "#utility.yul":4981:4987   */
+      dup4
+        /* "#utility.yul":4977:4992   */
+      add
+        /* "#utility.yul":4964:5010   */
+      calldatacopy
+        /* "#utility.yul":5052:5053   */
+      0x00
+        /* "#utility.yul":5047:5049   */
+      0x20
+        /* "#utility.yul":5042:5044   */
+      dup5
+        /* "#utility.yul":5034:5040   */
+      dup4
+        /* "#utility.yul":5030:5045   */
+      add
+        /* "#utility.yul":5026:5050   */
+      add
+        /* "#utility.yul":5019:5054   */
+      mstore
+        /* "#utility.yul":5073:5079   */
+      dup1
+        /* "#utility.yul":5063:5079   */
+      swap6
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+        /* "#utility.yul":3947:5085   */
+      swap3
+      swap6
+      swap2
+      swap5
+      pop
+      swap3
+      pop
+      jump	// out
+        /* "#utility.yul":5090:5470   */
+    tag_174:
+        /* "#utility.yul":5169:5170   */
+      0x01
+        /* "#utility.yul":5165:5177   */
+      dup2
+      dup2
+      shr
+      swap1
+        /* "#utility.yul":5212:5224   */
+      dup3
+      and
+      dup1
+        /* "#utility.yul":5233:5294   */
+      tag_510
+      jumpi
+        /* "#utility.yul":5287:5291   */
+      0x7f
+        /* "#utility.yul":5279:5285   */
+      dup3
+        /* "#utility.yul":5275:5292   */
+      and
+        /* "#utility.yul":5265:5292   */
+      swap2
+      pop
+        /* "#utility.yul":5233:5294   */
+    tag_510:
+        /* "#utility.yul":5340:5342   */
+      0x20
+        /* "#utility.yul":5332:5338   */
+      dup3
+        /* "#utility.yul":5329:5343   */
+      lt
+        /* "#utility.yul":5309:5327   */
+      dup2
+        /* "#utility.yul":5306:5344   */
+      sub
+        /* "#utility.yul":5303:5464   */
+      tag_511
+      jumpi
+        /* "#utility.yul":5386:5396   */
+      0x4e487b71
+        /* "#utility.yul":5381:5384   */
+      0xe0
+        /* "#utility.yul":5377:5397   */
+      shl
+        /* "#utility.yul":5374:5375   */
+      0x00
+        /* "#utility.yul":5367:5398   */
+      mstore
+        /* "#utility.yul":5421:5425   */
+      0x22
+        /* "#utility.yul":5418:5419   */
+      0x04
+        /* "#utility.yul":5411:5426   */
+      mstore
+        /* "#utility.yul":5449:5453   */
+      0x24
+        /* "#utility.yul":5446:5447   */
+      0x00
+        /* "#utility.yul":5439:5454   */
+      revert
+        /* "#utility.yul":5303:5464   */
+    tag_511:
+      pop
+        /* "#utility.yul":5090:5470   */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":6584:6711   */
+    tag_454:
+        /* "#utility.yul":6645:6655   */
+      0x4e487b71
+        /* "#utility.yul":6640:6643   */
+      0xe0
+        /* "#utility.yul":6636:6656   */
+      shl
+        /* "#utility.yul":6633:6634   */
+      0x00
+        /* "#utility.yul":6626:6657   */
+      mstore
+        /* "#utility.yul":6676:6680   */
+      0x11
+        /* "#utility.yul":6673:6674   */
+      0x04
+        /* "#utility.yul":6666:6681   */
+      mstore
+        /* "#utility.yul":6700:6704   */
+      0x24
+        /* "#utility.yul":6697:6698   */
+      0x00
+        /* "#utility.yul":6690:6705   */
+      revert
+        /* "#utility.yul":6716:6841   */
+    tag_260:
+        /* "#utility.yul":6781:6790   */
+      dup1
+      dup3
+      add
+        /* "#utility.yul":6802:6812   */
+      dup1
+      dup3
+      gt
+        /* "#utility.yul":6799:6835   */
+      iszero
+      tag_171
+      jumpi
+        /* "#utility.yul":6815:6833   */
+      tag_171
+      tag_454
+      jump	// in
+        /* "#utility.yul":7546:7714   */
+    tag_270:
+        /* "#utility.yul":7619:7628   */
+      dup1
+      dup3
+      mul
+        /* "#utility.yul":7650:7659   */
+      dup2
+      iszero
+        /* "#utility.yul":7667:7682   */
+      dup3
+      dup3
+      div
+        /* "#utility.yul":7661:7683   */
+      dup5
+      eq
+        /* "#utility.yul":7647:7684   */
+      or
+        /* "#utility.yul":7637:7708   */
+      tag_171
+      jumpi
+        /* "#utility.yul":7688:7706   */
+      tag_171
+      tag_454
+      jump	// in
+        /* "#utility.yul":7719:7903   */
+    tag_275:
+        /* "#utility.yul":7789:7795   */
+      0x00
+        /* "#utility.yul":7842:7844   */
+      0x20
+        /* "#utility.yul":7830:7839   */
+      dup3
+        /* "#utility.yul":7821:7828   */
+      dup5
+        /* "#utility.yul":7817:7840   */
+      sub
+        /* "#utility.yul":7813:7845   */
+      slt
+        /* "#utility.yul":7810:7862   */
+      iszero
+      tag_525
+      jumpi
+        /* "#utility.yul":7858:7859   */
+      0x00
+        /* "#utility.yul":7855:7856   */
+      dup1
+        /* "#utility.yul":7848:7860   */
+      revert
+        /* "#utility.yul":7810:7862   */
+    tag_525:
+      pop
+        /* "#utility.yul":7881:7897   */
+      mload
+      swap2
+        /* "#utility.yul":7719:7903   */
+      swap1
+      pop
+      jump	// out
+        /* "#utility.yul":8638:8883   */
+    tag_287:
+        /* "#utility.yul":8705:8711   */
+      0x00
+        /* "#utility.yul":8758:8760   */
+      0x20
+        /* "#utility.yul":8746:8755   */
+      dup3
+        /* "#utility.yul":8737:8744   */
+      dup5
+        /* "#utility.yul":8733:8756   */
+      sub
+        /* "#utility.yul":8729:8761   */
+      slt
+        /* "#utility.yul":8726:8778   */
+      iszero
+      tag_529
+      jumpi
+        /* "#utility.yul":8774:8775   */
+      0x00
+        /* "#utility.yul":8771:8772   */
+      dup1
+        /* "#utility.yul":8764:8776   */
+      revert
+        /* "#utility.yul":8726:8778   */
+    tag_529:
+        /* "#utility.yul":8806:8815   */
+      dup2
+        /* "#utility.yul":8800:8816   */
+      mload
+        /* "#utility.yul":8825:8853   */
+      tag_321
+        /* "#utility.yul":8847:8852   */
+      dup2
+        /* "#utility.yul":8825:8853   */
+      tag_452
+      jump	// in
+        /* "#utility.yul":9517:10013   */
+    tag_325:
+        /* "#utility.yul":9696:9699   */
+      0x00
+        /* "#utility.yul":9734:9740   */
+      dup4
+        /* "#utility.yul":9728:9741   */
+      mload
+        /* "#utility.yul":9750:9816   */
+      tag_534
+        /* "#utility.yul":9809:9815   */
+      dup2
+        /* "#utility.yul":9804:9807   */
+      dup5
+        /* "#utility.yul":9797:9801   */
+      0x20
+        /* "#utility.yul":9789:9795   */
+      dup9
+        /* "#utility.yul":9785:9802   */
+      add
+        /* "#utility.yul":9750:9816   */
+      tag_449
+      jump	// in
+    tag_534:
+        /* "#utility.yul":9879:9892   */
+      dup4
+      mload
+        /* "#utility.yul":9838:9854   */
+      swap1
+      dup4
+      add
+      swap1
+        /* "#utility.yul":9901:9971   */
+      tag_535
+        /* "#utility.yul":9879:9892   */
+      dup2
+        /* "#utility.yul":9838:9854   */
+      dup4
+        /* "#utility.yul":9948:9952   */
+      0x20
+        /* "#utility.yul":9936:9953   */
+      dup9
+      add
+        /* "#utility.yul":9901:9971   */
+      tag_449
+      jump	// in
+    tag_535:
+        /* "#utility.yul":9987:10007   */
+      add
+      swap5
+        /* "#utility.yul":9517:10013   */
+      swap4
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":12057:12193   */
+    tag_359:
+        /* "#utility.yul":12096:12099   */
+      0x00
+        /* "#utility.yul":12124:12129   */
+      dup2
+        /* "#utility.yul":12114:12153   */
+      tag_543
+      jumpi
+        /* "#utility.yul":12133:12151   */
+      tag_543
+      tag_454
+      jump	// in
+    tag_543:
+      pop
+      not(0x00)
+        /* "#utility.yul":12169:12187   */
+      add
+      swap1
+        /* "#utility.yul":12057:12193   */
+      jump	// out
+        /* "#utility.yul":12559:13048   */
+    tag_421:
+      sub(shl(0xa0, 0x01), 0x01)
+        /* "#utility.yul":12828:12843   */
+      dup6
+      dup2
+      and
+        /* "#utility.yul":12810:12844   */
+      dup3
+      mstore
+        /* "#utility.yul":12880:12895   */
+      dup5
+      and
+        /* "#utility.yul":12875:12877   */
+      0x20
+        /* "#utility.yul":12860:12878   */
+      dup3
+      add
+        /* "#utility.yul":12853:12896   */
+      mstore
+        /* "#utility.yul":12927:12929   */
+      0x40
+        /* "#utility.yul":12912:12930   */
+      dup2
+      add
+        /* "#utility.yul":12905:12939   */
+      dup4
+      swap1
+      mstore
+        /* "#utility.yul":12975:12978   */
+      0x80
+        /* "#utility.yul":12970:12972   */
+      0x60
+        /* "#utility.yul":12955:12973   */
+      dup3
+      add
+        /* "#utility.yul":12948:12979   */
+      dup2
+      swap1
+      mstore
+        /* "#utility.yul":12753:12757   */
+      0x00
+      swap1
+        /* "#utility.yul":12996:13042   */
+      tag_546
+      swap1
+        /* "#utility.yul":13022:13041   */
+      dup4
+      add
+        /* "#utility.yul":13014:13020   */
+      dup5
+        /* "#utility.yul":12996:13042   */
+      tag_450
+      jump	// in
+    tag_546:
+        /* "#utility.yul":12988:13042   */
+      swap7
+        /* "#utility.yul":12559:13048   */
+      swap6
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":13053:13302   */
+    tag_424:
+        /* "#utility.yul":13122:13128   */
+      0x00
+        /* "#utility.yul":13175:13177   */
+      0x20
+        /* "#utility.yul":13163:13172   */
+      dup3
+        /* "#utility.yul":13154:13161   */
+      dup5
+        /* "#utility.yul":13150:13173   */
+      sub
+        /* "#utility.yul":13146:13178   */
+      slt
+        /* "#utility.yul":13143:13195   */
+      iszero
+      tag_548
+      jumpi
+        /* "#utility.yul":13191:13192   */
+      0x00
+        /* "#utility.yul":13188:13189   */
+      dup1
+        /* "#utility.yul":13181:13193   */
+      revert
+        /* "#utility.yul":13143:13195   */
+    tag_548:
+        /* "#utility.yul":13223:13232   */
+      dup2
+        /* "#utility.yul":13217:13233   */
+      mload
+        /* "#utility.yul":13242:13272   */
+      tag_321
+        /* "#utility.yul":13266:13271   */
+      dup2
+        /* "#utility.yul":13242:13272   */
+      tag_448
+      jump	// in
+
+    auxdata: 0xa26469706673582212208bbda2d53a15cabd6298fff5897acccecf33e03502e4d59a37d1b88e7e89f17764736f6c63430008150033
+}
+

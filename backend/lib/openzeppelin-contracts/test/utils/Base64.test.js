@@ -1,29 +1,33 @@
-const { ethers } = require('hardhat');
 const { expect } = require('chai');
-const { loadFixture } = require('@nomicfoundation/hardhat-network-helpers');
 
-async function fixture() {
-  const mock = await ethers.deployContract('$Base64');
-  return { mock };
-}
+const Base64 = artifacts.require('$Base64');
 
-describe('Strings', function () {
+contract('Strings', function () {
   beforeEach(async function () {
-    Object.assign(this, await loadFixture(fixture));
+    this.base64 = await Base64.new();
   });
 
   describe('from bytes - base64', function () {
-    for (const { title, input, expected } of [
-      { title: 'converts to base64 encoded string with double padding', input: 'test', expected: 'dGVzdA==' },
-      { title: 'converts to base64 encoded string with single padding', input: 'test1', expected: 'dGVzdDE=' },
-      { title: 'converts to base64 encoded string without padding', input: 'test12', expected: 'dGVzdDEy' },
-      { title: 'empty bytes', input: '0x', expected: '' },
-    ])
-      it(title, async function () {
-        const raw = ethers.isBytesLike(input) ? input : ethers.toUtf8Bytes(input);
+    it('converts to base64 encoded string with double padding', async function () {
+      const TEST_MESSAGE = 'test';
+      const input = web3.utils.asciiToHex(TEST_MESSAGE);
+      expect(await this.base64.$encode(input)).to.equal('dGVzdA==');
+    });
 
-        expect(await this.mock.$encode(raw)).to.equal(ethers.encodeBase64(raw));
-        expect(await this.mock.$encode(raw)).to.equal(expected);
-      });
+    it('converts to base64 encoded string with single padding', async function () {
+      const TEST_MESSAGE = 'test1';
+      const input = web3.utils.asciiToHex(TEST_MESSAGE);
+      expect(await this.base64.$encode(input)).to.equal('dGVzdDE=');
+    });
+
+    it('converts to base64 encoded string without padding', async function () {
+      const TEST_MESSAGE = 'test12';
+      const input = web3.utils.asciiToHex(TEST_MESSAGE);
+      expect(await this.base64.$encode(input)).to.equal('dGVzdDEy');
+    });
+
+    it('empty bytes', async function () {
+      expect(await this.base64.$encode([])).to.equal('');
+    });
   });
 });

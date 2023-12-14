@@ -1,117 +1,175 @@
-const { ethers } = require('hardhat');
-const { expect } = require('chai');
-const { loadFixture } = require('@nomicfoundation/hardhat-network-helpers');
+const ethSigUtil = require('eth-sig-util');
+const Wallet = require('ethereumjs-wallet').default;
+const { getDomain, domainType } = require('../helpers/eip712');
 
-const { impersonate } = require('../helpers/account');
-const { getDomain } = require('../helpers/eip712');
-const { MAX_UINT48 } = require('../helpers/constants');
+const { expectEvent } = require('@openzeppelin/test-helpers');
+const { expect } = require('chai');
+
+const ERC2771ContextMock = artifacts.require('ERC2771ContextMock');
+const MinimalForwarder = artifacts.require('MinimalForwarder');
+const ContextMockCaller = artifacts.require('ContextMockCaller');
 
 const { shouldBehaveLikeRegularContext } = require('../utils/Context.behavior');
 
-async function fixture() {
-  const [sender] = await ethers.getSigners();
+contract('ERC2771Context', function (accounts) {
+  const [, trustedForwarder, other] = accounts;
 
-  const forwarder = await ethers.deployContract('ERC2771Forwarder', []);
-  const forwarderAsSigner = await impersonate(forwarder.target);
-  const context = await ethers.deployContract('ERC2771ContextMock', [forwarder]);
-  const domain = await getDomain(forwarder);
-  const types = {
-    ForwardRequest: [
-      { name: 'from', type: 'address' },
-      { name: 'to', type: 'address' },
-      { name: 'value', type: 'uint256' },
-      { name: 'gas', type: 'uint256' },
-      { name: 'nonce', type: 'uint256' },
-      { name: 'deadline', type: 'uint48' },
-      { name: 'data', type: 'bytes' },
-    ],
-  };
-
-  return { sender, forwarder, forwarderAsSigner, context, domain, types };
-}
-
-describe('ERC2771Context', function () {
   beforeEach(async function () {
-    Object.assign(this, await loadFixture(fixture));
+    this.forwarder = await MinimalForwarder.new();
+    this.recipient = await ERC2771ContextMock.new(this.forwarder.address);
+
+    this.domain = await getDomain(this.forwarder);
+    this.types = {
+      EIP712Domain: domainType(this.domain),
+      ForwardRequest: [
+        { name: 'from', type: 'address' },
+        { name: 'to', type: 'address' },
+        { name: 'value', type: 'uint256' },
+        { name: 'gas', type: 'uint256' },
+        { name: 'nonce', type: 'uint256' },
+        { name: 'data', type: 'bytes' },
+      ],
+    };
   });
 
   it('recognize trusted forwarder', async function () {
-    expect(await this.context.isTrustedForwarder(this.forwarder)).to.equal(true);
+    expect(await this.recipient.isTrustedForwarder(this.forwarder.address));
   });
 
-  it('returns the trusted forwarder', async function () {
-    expect(await this.context.trustedForwarder()).to.equal(this.forwarder.target);
+  context('when called directly', function () {
+    beforeEach(async function () {
+      this.context = this.recipient; // The Context behavior expects the contract in this.context
+      this.caller = await ContextMockCaller.new();
+    });
+
+    shouldBehaveLikeRegularContext(...accounts);
   });
 
-  describe('when called directly', function () {
-    shouldBehaveLikeRegularContext();
-  });
+  context('when receiving a relayed call', function () {
+    beforeEach(async function () {
+      this.wallet = Wallet.generate();
+      this.sender = web3.utils.toChecksumAddress(this.wallet.getAddressString());
+      this.data = {
+        types: this.types,
+        domain: this.domain,
+        primaryType: 'ForwardRequest',
+      };
+    });
 
-  describe('when receiving a relayed call', function () {
     describe('msgSender', function () {
       it('returns the relayed transaction original sender', async function () {
-        const nonce = await this.forwarder.nonces(this.sender);
-        const data = this.context.interface.encodeFunctionData('msgSender');
+        const data = this.recipient.contract.methods.msgSender().encodeABI();
 
         const req = {
-          from: await this.sender.getAddress(),
-          to: await this.context.getAddress(),
-          value: 0n,
+          from: this.sender,
+          to: this.recipient.address,
+          value: '0',
+          gas: '100000',
+          nonce: (await this.forwarder.getNonce(this.sender)).toString(),
           data,
-          gas: 100000n,
-          nonce,
-          deadline: MAX_UINT48,
         };
 
-        req.signature = await this.sender.signTypedData(this.domain, this.types, req);
+        const sign = ethSigUtil.signTypedMessage(this.wallet.getPrivateKey(), { data: { ...this.data, message: req } });
+        expect(await this.forwarder.verify(req, sign)).to.equal(true);
 
-        expect(await this.forwarder.verify(req)).to.equal(true);
-
-        await expect(this.forwarder.execute(req)).to.emit(this.context, 'Sender').withArgs(this.sender.address);
+        const { tx } = await this.forwarder.execute(req, sign);
+        await expectEvent.inTransaction(tx, ERC2771ContextMock, 'Sender', { sender: this.sender });
       });
 
       it('returns the original sender when calldata length is less than 20 bytes (address length)', async function () {
-        // The forwarder doesn't produce calls with calldata length less than 20 bytes so `this.forwarderAsSigner` is used instead.
-        await expect(this.context.connect(this.forwarderAsSigner).msgSender())
-          .to.emit(this.context, 'Sender')
-          .withArgs(this.forwarder.target);
+        // The forwarder doesn't produce calls with calldata length less than 20 bytes
+        const recipient = await ERC2771ContextMock.new(trustedForwarder);
+
+        const { receipt } = await recipient.msgSender({ from: trustedForwarder });
+
+        await expectEvent(receipt, 'Sender', { sender: trustedForwarder });
       });
     });
 
     describe('msgData', function () {
       it('returns the relayed transaction original data', async function () {
-        const args = [42n, 'OpenZeppelin'];
-
-        const nonce = await this.forwarder.nonces(this.sender);
-        const data = this.context.interface.encodeFunctionData('msgData', args);
+        const integerValue = '42';
+        const stringValue = 'OpenZeppelin';
+        const data = this.recipient.contract.methods.msgData(integerValue, stringValue).encodeABI();
 
         const req = {
-          from: await this.sender.getAddress(),
-          to: await this.context.getAddress(),
-          value: 0n,
+          from: this.sender,
+          to: this.recipient.address,
+          value: '0',
+          gas: '100000',
+          nonce: (await this.forwarder.getNonce(this.sender)).toString(),
           data,
-          gas: 100000n,
-          nonce,
-          deadline: MAX_UINT48,
         };
 
-        req.signature = this.sender.signTypedData(this.domain, this.types, req);
+        const sign = ethSigUtil.signTypedMessage(this.wallet.getPrivateKey(), { data: { ...this.data, message: req } });
+        expect(await this.forwarder.verify(req, sign)).to.equal(true);
 
-        expect(await this.forwarder.verify(req)).to.equal(true);
-
-        await expect(this.forwarder.execute(req))
-          .to.emit(this.context, 'Data')
-          .withArgs(data, ...args);
+        const { tx } = await this.forwarder.execute(req, sign);
+        await expectEvent.inTransaction(tx, ERC2771ContextMock, 'Data', { data, integerValue, stringValue });
       });
     });
 
     it('returns the full original data when calldata length is less than 20 bytes (address length)', async function () {
-      const data = this.context.interface.encodeFunctionData('msgDataShort');
+      // The forwarder doesn't produce calls with calldata length less than 20 bytes
+      const recipient = await ERC2771ContextMock.new(trustedForwarder);
 
-      // The forwarder doesn't produce calls with calldata length less than 20 bytes so `this.forwarderAsSigner` is used instead.
-      await expect(await this.context.connect(this.forwarderAsSigner).msgDataShort())
-        .to.emit(this.context, 'DataShort')
-        .withArgs(data);
+      const { receipt } = await recipient.msgDataShort({ from: trustedForwarder });
+
+      const data = recipient.contract.methods.msgDataShort().encodeABI();
+      await expectEvent(receipt, 'DataShort', { data });
+    });
+
+    it('multicall poison attack', async function () {
+      const attacker = Wallet.generate();
+      const attackerAddress = attacker.getChecksumAddressString();
+      const nonce = await this.forwarder.getNonce(attackerAddress);
+
+      const msgSenderCall = web3.eth.abi.encodeFunctionCall(
+        {
+          name: 'msgSender',
+          type: 'function',
+          inputs: [],
+        },
+        [],
+      );
+
+      const data = web3.eth.abi.encodeFunctionCall(
+        {
+          name: 'multicall',
+          type: 'function',
+          inputs: [
+            {
+              internalType: 'bytes[]',
+              name: 'data',
+              type: 'bytes[]',
+            },
+          ],
+        },
+        [[web3.utils.encodePacked({ value: msgSenderCall, type: 'bytes' }, { value: other, type: 'address' })]],
+      );
+
+      const req = {
+        from: attackerAddress,
+        to: this.recipient.address,
+        value: '0',
+        gas: '100000',
+        data,
+        nonce: Number(nonce),
+      };
+
+      const signature = await ethSigUtil.signTypedMessage(attacker.getPrivateKey(), {
+        data: {
+          types: this.types,
+          domain: this.domain,
+          primaryType: 'ForwardRequest',
+          message: req,
+        },
+      });
+
+      expect(await this.forwarder.verify(req, signature)).to.equal(true);
+
+      const receipt = await this.forwarder.execute(req, signature);
+      await expectEvent.inTransaction(receipt.tx, ERC2771ContextMock, 'Sender', { sender: attackerAddress });
     });
   });
 });

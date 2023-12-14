@@ -17,7 +17,7 @@ approve(address to, uint256 tokenId)
 
 */
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.18;
 
 import {Script, console} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
