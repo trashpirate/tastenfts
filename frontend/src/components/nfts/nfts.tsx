@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useAccount, useContractReads, useNetwork } from "wagmi";
 import { nftABI } from "@/assets/nftABI";
 import Image from "next/image";
-import { Alchemy, Network } from "alchemy-sdk";
 import Moralis from "moralis";
 import Link from "next/link";
 import { toHex } from "viem";
