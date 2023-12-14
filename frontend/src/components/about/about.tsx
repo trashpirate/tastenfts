@@ -1,5 +1,3 @@
-const CLAIM_ADDRESS = "0x0cf66382d52C2D6c1D095c536c16c203117E2B2f";
-
 type Props = {};
 
 export default function About({}: Props) {

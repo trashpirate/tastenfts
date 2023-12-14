@@ -1,5 +1,4 @@
 import AccountInfo from "@/components/accountInfo/accountInfo";
-import ClaimPrize from "@/components/about/about";
 import CollectionInfo from "@/components/collectionInfo/collectionInfo";
 import Minter from "@/components/minter/minter";
 import Navbar from "@/components/navigation/navbar";

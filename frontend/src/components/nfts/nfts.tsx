@@ -7,12 +7,8 @@ import { Alchemy, Network } from "alchemy-sdk";
 import Moralis from "moralis";
 import Link from "next/link";
 import { toHex } from "viem";
-import { useEvmNativeBalance, useEvmWalletNFTs } from "@moralisweb3/next";
-import { tokenABI } from "@/assets/tokenABI";
 
 const NFT_CONTRACT = process.env.NEXT_PUBLIC_NFT_CONTRACT as `0x${string}`;
-
-const contractAddresses = [NFT_CONTRACT];
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
@@ -21,8 +17,6 @@ const config = {
       ? Network.ETH_GOERLI
       : Network.ETH_MAINNET,
 };
-
-const alchemy = new Alchemy(config);
 
 interface NFTMeta {
   name: string;
@@ -38,8 +32,6 @@ export default function Nfts({}: Props) {
     undefined,
   );
   const [nftsOwned, setNftsOwned] = useState<NFTMeta[] | null>(null);
-  const [totalWin, setTotalWin] = useState<number>(0);
-  const [moralisStarted, setMoralisStarted] = useState<boolean>(false);
 
   // get account address
   const { address, isConnecting, isDisconnected, isConnected } = useAccount({});

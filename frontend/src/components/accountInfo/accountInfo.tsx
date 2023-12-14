@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAccount, useContractRead, useNetwork } from "wagmi";
 
 import { tokenABI } from "@/assets/tokenABI";
-import { formatEther, formatUnits } from "viem";
+import { formatUnits } from "viem";
 import { ConnectKitButton } from "connectkit";
 import { nftABI } from "@/assets/nftABI";
 
