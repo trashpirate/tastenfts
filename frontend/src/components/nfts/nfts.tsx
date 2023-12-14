@@ -10,14 +10,6 @@ import { toHex } from "viem";
 
 const NFT_CONTRACT = process.env.NEXT_PUBLIC_NFT_CONTRACT as `0x${string}`;
 
-const config = {
-  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
-  network:
-    process.env.NEXT_PUBLIC_TESTNET == "true"
-      ? Network.ETH_GOERLI
-      : Network.ETH_MAINNET,
-};
-
 interface NFTMeta {
   name: string;
   path: string;
