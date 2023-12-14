@@ -123,7 +123,7 @@ export default function Nfts({}: Props) {
           nftArray.push(iNft);
         } else {
           let iNft: NFTMeta = {
-            name: "VENUS #?",
+            name: "Venus #?",
             id: index + 1100,
             path: "/unrevealed.jpg",
           };
@@ -141,7 +141,7 @@ export default function Nfts({}: Props) {
   return (
     <div className="h-full w-full pb-8">
       <div className="mx-auto h-full max-w-sm rounded-md bg-black p-8 shadow-inner-sym sm:w-full md:max-w-none">
-        <h2 className="border-b-2 border-yellow-500 pb-2 text-justify text-xl uppercase">
+        <h2 className="border-accent border-b-2 pb-2 text-justify text-xl uppercase">
           Your NFTs (Max. 10)
         </h2>
         <div className="my-4 min-h-max">
@@ -149,7 +149,7 @@ export default function Nfts({}: Props) {
             {nftsOwned != null &&
               nftsOwned.map(function (nft) {
                 let hover: string = "";
-                if (nft.id <= 1000) hover = "  hover:border-yellow-500";
+                if (nft.id <= 1000) hover = "  hover:border-accent";
                 return (
                   <Link
                     key={nft.id}

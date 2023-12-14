@@ -1,18 +1,19 @@
 export const tokenABI = [
   {
-    inputs: [{ internalType: "address", name: "owner_", type: "address" }],
+    inputs: [
+      { internalType: "string", name: "_NAME", type: "string" },
+      { internalType: "string", name: "_SYMBOL", type: "string" },
+      { internalType: "uint256", name: "_DECIMALS", type: "uint256" },
+      { internalType: "uint256", name: "_supply", type: "uint256" },
+      { internalType: "uint256", name: "_txFee", type: "uint256" },
+      { internalType: "uint256", name: "_lpFee", type: "uint256" },
+      { internalType: "uint256", name: "_MAXAMOUNT", type: "uint256" },
+      { internalType: "uint256", name: "SELLMAXAMOUNT", type: "uint256" },
+      { internalType: "address", name: "routerAddress", type: "address" },
+      { internalType: "address", name: "tokenOwner", type: "address" },
+    ],
     stateMutability: "nonpayable",
     type: "constructor",
-  },
-  {
-    inputs: [{ internalType: "address", name: "owner", type: "address" }],
-    name: "OwnableInvalidOwner",
-    type: "error",
-  },
-  {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
-    name: "OwnableUnauthorizedAccount",
-    type: "error",
   },
   {
     anonymous: false,
@@ -43,6 +44,19 @@ export const tokenABI = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "uint256",
+        name: "minTokensBeforeSwap",
+        type: "uint256",
+      },
+    ],
+    name: "MinTokensBeforeSwapUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: "address",
         name: "previousOwner",
@@ -64,11 +78,31 @@ export const tokenABI = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "value",
+        name: "tokensSwapped",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "ethReceived",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokensIntoLiqudity",
         type: "uint256",
       },
     ],
-    name: "SetFee",
+    name: "SwapAndLiquify",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: false, internalType: "bool", name: "enabled", type: "bool" },
+    ],
+    name: "SwapAndLiquifyEnabledUpdated",
     type: "event",
   },
   {
@@ -87,8 +121,36 @@ export const tokenABI = [
     type: "event",
   },
   {
+    inputs: [],
+    name: "_liquidityFee",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_maxTxAmount",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_taxFee",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
+      { internalType: "address", name: "owner", type: "address" },
       { internalType: "address", name: "spender", type: "address" },
     ],
     name: "allowance",
@@ -115,8 +177,15 @@ export const tokenABI = [
   },
   {
     inputs: [],
+    name: "claimTokens",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "decimals",
-    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
@@ -127,6 +196,13 @@ export const tokenABI = [
     ],
     name: "decreaseAllowance",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "tAmount", type: "uint256" }],
+    name: "deliver",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -142,6 +218,13 @@ export const tokenABI = [
     name: "excludeFromReward",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "geUnlockTime",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -169,17 +252,24 @@ export const tokenABI = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [{ internalType: "address", name: "account", type: "address" }],
     name: "isExcludedFromFee",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [{ internalType: "address", name: "account", type: "address" }],
     name: "isExcludedFromReward",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "time", type: "uint256" }],
+    name: "lock",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -191,8 +281,25 @@ export const tokenABI = [
   },
   {
     inputs: [],
+    name: "numTokensSellToAddToLiquidity",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "owner",
     outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "tAmount", type: "uint256" },
+      { internalType: "bool", name: "deductTransferFee", type: "bool" },
+    ],
+    name: "reflectionFromToken",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
@@ -204,10 +311,49 @@ export const tokenABI = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "newTxFee", type: "uint256" }],
-    name: "setFee",
+    inputs: [
+      { internalType: "uint256", name: "liquidityFee", type: "uint256" },
+    ],
+    name: "setLiquidityFeePercent",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "maxTxPercent", type: "uint256" },
+    ],
+    name: "setMaxTxPercent",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "swapNumber", type: "uint256" }],
+    name: "setNumTokensSellToAddToLiquidity",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "bool", name: "_enabled", type: "bool" }],
+    name: "setSwapAndLiquifyEnabled",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "taxFee", type: "uint256" }],
+    name: "setTaxFeePercent",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "swapAndLiquifyEnabled",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -218,8 +364,8 @@ export const tokenABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "taxFee",
+    inputs: [{ internalType: "uint256", name: "rAmount", type: "uint256" }],
+    name: "tokenFromReflection",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
@@ -240,7 +386,7 @@ export const tokenABI = [
   },
   {
     inputs: [
-      { internalType: "address", name: "to", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
       { internalType: "uint256", name: "amount", type: "uint256" },
     ],
     name: "transfer",
@@ -250,8 +396,8 @@ export const tokenABI = [
   },
   {
     inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
+      { internalType: "address", name: "sender", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
       { internalType: "uint256", name: "amount", type: "uint256" },
     ],
     name: "transferFrom",
@@ -267,13 +413,31 @@ export const tokenABI = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "address", name: "tokenAddress", type: "address" },
-      { internalType: "address", name: "receiverAddress", type: "address" },
+    inputs: [],
+    name: "uniswapV2Pair",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "uniswapV2Router",
+    outputs: [
+      {
+        internalType: "contract IUniswapV2Router02",
+        name: "",
+        type: "address",
+      },
     ],
-    name: "withdrawTokens",
-    outputs: [{ internalType: "bool", name: "success", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "unlock",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
+  { stateMutability: "payable", type: "receive" },
 ] as const;

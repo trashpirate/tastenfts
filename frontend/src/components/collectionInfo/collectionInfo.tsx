@@ -1,11 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useContractRead, useNetwork } from "wagmi";
-
 import { nftABI } from "@/assets/nftABI";
-
-import Image from "next/image";
-import CopyToClipboard from "../copyToClipboard";
 const NFT_CONTRACT = process.env.NEXT_PUBLIC_NFT_CONTRACT as `0x${string}`;
 
 type Props = {};
@@ -54,7 +50,7 @@ export default function CollectionInfo({}: Props) {
     if (isLoading) {
       text = "Loading...";
     } else if (isSuccess && totalSupply != undefined) {
-      text = `${(10000 - totalSupply).toLocaleString()}`;
+      text = `${(1000 - totalSupply).toLocaleString()}`;
     } else {
       text = "---";
     }
@@ -64,17 +60,24 @@ export default function CollectionInfo({}: Props) {
   return (
     <div className="mx-auto w-full pb-8">
       <div className="mx-auto max-w-sm rounded-md bg-black p-8  shadow-inner-sym md:max-w-none">
-        <h2 className="mb-4 border-b-2 border-yellow-500 pb-2 text-xl">
+        <h2 className="border-accent mb-4 border-b-2 pb-2 text-xl">
           VENUS COLLECTION
         </h2>
-        <div className="pb-4 text-sm text-slate-600">
+        <div className="text-highlight pb-4 text-sm">
           <p>Contract:</p>
-          <CopyToClipboard text={NFT_CONTRACT} copyText={NFT_CONTRACT} />
+
+          <a
+            href={`${process.env.NEXT_PUBLIC_NETWORK_SCAN}/address/0x5cA6D70e6D92B2BF5E7a488BCAC4378f92F09192#code`}
+          >
+            <div className="hover:text-hover mt-1 overflow-hidden text-ellipsis text-xs text-opacity-60">
+              {NFT_CONTRACT}
+            </div>
+          </a>
         </div>
-        <div className="mr-16  pb-4 text-xs text-yellow-800">
+        <div className="text-primary  mr-16 pb-4 text-xs">
           <table className="talbe-fixed w-full text-left">
             <thead>
-              <tr>
+              <tr className="text-sm">
                 <th>TRAITS</th>
                 <th>RARITY</th>
               </tr>

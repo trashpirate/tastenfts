@@ -118,11 +118,11 @@ export default function AccountInfo({}: Props) {
   return (
     <div className="h-full w-full ">
       <div className="mx-auto h-full max-w-sm  rounded-md bg-black p-8 shadow-inner-sym md:max-w-none">
-        <h2 className="mb-4 border-b-2 border-yellow-500 pb-2 text-xl">
+        <h2 className="border-accent mb-4 border-b-2 pb-2 text-xl">
           ACCOUNT INFO
         </h2>
         <div className="mb-4 py-2">
-          <ConnectKitButton />
+          <ConnectKitButton theme="midnight" />
         </div>
 
         <div className="flex justify-between">
@@ -130,7 +130,7 @@ export default function AccountInfo({}: Props) {
           <p>{getBalanceString()}</p>
         </div>
         <div className="flex justify-between">
-          <h3>Cards: </h3>
+          <h3>NFTs: </h3>
           <p>{getNftBalanceString()}</p>
         </div>
       </div>

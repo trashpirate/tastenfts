@@ -14,31 +14,9 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 
-import { Alchemy, Network } from "alchemy-sdk";
-import Confetti from "react-confetti";
-
 const NFT_CONTRACT = process.env.NEXT_PUBLIC_NFT_CONTRACT as `0x${string}`;
 const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
 const NFT_FEE = 20000000000;
-
-const contractAddresses = [NFT_CONTRACT];
-
-const config = {
-  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
-  network:
-    process.env.NEXT_PUBLIC_TESTNET == "true"
-      ? Network.ETH_GOERLI
-      : Network.ETH_MAINNET,
-};
-
-const alchemy = new Alchemy(config);
-
-interface NFTMeta {
-  name: string;
-  description: string;
-  path: string;
-  id: number;
-}
 
 type Props = {};
 
@@ -62,7 +40,6 @@ export default function Minter({}: Props) {
   const [message, setMessage] = useState<string>(
     "Mint an NFT and win a prize!",
   );
-  const [explode, setExplode] = useState<boolean>(false);
 
   // get account address
   const { address, isConnecting, isDisconnected, isConnected } = useAccount({});
@@ -214,39 +191,14 @@ export default function Minter({}: Props) {
 
   // set image path
   useEffect(() => {
-    async function checkWin() {
-      const nfts = await alchemy.nft.getNftsForOwner(address as string, {
-        contractAddresses,
-      });
-      let totalWin: number = 0;
-      for (const nft of nfts["ownedNfts"].slice(-quantity)) {
-        const id = nft.tokenId;
-        console.log(id);
-        const meta = await alchemy.nft.getNftMetadata(NFT_CONTRACT, id, {});
-        const trait = meta.rawMetadata?.attributes?.[0]["value"].slice(0, 3);
-        const win = trait == "ZER" ? 0 : Number(trait);
-        totalWin += win;
-      }
-      return totalWin;
-    }
-
     if (isMintLoading && isConnected) {
       setImagePath("/nftAnimation.gif");
-      setExplode(false);
     } else if (!isMintLoading && isMintSuccess && isConnected) {
-      setImagePath("/play.jpg");
+      setImagePath("/featured_image.jpg");
       setMessage("Minting completed.");
-      checkWin().then((win) => {
-        win > 0 ? setExplode(true) : setExplode(false);
-      });
     } else {
-      setImagePath("/play.jpg");
-      setExplode(false);
+      setImagePath("/featured_image.jpg");
     }
-    // let timer1 = setTimeout(() => setExplode(false), 5 * 1000);
-    // return () => {
-    //   clearTimeout(timer1);
-    // };
   }, [isMintLoading, isMintSuccess]);
 
   useEffect(() => {
@@ -257,7 +209,7 @@ export default function Minter({}: Props) {
       approvedAmount != undefined &&
       approvedAmount >= transferAmount
     )
-      setButtonText("MINT NOW");
+      setButtonText("CONFIRM MINT");
     else setButtonText("MINT");
   }, [
     isMintLoading,
@@ -276,7 +228,7 @@ export default function Minter({}: Props) {
       if (tokenBalance != undefined && tokenBalance < transferAmount) {
         return (
           <button
-            className="rounded-xl bg-slate-500 px-5 py-3 text-slate-300"
+            className="bg-hover text-dark rounded-xl px-5 py-3"
             disabled={true}
             onClick={(e) => {}}
           >
@@ -290,7 +242,7 @@ export default function Minter({}: Props) {
         // max per wallet exceeded
         return (
           <button
-            className="rounded-xl bg-slate-500 px-5 py-3 text-slate-300"
+            className="text-dark bg-hover rounded-xl px-5 py-3"
             disabled={true}
             onClick={(e) => {}}
           >
@@ -303,7 +255,7 @@ export default function Minter({}: Props) {
         // minting enabled
         return (
           <button
-            className="rounded-xl bg-white px-5 py-3 font-bold text-black hover:bg-slate-300"
+            className="bg-highlight hover:bg-hover rounded-xl px-5 py-3 font-bold text-black"
             disabled={
               isMintLoading ||
               approvalLoading ||
@@ -336,7 +288,7 @@ export default function Minter({}: Props) {
       return (
         <div className="pt-2">
           <div className="flex h-14 justify-center">
-            <h1 className="my-auto text-center align-middle text-amber-600">
+            <h1 className="text-accent my-auto text-center align-middle text-lg">
               {message}
             </h1>
           </div>
@@ -345,7 +297,7 @@ export default function Minter({}: Props) {
               <label>
                 Enter number of NFTs:
                 <input
-                  className="mx-auto ml-2 rounded bg-gray-800 p-1 text-right"
+                  className="bg-dark mx-auto ml-2 rounded p-1 text-right"
                   type="number"
                   value={quantity}
                   max={batchLimit}
@@ -358,14 +310,14 @@ export default function Minter({}: Props) {
               </label>
             </form>
           </div>
-          <div className="flex justify-center">{mintButton()}</div>
+          <div className="mt-2 flex justify-center">{mintButton()}</div>
         </div>
       );
     } else {
       return (
         <div className="flex-col justify-center gap-4 pt-4 text-center">
-          <p className="mb-4">MINT IS LIVE!</p>
-          <div className="mx-auto my-2 h-10 w-fit rounded-md bg-white px-4 py-2 font-bold text-black hover:bg-slate-400">
+          <p className="mb-6">MINT IS LIVE!</p>
+          <div className="bg-highlight hover:bg-hover mx-auto my-2 h-10 w-fit rounded-md px-4 py-2 font-bold text-black">
             <a
               className="mx-auto"
               href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xdB238123939637D65a03E4b2b485650B4f9D91CB"
@@ -381,20 +333,6 @@ export default function Minter({}: Props) {
 
   return (
     <div className="mx-auto h-full w-full max-w-sm flex-col justify-between rounded-lg bg-black p-8 shadow-inner-sym md:max-w-none">
-      {explode && (
-        <Confetti
-          colors={[
-            "#fbbf24",
-            "#d97706",
-            "#fef08a",
-            "#fefce8",
-            "#b45309",
-            "#fde68a",
-          ]}
-          recycle={false}
-          numberOfPieces={1000}
-        />
-      )}
       <div className="mx-auto mb-4 w-full max-w-xs overflow-hidden rounded border-2 border-white bg-white">
         <Image
           src={imagePath}
