@@ -36,7 +36,7 @@ export default function Minter({}: Props) {
   const [batchLimit, setBatchLimit] = useState<number>(0);
   const [buttonText, setButtonText] = useState<string>("MINT");
 
-  const [imagePath, setImagePath] = useState<string>("/logo.jpg");
+  const [imagePath, setImagePath] = useState<string>("/logo.png");
   const [message, setMessage] = useState<string>(
     "Mint an NFT and win a prize!",
   );
@@ -221,7 +221,7 @@ export default function Minter({}: Props) {
 
   function mintButton() {
     if (isDisconnected && batchLimit) {
-      return <div>Connect your wallet to mint an NFT</div>;
+      return <div className="mt-4">Connect your wallet to mint an NFT</div>;
     } else if (batchLimit) {
       // mint is enabled
       // =====================================================
@@ -280,11 +280,13 @@ export default function Minter({}: Props) {
           </button>
         );
       }
+    } else {
+      return <div>NFT MINT STARTS ON JANUARY 12TH</div>;
     }
   }
 
   function mintPanel(canMint: number) {
-    if (canMint) {
+    if (canMint > 0) {
       return (
         <div className="pt-2">
           <div className="flex h-14 justify-center">
@@ -316,7 +318,7 @@ export default function Minter({}: Props) {
     } else {
       return (
         <div className="flex-col justify-center gap-4 pt-4 text-center">
-          <p className="mb-6">MINT IS LIVE!</p>
+          <p className="my-8">MINT STARTS ON JANUARY 12TH</p>
           <div className="bg-highlight hover:bg-hover mx-auto my-2 h-10 w-fit rounded-md px-4 py-2 font-bold text-black">
             <a
               className="mx-auto"
