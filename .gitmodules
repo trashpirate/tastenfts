@@ -1,3 +1,6 @@
 [submodule "backend/lib/foundry-devops"]
 	path = backend/lib/foundry-devops
 	url = https://github.com/Cyfrin/foundry-devops
+[submodule "backend/lib/openzeppelin-contracts"]
+	path = backend/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
