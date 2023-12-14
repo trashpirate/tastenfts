@@ -3,11 +3,6 @@ import { ConnectKitProvider } from "connectkit";
 import { WagmiConfig } from "wagmi";
 import { useEffect, useState } from "react";
 import getWagmiConfig from "./config";
-import { MoralisProvider } from "react-moralis";
-
-const dAppInfo = {
-  appName: "Venus Collection",
-};
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const myWagmiConfig = getWagmiConfig(
