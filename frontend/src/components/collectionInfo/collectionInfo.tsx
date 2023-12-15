@@ -74,18 +74,19 @@ export default function CollectionInfo({}: Props) {
             </div>
           </a>
         </div>
-        <div className="text-primary  mr-16 pb-4 text-xs">
-          <table className="talbe-fixed w-full text-left">
+        <div className="text-primary pb-4 text-xs">
+          <table className="w-full table-fixed text-left">
             <thead>
               <tr className="text-sm">
                 <th>TRAITS</th>
                 <th>RARITY</th>
+                <th>PRIZE</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>BLACK</td>
-                <td>7.50 %</td>
+                <td>7.5 %</td>
               </tr>
               <tr>
                 <td>BLUE</td>
@@ -94,14 +95,17 @@ export default function CollectionInfo({}: Props) {
               <tr>
                 <td>PURPLE</td>
                 <td>0.075 %</td>
+                <td>{`20${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
               <tr>
                 <td>PINK</td>
                 <td>0.02 %</td>
+                <td>{`100${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
               <tr>
                 <td>RED</td>
                 <td>0.005 %</td>
+                <td>{`300${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
             </tbody>
           </table>
