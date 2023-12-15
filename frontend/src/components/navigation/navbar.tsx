@@ -25,7 +25,7 @@ export default function Navbar({}: Props) {
       <div className="bg-highlight hover:bg-hover my-auto h-fit w-fit flex-row rounded-md border-2 border-black font-bold text-black sm:w-44 sm:justify-between">
         <a
           className="pointer-events-auto mx-auto flex h-10 items-center align-middle text-lg uppercase sm:gap-1 sm:text-center lg:p-0 "
-          href="https://app.uniswap.org/swap?outputCurrency=0x0b61C4f33BCdEF83359ab97673Cb5961c6435F4E"
+          href="https://opensea.io/"
           rel="noopener noreferrer"
         >
           <Image
