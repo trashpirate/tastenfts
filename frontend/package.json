@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "connectkit": "^1.5.3",
     "moralis": "^2.23.2",
     "next": "13.5.4",
