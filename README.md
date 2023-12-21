@@ -67,9 +67,9 @@ Code for the mintig dApp using Nextjs and Wagmi (deployed on Vercel)
    ```
 3. Navigate in subdirectories
    ```sh
-  cd collection
-  cd backend
-  cd frontend
+    cd collection
+    cd backend
+    cd frontend
    ```
 
 ### Usage
