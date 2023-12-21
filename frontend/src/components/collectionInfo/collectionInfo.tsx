@@ -60,21 +60,21 @@ export default function CollectionInfo({}: Props) {
   return (
     <div className="mx-auto w-full pb-8">
       <div className="mx-auto max-w-sm rounded-md bg-black p-8  shadow-inner-sym md:max-w-none">
-        <h2 className="border-accent mb-4 border-b-2 pb-2 text-xl">
+        <h2 className="mb-4 border-b-2 border-accent pb-2 text-xl">
           VENUS COLLECTION
         </h2>
-        <div className="text-highlight pb-4 text-sm">
+        <div className="pb-4 text-sm text-highlight">
           <p>Contract:</p>
 
           <a
             href={`${process.env.NEXT_PUBLIC_NETWORK_SCAN}/address/${process.env.NFT_CONTRACT}#code`}
           >
-            <div className="hover:text-hover mt-1 overflow-hidden text-ellipsis text-xs text-opacity-60">
+            <div className="mt-1 overflow-hidden text-ellipsis text-xs text-opacity-60 hover:text-hover">
               {NFT_CONTRACT}
             </div>
           </a>
         </div>
-        <div className="text-primary pb-4 text-xs">
+        <div className="pb-4 text-xs text-primary">
           <table className="w-full table-fixed text-left">
             <thead>
               <tr className="text-sm">
@@ -86,25 +86,25 @@ export default function CollectionInfo({}: Props) {
             <tbody>
               <tr>
                 <td>BLACK</td>
-                <td>7.5 %</td>
+                <td>75 %</td>
               </tr>
               <tr>
                 <td>BLUE</td>
-                <td>0.15 %</td>
+                <td>15 %</td>
               </tr>
               <tr>
                 <td>PURPLE</td>
-                <td>0.075 %</td>
+                <td>7.5 %</td>
                 <td>{`20${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
               <tr>
                 <td>PINK</td>
-                <td>0.02 %</td>
+                <td>2 %</td>
                 <td>{`100${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
               <tr>
                 <td>RED</td>
-                <td>0.005 %</td>
+                <td>0.5 %</td>
                 <td>{`300${String.fromCharCode(8239)}B TASTE`}</td>
               </tr>
             </tbody>
