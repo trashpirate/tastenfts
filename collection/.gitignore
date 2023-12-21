@@ -1,5 +1,7 @@
 # image data
 images/
+metadata/
+logs.txt
 
 # node
 node_modules/
